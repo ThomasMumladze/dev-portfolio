@@ -49,7 +49,7 @@ const Card = (props: Props) => {
 
                     <div className="btn-row">
                         {(data.urls.live?.length ?? 0) > 1 ? (
-                            <Link to={data.urls.live ?? ""} className="btn">
+                            <Link to={data.urls.live ?? ""} className="btn" target="_blank">
                                 <span>Live</span>
                                 <span className="btn-icon">⟺</span>
                             </Link>
