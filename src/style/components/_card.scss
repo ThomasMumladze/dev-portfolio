@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;900&display=swap");
+
+// ===== VARIABLES =====
+$font-primary: "Outfit", sans-serif;
+$font-mono: "JetBrains Mono", monospace;
+
+$color-accent: #e8522a;
+$color-white: #ffffff;
+$color-dark-900: #111827;
+$color-dark-800: #1f2937;
+$color-gray-500: #6b7280;
+$color-gray-400: #abb2bf;
+$color-gray-200: #e5e7eb;
+$color-gray-100: #d1d5db;
+$color-bg-light: #f8f7f4;
+
+$radius-card: 16px;
+$radius-pill: 8px;
+$radius-badge: 4px;
+
+$transition-base: all 0.2s ease;
+$transition-btn: all 0.18s ease;
+
+// ===== CARD WRAPPER =====
+.card-wrapper {
+    border: 1px solid #abb2bf;
+    font-family: $font-primary;
+    width: 320px;
+}
+
+// ===== TOP DARK CARD =====
+.top-card {
+    background: linear-gradient(145deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    padding: 42px 24px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba($color-white, 0.06);
+    border-bottom: none;
+
+    // ===== BRAND =====
+    .brand {
+        &-badge {
+            display: inline-block;
+            background: $color-accent;
+            color: $color-white;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 3px 9px;
+            border-radius: $radius-badge;
+            margin-bottom: 10px;
+            font-family: $font-mono;
+        }
+
+        &-name {
+            font-size: 36px;
+            font-weight: 900;
+            color: $color-white;
+            line-height: 1;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+
+            span {
+                color: $color-accent;
+            }
+        }
+
+        &-tagline {
+            color: #c778dd;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+    }
+
+    // ===== FEATURE PILLS =====
+    .features {
+        position: absolute;
+        top: 18px;
+        right: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba($color-white, 0.05);
+            border: 1px solid rgba($color-white, 0.08);
+            border-radius: $radius-pill;
+            padding: 5px 12px 5px 8px;
+            color: rgba($color-white, 0.75);
+            font-size: 12px;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            transition: $transition-base;
+            text-transform: uppercase;
+            cursor: default;
+
+            &:hover {
+                background: rgba($color-accent, 0.12);
+                border-color: rgba($color-accent, 0.3);
+                color: $color-white;
+            }
+        }
+    }
+}
+
+// ===== BOTTOM LIGHT  =====
+.bottom-card {
+    // ===== TECH STACK =====
+    .tech-stack {
+        border-top: solid 1px #abb2bf;
+        border-bottom: solid 1px #abb2bf;
+        display: flex;
+        gap: 12px;
+        margin-bottom: 10px;
+        padding: 9px 12px;
+
+        .tech-tag {
+            font-family: $font-mono;
+            font-size: 14px;
+            color: $color-gray-400;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+    }
+
+    blockquote {
+        padding: 9px 12px;
+        margin-bottom: 10px;
+
+        .tech-separator {
+            margin-left: 12px;
+            color: $color-gray-200;
+        }
+
+        // ===== BOTTOM BRAND =====
+        .bottom {
+            &-brand {
+                font-size: 28px;
+                color: #fff;
+                letter-spacing: 0.7px;
+                margin-bottom: 18px;
+            }
+
+            &-tagline {
+                font-size: 16px;
+                color: #abb2bf;
+                font-weight: 200;
+                margin-bottom: 20px;
+                letter-spacing: 0.01em;
+            }
+        }
+
+        // ===== BUTTONS =====
+        .btn-row {
+            display: flex;
+            gap: 10px;
+
+            .btn {
+                display: flex;
+                align-items: center;
+                color: #fff;
+                gap: 6px;
+                padding: 8px 16px;
+                font-size: 16px;
+                cursor: pointer;
+                background-color: transparent;
+                border: solid 1px #abb2bf;
+                letter-spacing: 0.01em;
+
+                &-icon {
+                    font-size: 14px;
+                    letter-spacing: -1px;
+                }
+
+                &:hover {
+                    background-color: #484c53;
+                }
+            }
+        }
+    }
+}
