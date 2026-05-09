@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1,
+        "applicationName": "techstore",
+        "type": "back-end",
+        "language": "Java.api",
+        "technologies": ["Java", "MsSql"],
+        "methods": ["GET", "POST", "PUT"],
+        "description": "Java web api for techstore website",
+        "urls": {
+            "gitHub": "https://github.com/ThomasMumladze/techstore_back",
+            "live": ""
+        }
+    }
+]
