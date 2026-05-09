@@ -20,7 +20,7 @@ const Home = () => {
                     <h1>
                         <span>#</span>Projects
                     </h1>
-                    <Link to="/">view all</Link>
+                    <Link to="/project">view all</Link>
                 </div>
 
                 {/* ========== mapping list of project ==========  // */}
