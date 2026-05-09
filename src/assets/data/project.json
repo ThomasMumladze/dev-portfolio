@@ -12,19 +12,5 @@
             "azure": "",
             "live": ""
         }
-    },
-    {
-        "id": 1,
-        "applicationName": "techstore",
-        "type": "back-end",
-        "language": "Java.api",
-        "technologies": ["Java", "MsSql"],
-        "methods": ["GET", "POST", "PUT"],
-        "description": "RESTful API built with Java and Spring Boot for managing techstore e-commerce operations, including product listings, inventory, and order processing.",
-        "urls": {
-            "gitHub": "https://github.com/ThomasMumladze/techstore_back",
-            "azure": "",
-            "live": ""
-        }
     }
 ]
