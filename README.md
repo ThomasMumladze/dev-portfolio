@@ -23,6 +23,7 @@ npm i sass
 npm i scss
 npm i axios
 npm i react-router
+npm i react-icons
 ```
 
 ### Warning
