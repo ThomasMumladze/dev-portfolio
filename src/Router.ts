@@ -1,7 +1,11 @@
 import { createBrowserRouter } from "react-router";
+import { lazy } from "react";
 
 import App from "./App";
-import Home from "./assets/page/Home";
+import Home from "./page/Home";
+
+const project = lazy(() => import("./page/Project"));
+const notFound = lazy(() => import("./page/NotFoundPage"));
 
 const route = createBrowserRouter([
     {
@@ -12,6 +16,12 @@ const route = createBrowserRouter([
                 index: true,
                 Component: Home,
             },
+            {
+                path: "/project",
+                Component: project,
+            },
+
+            { path: "*", Component: notFound },
         ],
     },
 ]);
