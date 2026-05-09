@@ -1,10 +1,9 @@
-type ProjectType = "back-end" | "front-end" | "full-stack" | "mobile" | "api";
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
-export interface Project {
+export interface ProjectType {
     id: number;
     applicationName: string;
-    type: ProjectType;
+    type: string;
     language: string;
     technologies: string[];
     methods: HttpMethod[];
