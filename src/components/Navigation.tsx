@@ -1,18 +1,29 @@
+import { Link, useLocation } from "react-router";
 const Navigation = () => {
+    const location = useLocation().pathname;
+
     return (
         <nav>
             <ul>
-                <li>
-                    <span>#</span>home
+                <li className={`${location == "/" ? "active" : ""}`}>
+                    <Link to={"/"}>
+                        <span>#</span>home
+                    </Link>
                 </li>
-                <li>
-                    <span>#</span>project
+                <li className={`${location == "/project" ? "active" : ""}`}>
+                    <Link to={"/project"}>
+                        <span>#</span>project
+                    </Link>
                 </li>
-                <li>
-                    <span>#</span>about-me
+                <li className={`${location == "/" ? "about-me" : ""}`}>
+                    <Link to={"/"}>
+                        <span>#</span>about-me
+                    </Link>
                 </li>
-                <li>
-                    <span>#</span>contact
+                <li className={`${location == "/" ? "contact" : ""}`}>
+                    <Link to={"/"}>
+                        <span>#</span>contact
+                    </Link>
                 </li>
             </ul>
         </nav>
