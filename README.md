@@ -2,12 +2,13 @@
 
 ## Tech Stack
 
-| Tool    | Version  |
-| ------- | -------- |
-| Node.js | v24.12.0 |
-| Sass    | 1.99.0   |
-| scss    | 0.2.4    |
-| axios   | 1.16.0   |
+| Tool        | Version  |
+| ----------- | -------- |
+| Node.js     | v24.12.0 |
+| Sass        | 1.99.0   |
+| scss        | 0.2.4    |
+| axios       | 1.16.0   |
+| react-icons | 5.6.0    |
 
 ### Prerequisites
 
