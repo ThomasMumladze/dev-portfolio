@@ -38,8 +38,8 @@ $transition-btn: all 0.18s ease;
     border-bottom: none;
 
     // ===== BRAND =====
-    .brand {
-        &-badge {
+    .card {
+        &-label {
             display: inline-block;
             background: $color-accent;
             color: $color-white;

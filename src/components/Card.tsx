@@ -1,53 +1,65 @@
 import { FaGithub } from "react-icons/fa";
 
-const FEATURES = [{ label: "post" }, { label: "GET" }, { label: "PUT" }, { label: "DELETE" }];
+import type { Project } from "../types/projectType";
+import { Link } from "react-router";
 
-const TECH_STACK = ["java", "msSQL"];
+interface Props {
+    data: Project;
+}
 
-const Card = () => {
+const Card = (props: Props) => {
+    const { data } = props;
+    console.log(data.urls.gitHub);
+
     return (
         <div className="card-wrapper">
             <div className="top-card">
-                <div className="brand-badge">java.api</div>
+                <div className="card-label">{data.language}</div>
 
-                <div className="brand-name">techstore</div>
+                <div className="card-name">{data.applicationName}</div>
 
-                <div className="brand-tagline">#back-end</div>
+                <div className="card-tagline">#{data.type}</div>
 
                 <div className="features">
-                    {FEATURES.map(({ label }) => (
-                        <div key={label} className="feature-pill">
-                            <span>{label}</span>
-                        </div>
-                    ))}
+                    {data.methods &&
+                        data.methods.map((label, _) => (
+                            <div key={_} className="feature-pill">
+                                <span>{label}</span>
+                            </div>
+                        ))}
                 </div>
             </div>
 
             <div className="bottom-card">
                 <div className="tech-stack">
-                    {TECH_STACK.map((tech, i) => (
-                        <span key={tech} className="tech-tag">
+                    {data.technologies.map((tech, _) => (
+                        <span key={_} className="tech-tag">
                             {tech}
-                            {i < TECH_STACK.length - 1 && <span className="tech-separator">·</span>}
+                            {_ < data.technologies.length - 1 && <span className="tech-separator"> ·</span>}
                         </span>
                     ))}
                 </div>
 
                 <blockquote>
-                    <div className="bottom-brand">TechStore</div>
-                    <div className="bottom-tagline">java web api for techstore website</div>
+                    <div className="bottom-brand">{data.applicationName}</div>
+                    <div className="bottom-tagline">{data.description}</div>
 
                     <div className="btn-row">
-                        <button className="btn">
-                            <span>Live</span>
-                            <span className="btn-icon">⟺</span>
-                        </button>
-                        <button className="btn ">
-                            <span>GitHub</span>
-                            <span className="btn-icon">
-                                <FaGithub />
-                            </span>
-                        </button>
+                        {(data.urls.live?.length ?? 0) > 1 ? (
+                            <Link to={data.urls.live ?? ""} className="btn">
+                                <span>Live</span>
+                                <span className="btn-icon">⟺</span>
+                            </Link>
+                        ) : null}
+
+                        {(data.urls.gitHub?.length ?? 0) > 1 ? (
+                            <Link to={data.urls.gitHub ?? ""} className="btn" target="_blank">
+                                <span>GitHub</span>
+                                <span className="btn-icon">
+                                    <FaGithub />
+                                </span>
+                            </Link>
+                        ) : null}
                     </div>
                 </blockquote>
             </div>
