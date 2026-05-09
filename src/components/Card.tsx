@@ -1,7 +1,11 @@
+// ==========  react router ========== //
+import { Link } from "react-router";
+
+//==========  react icon ========== //
 import { FaGithub } from "react-icons/fa";
 
+// ==========  project interface ========== //
 import type { Project } from "../types/projectType";
-import { Link } from "react-router";
 
 interface Props {
     data: Project;

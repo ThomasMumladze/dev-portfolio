@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+// ==========  react router ========== //
 import { Link } from "react-router";
+
+// ==========  react  ========== //
+import { useEffect, useRef, useState } from "react";
 
 const CELLS = [
     { char: "k" },
@@ -90,6 +93,7 @@ const NotFoundPage = () => {
     return (
         <div className="wrap">
             <div className="wordsearch">
+                {/* // ==========  mapping cell to select word that shows 404 not found ==========  // */}
                 <ul ref={containerRef}>
                     {CELLS.map((cell, index) => (
                         <li

@@ -1,3 +1,4 @@
+// ========== component ========== //
 import Navigation from "../components/Navigation";
 
 const Header = () => {
