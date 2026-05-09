@@ -6,7 +6,7 @@
         "language": "Java.api",
         "technologies": ["Java", "MsSql"],
         "methods": ["GET", "POST", "PUT"],
-        "description": "Java web api for techstore website",
+        "description": "RESTful API built with Java and Spring Boot for managing techstore e-commerce operations, including product listings, inventory, and order processing.",
         "urls": {
             "gitHub": "https://github.com/ThomasMumladze/techstore_back",
             "live": ""
