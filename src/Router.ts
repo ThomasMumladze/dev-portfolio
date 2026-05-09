@@ -5,7 +5,6 @@ import App from "./App";
 import Home from "./page/Home";
 
 const project = lazy(() => import("./page/Project"));
-const notFound = lazy(() => import("./page/NotFoundPage"));
 
 const route = createBrowserRouter([
     {
@@ -20,8 +19,6 @@ const route = createBrowserRouter([
                 path: "/project",
                 Component: project,
             },
-
-            { path: "*", Component: notFound },
         ],
     },
 ]);
