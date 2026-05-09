@@ -8,10 +8,10 @@ import Card from "../components/Card";
 import _projectData from "../assets/data/project.json";
 
 // ==========  type for project data ==========  //
-import type { Project } from "../types/projectType";
+import type { ProjectType } from "../types/projectType";
 
 const Home = () => {
-    const projectData = _projectData as unknown as Project[];
+    const projectData = _projectData as unknown as ProjectType[];
 
     return (
         <article className="home-page">
@@ -25,7 +25,7 @@ const Home = () => {
 
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
-                    {projectData.slice(0, 4).map((item: Project) => (
+                    {projectData.slice(0, 4).map((item: ProjectType) => (
                         <Card key={item.id} data={item} />
                     ))}
                 </div>
