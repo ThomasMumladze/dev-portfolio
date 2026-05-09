@@ -14,8 +14,6 @@ interface Props {
 
 const Card = (props: Props) => {
     const { data } = props;
-    console.log(data.urls.gitHub);
-
     return (
         <div className="card-wrapper">
             <div className="top-card">
