@@ -6,10 +6,10 @@ import { FaGithub } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
 
 // ==========  project interface ========== //
-import type { Project } from "../types/projectType";
+import type { ProjectType } from "../types/projectType";
 
 interface Props {
-    data: Project;
+    data: ProjectType;
 }
 
 const Card = (props: Props) => {

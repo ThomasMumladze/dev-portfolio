@@ -124,6 +124,12 @@ $transition-btn: all 0.18s ease;
             color: $color-gray-400;
             font-weight: 400;
             letter-spacing: 0.02em;
+
+            // === line-clamp CSS property limits multi-line === //
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
         }
     }
 
@@ -151,6 +157,12 @@ $transition-btn: all 0.18s ease;
                 font-weight: 200;
                 margin-bottom: 20px;
                 letter-spacing: 0.01em;
+
+                // === line-clamp CSS property limits multi-line === //
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 6;
+                overflow: hidden;
             }
         }
 
