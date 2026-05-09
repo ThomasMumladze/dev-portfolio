@@ -1,0 +1,16 @@
+@use "./assets/font/font";
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #282c33;
+    font-family: "FiraCode";
+}
+
+li {
+    list-style-type: none;
+}
