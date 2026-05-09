@@ -12,6 +12,7 @@ export interface Project {
     description: string;
     urls: {
         gitHub?: string;
+        azure?: string;
         live?: string;
     };
 }
