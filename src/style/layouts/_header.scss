@@ -1,7 +1,10 @@
 header {
+    background-color: #282c33;
     top: 0px;
     position: sticky;
+    padding: 12px;
     width: 100%;
+    z-index: 99;
 
     .header-content {
         align-items: center;
