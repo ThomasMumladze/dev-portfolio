@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 //==========  react icon ========== //
 import { FaGithub } from "react-icons/fa";
+import { VscAzure } from "react-icons/vsc";
 
 // ==========  project interface ========== //
 import type { Project } from "../types/projectType";
@@ -61,6 +62,14 @@ const Card = (props: Props) => {
                                 <span>GitHub</span>
                                 <span className="btn-icon">
                                     <FaGithub />
+                                </span>
+                            </Link>
+                        ) : null}
+                        {(data.urls.azure?.length ?? 0) > 1 ? (
+                            <Link to={data.urls.gitHub ?? ""} className="btn" target="_blank">
+                                <span>Azure</span>
+                                <span className="btn-icon">
+                                    <VscAzure />
                                 </span>
                             </Link>
                         ) : null}

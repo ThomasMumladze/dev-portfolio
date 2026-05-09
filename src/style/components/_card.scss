@@ -23,9 +23,9 @@ $transition-btn: all 0.18s ease;
 
 // ===== CARD WRAPPER =====
 .card-wrapper {
+    flex: 1 1 25%;
     border: 1px solid #abb2bf;
     font-family: $font-primary;
-    width: 320px;
 }
 
 // ===== TOP DARK CARD =====
@@ -157,6 +157,7 @@ $transition-btn: all 0.18s ease;
         // ===== BUTTONS =====
         .btn-row {
             display: flex;
+            justify-content: space-between;
             gap: 10px;
 
             .btn {
