@@ -1,5 +1,10 @@
 @use "./style/layouts/header";
-@use "./style/components/navigation";
-@use "./style/components/card";
+
+// ========== Pages ========== //
 @use "./style/pages/home";
 @use "./style/pages/notfoundPage";
+@use "./style/pages/project";
+
+// ========== Component ========== //
+@use "./style/components/navigation";
+@use "./style/components/card";
