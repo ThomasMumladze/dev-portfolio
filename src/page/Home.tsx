@@ -1,8 +1,8 @@
-import Card from "../../components/Card";
+import Card from "../components/Card";
 
-import _projectData from "../data/project.json";
+import _projectData from "../assets/data/project.json";
 
-import type { Project } from "../../types/projectType";
+import type { Project } from "../types/projectType";
 import { Link } from "react-router";
 
 const Home = () => {

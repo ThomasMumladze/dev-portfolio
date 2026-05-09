@@ -13,7 +13,6 @@ function App() {
             <main>
                 <Outlet />
             </main>
-            <div style={{ height: "1600px" }}></div>
         </>
     );
 }
