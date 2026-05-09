@@ -41,7 +41,7 @@ const Card = (props: Props) => {
                 </div>
 
                 <blockquote>
-                    <div className="bottom-brand">{data.applicationName}</div>
+                    <div className="bottom-brand">{data.applicationName} </div>
                     <div className="bottom-tagline">{data.description}</div>
 
                     <div className="btn-row">
