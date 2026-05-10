@@ -5,6 +5,7 @@ import App from "./App";
 import Home from "./page/Home";
 
 const project = lazy(() => import("./page/Project"));
+const about = lazy(() => import("./page/About"));
 
 const route = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const route = createBrowserRouter([
             {
                 path: "/project",
                 Component: project,
+            },
+            {
+                path: "/about-me",
+                Component: about,
             },
         ],
     },

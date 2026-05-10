@@ -1,0 +1,27 @@
+.about-page {
+    section {
+        .skill-section {
+            &--header {
+                margin-bottom: 28px;
+
+                h1 {
+                    color: #fff;
+                    font-size: 2rem;
+                    font-weight: normal;
+                    text-transform: lowercase;
+
+                    span {
+                        color: #c778dd;
+                    }
+                }
+            }
+
+            &--content {
+                align-items: flex-start;
+                display: flex;
+                gap: 16px;
+                justify-content: space-evenly;
+            }
+        }
+    }
+}

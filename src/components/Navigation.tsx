@@ -15,8 +15,8 @@ const Navigation = () => {
                         <span>#</span>project
                     </Link>
                 </li>
-                <li className={`${location == "/" ? "about-me" : ""}`}>
-                    <Link to={"/"}>
+                <li className={`${location == "/about-me" ? "active" : ""}`}>
+                    <Link to={"/about-me"}>
                         <span>#</span>about-me
                     </Link>
                 </li>

@@ -1,0 +1,26 @@
+[
+    {
+        "title": "language",
+        "content": ["javascript", "java", "typescript", ".Net Core"]
+    },
+    {
+        "title": "database",
+        "content": ["MsSql", "Sql"]
+    },
+    {
+        "title": "framework",
+        "content": ["React.js", "EntityFramework", "Spring Boot"]
+    },
+    {
+        "title": "Frontend Tools",
+        "content": ["HTML5", "CSS", "SCSS", "SASS", "tailwindCSS", "styled-component"]
+    },
+    {
+        "title": "tools",
+        "content": ["react-router", "react-icon", "axios"]
+    },
+    {
+        "title": "other",
+        "content": ["Figma", "photoShop", "gitHub", "Git", "CMD", "powerShell"]
+    }
+]
