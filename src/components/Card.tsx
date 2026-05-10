@@ -50,7 +50,7 @@ const Card = (props: Props) => {
                 </div>
 
                 <blockquote>
-                    <div className="bottom-brand">{data.applicationName}</div>
+                    <div className="bottom-description">{data.description}</div>
                     <div className="btn-row">
                         <Link to={"/project-details"} state={{ data }} className="btn">
                             <span>view details</span>

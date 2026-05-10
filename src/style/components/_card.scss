@@ -98,7 +98,7 @@ $sans: "Segoe UI", system-ui, sans-serif;
     background: $orange;
     color: #000;
     font-family: $mono;
-    font-size: 0.62rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -125,6 +125,10 @@ $sans: "Segoe UI", system-ui, sans-serif;
     gap: 0.6rem;
     font-family: $mono;
     font-size: 0.72rem;
+
+    span {
+        font-size: 14px;
+    }
 
     span:first-child {
         color: #c778dd;
@@ -222,6 +226,7 @@ $sans: "Segoe UI", system-ui, sans-serif;
 
 .tech-tag {
     color: $text-sub;
+    font-size: 16px;
 }
 .tech-separator {
     color: $text-muted;
@@ -238,12 +243,16 @@ blockquote {
     flex: 1;
 }
 
-.bottom-brand {
+.bottom-description {
     font-family: $sans;
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1rem;
     color: $text;
     letter-spacing: -0.01em;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 // ── Buttons ───────────────────────────────────────────────────
