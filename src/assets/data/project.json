@@ -12,5 +12,19 @@
             "azure": "",
             "live": ""
         }
+    },
+    {
+        "id": 2,
+        "applicationName": "gameforge",
+        "type": "front-end",
+        "language": "javascript",
+        "technologies": ["react", "typescript", "scss", "React-router"],
+        "methods": [""],
+        "description": "Built with React, typescript. Modern gaming marketplace UI focused on smooth navigation, clean design and fast user experience",
+        "urls": {
+            "gitHub": "https://github.com/ThomasMumladze/game-forge_front",
+            "azure": "",
+            "live": "https://gameforgege.netlify.app/"
+        }
     }
 ]
