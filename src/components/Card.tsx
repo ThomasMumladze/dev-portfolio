@@ -35,12 +35,14 @@ const Card = (props: Props) => {
 
             <div className="bottom-card">
                 <div className="tech-stack">
-                    {data.technologies.map((tech, _) => (
-                        <span key={_} className="tech-tag">
-                            {tech}
-                            {_ < data.technologies.length - 1 && <span className="tech-separator"> ·</span>}
-                        </span>
-                    ))}
+                    <p>
+                        {data.technologies.map((tech, _) => (
+                            <span key={_} className="tech-tag">
+                                {tech}
+                                {_ < data.technologies.length - 1 && <span className="tech-separator"> · </span>}
+                            </span>
+                        ))}
+                    </p>
                 </div>
 
                 <blockquote>

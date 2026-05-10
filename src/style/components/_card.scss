@@ -26,6 +26,7 @@ $transition-btn: all 0.18s ease;
     flex: 1 1 25%;
     border: 1px solid #abb2bf;
     font-family: $font-primary;
+    max-width: 340px;
 }
 
 // ===== TOP DARK CARD =====
@@ -118,18 +119,20 @@ $transition-btn: all 0.18s ease;
         margin-bottom: 10px;
         padding: 9px 12px;
 
+        p {
+            color: $color-gray-400;
+            margin: 0px !important;
+            -webkit-line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .tech-tag {
             font-family: $font-mono;
             font-size: 14px;
-            color: $color-gray-400;
             font-weight: 400;
             letter-spacing: 0.02em;
-
-            // === line-clamp CSS property limits multi-line === //
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
         }
     }
 
