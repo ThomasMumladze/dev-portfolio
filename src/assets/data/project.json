@@ -6,6 +6,7 @@
         "language": "java.api",
         "technologies": ["java", "MsSql"],
         "methods": ["GET", "POST", "PUT"],
+        "status": "in development",
         "description": "RESTful API built with Java and Spring Boot for managing techstore e-commerce operations, including product listings, inventory, and order processing.",
         "urls": {
             "gitHub": "https://github.com/ThomasMumladze/techstore_back",
@@ -20,11 +21,23 @@
         "language": "React.js",
         "technologies": ["react", "typescript", "scss", "React-router"],
         "methods": [],
+        "status": "stopped",
         "description": "A modern e-commerce gaming platform crafted with React, SCSS, and React Router. Designed for seamless navigation, dynamic user experience, and a clean interface focused on digital products like game keys, accounts, and gift cards.",
         "urls": {
             "gitHub": "https://github.com/ThomasMumladze/game-forge_front",
             "azure": "",
             "live": "https://gameforgege.netlify.app/"
         }
+    },
+    {
+        "id": 3,
+        "applicationName": "VaultKey",
+        "type": "front-end",
+        "language": "React.js",
+        "technologies": ["react", "typescript", "scss"],
+        "methods": [],
+        "status": "in development",
+        "description": "",
+        "urls": { "gitHub": "https://github.com/ThomasMumladze/Vaultkey", "azure": "", "live": "" }
     }
 ]

@@ -15,6 +15,8 @@ interface Props {
 const Card = (props: Props) => {
     const { data } = props;
 
+    console.log(data.status);
+
     return (
         <div className="card-wrapper">
             <div className="top-card">
@@ -22,7 +24,10 @@ const Card = (props: Props) => {
 
                 <div className="card-name">{data.applicationName}</div>
 
-                <div className="card-tagline">#{data.type}</div>
+                <div className="card-tagline">
+                    <span>#{data.type}</span>
+                    <span className={`${data.status == "stopped" ? "inactive" : "active"}`}>#{data.status}</span>
+                </div>
 
                 <div className="features">
                     {data.methods &&

@@ -71,6 +71,18 @@ $transition-btn: all 0.18s ease;
             font-size: 14px;
             font-weight: 300;
             letter-spacing: 0.02em;
+            span {
+                &:last-child {
+                    margin-left: 15px;
+                }
+            }
+
+            .inactive {
+                color: #e8522a;
+            }
+            .active {
+                color: lawngreen;
+            }
         }
     }
 

@@ -8,24 +8,27 @@ import { useState } from "react";
 
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
+const status = ["all status", "stopped", "in development"];
 
 const Project = () => {
     const projectData = _project as unknown as ProjectType[];
 
     const [selectedType, setSelectedType] = useState("all");
     const [selectedTech, setSelectedTech] = useState("all");
+    const [selectedStatus, setSelectedStatus] = useState("all status");
     const [searchedProject, setSearchedProject] = useState("");
 
     const filteredProject = projectData.filter((project) => {
         const matchType = selectedType === "all" || project.type === selectedType;
-
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
-
+        const matchStatus = selectedStatus === "all status" || project.status.includes(selectedStatus);
         const matchSearch =
             searchedProject === "" || project.applicationName.toLowerCase().includes(searchedProject.toLocaleLowerCase());
 
-        return matchType && matchTech && matchSearch;
+        return matchType && matchTech && matchSearch && matchStatus;
     });
+
+    console.log(selectedStatus);
 
     return (
         <article className="project-page">
@@ -37,6 +40,9 @@ const Project = () => {
                         placeholder="Search projects..."
                         onChange={(e) => setSearchedProject(e.target.value)}
                     />
+                    <select onChange={(e) => setSelectedStatus(e.target.value)}>
+                        {status && status.map((item, _) => <option key={_}>{item}</option>)}
+                    </select>
                 </div>
                 <div className="page__filter--type">
                     <h4>type</h4>

@@ -7,6 +7,7 @@ export interface ProjectType {
     language: string;
     technologies: string[];
     methods: HttpMethod[];
+    status: string;
     description: string;
     urls: {
         gitHub?: string;

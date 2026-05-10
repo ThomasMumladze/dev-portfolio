@@ -6,7 +6,6 @@ $font-mono: "JetBrains Mono", monospace;
     margin: 0 auto;
 
     .page__filter {
-        // background-color: red;
         width: 100%;
 
         &--search {
@@ -33,6 +32,22 @@ $font-mono: "JetBrains Mono", monospace;
                 outline: none;
                 padding: 4px 12px;
                 width: 100%;
+            }
+
+            select {
+                color: #fff;
+                background-color: transparent;
+                border: none;
+                border-bottom: solid 1px #e8522a;
+                height: 100%;
+                outline: none;
+                padding: 4px 0px;
+
+                option {
+                    background-color: #282c33;
+                    color: #fff;
+                    height: 100%;
+                }
             }
         }
 
