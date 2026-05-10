@@ -6,6 +6,7 @@ import Home from "./page/Home";
 
 const project = lazy(() => import("./page/Project"));
 const about = lazy(() => import("./page/About"));
+const projectDetails = lazy(() => import("./page/ProjectDetail"));
 const pageNotFound = lazy(() => import("./page/PageNotFound"));
 
 const route = createBrowserRouter([
@@ -20,6 +21,10 @@ const route = createBrowserRouter([
             {
                 path: "/project",
                 Component: project,
+            },
+            {
+                path: "/project-details",
+                Component: projectDetails,
             },
             {
                 path: "/about-me",

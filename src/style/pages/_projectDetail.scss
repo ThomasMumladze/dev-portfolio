@@ -1,0 +1,499 @@
+// ── Tokens ────────────────────────────────────────────────────
+$bg: #0a0a0f;
+$bg-surface: #0d0d18;
+
+$cyan: #00fff5;
+$pink: #ff2d78;
+$green: #39ff85;
+$yellow: #ffe600;
+$purple: #bf5fff;
+$orange: #ff6b1a;
+
+$text: #e8e8f0;
+$text-sub: #7070a0;
+$text-muted: #3a3a5a;
+
+$mono: "Courier New", Courier, monospace;
+$sans: "Segoe UI", system-ui, sans-serif;
+
+// ── Glitch ────────────────────────────────────────────────────
+@keyframes glitch-a {
+    0%,
+    90%,
+    100% {
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0);
+    }
+    92% {
+        clip-path: inset(20% 0 40% 0);
+        transform: translate(-3px);
+    }
+    94% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(3px);
+    }
+    96% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(-2px);
+    }
+}
+
+@keyframes glitch-b {
+    0%,
+    90%,
+    100% {
+        clip-path: inset(0 0 100% 0);
+        transform: translate(0);
+    }
+    93% {
+        clip-path: inset(50% 0 20% 0);
+        transform: translate(3px);
+    }
+    95% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(-3px);
+    }
+    97% {
+        clip-path: inset(70% 0 5% 0);
+        transform: translate(2px);
+    }
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes glow-pulse {
+    0%,
+    100% {
+        box-shadow:
+            0 0 8px rgba($cyan, 0.3),
+            inset 0 0 8px rgba($cyan, 0.04);
+    }
+    50% {
+        box-shadow:
+            0 0 20px rgba($cyan, 0.55),
+            inset 0 0 12px rgba($cyan, 0.07);
+    }
+}
+
+// ── Page ──────────────────────────────────────────────────────
+.pd-page {
+    min-height: 100vh;
+    background: $bg;
+    background-image:
+        linear-gradient(rgba($cyan, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($cyan, 0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+}
+
+.pd-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem clamp(1.5rem, 5vw, 4rem);
+    font-family: $mono;
+    color: $text;
+}
+
+// ── Back ──────────────────────────────────────────────────────
+.pd-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    color: $text-muted;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s;
+
+    &:hover {
+        color: $cyan;
+        .pd-back__arrow {
+            transform: translateX(-4px);
+        }
+    }
+}
+
+.pd-back__arrow {
+    display: inline-block;
+    color: $cyan;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+// ── Hero ──────────────────────────────────────────────────────
+.pd-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border: 1px solid rgba($cyan, 0.2);
+    border-radius: 6px;
+    padding: 2.8rem;
+    background: linear-gradient(135deg, rgba($cyan, 0.03) 0%, transparent 55%);
+    animation: glow-pulse 5s ease-in-out infinite;
+    position: relative;
+
+    // corner ticks
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+    }
+
+    &::before {
+        top: -1px;
+        left: -1px;
+        border-top: 2px solid $cyan;
+        border-left: 2px solid $cyan;
+        border-radius: 6px 0 0 0;
+    }
+
+    &::after {
+        bottom: -1px;
+        right: -1px;
+        border-bottom: 2px solid $pink;
+        border-right: 2px solid $pink;
+        border-radius: 0 0 6px 0;
+    }
+}
+
+.pd-hero__left {
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+// ── Badge ─────────────────────────────────────────────────────
+.pd-badge {
+    display: inline-block;
+    background: $orange;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba($orange, 0.5);
+    width: max-content;
+}
+
+// ── Name + glitch ─────────────────────────────────────────────
+.pd-name {
+    // font-family: $sans;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0rem;
+    color: $text;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        font-size: inherit;
+        font-weight: inherit;
+        letter-spacing: inherit;
+        line-height: inherit;
+    }
+
+    &::before {
+        color: $cyan;
+        animation: glitch-a 7s infinite;
+        opacity: 0.75;
+    }
+
+    &::after {
+        color: $pink;
+        animation: glitch-b 7s infinite;
+        animation-delay: 0.4s;
+        opacity: 0.75;
+    }
+}
+
+// ── Meta tags ─────────────────────────────────────────────────
+.pd-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.78rem;
+}
+
+.pd-meta__type {
+    color: $pink;
+}
+
+.pd-meta__status {
+    &--in-development {
+        color: $green;
+    }
+    &--stopped {
+        color: $pink;
+    }
+    &--completed {
+        color: $cyan;
+    }
+    &--on-hold {
+        color: $yellow;
+    }
+}
+
+// ── Methods ───────────────────────────────────────────────────
+.pd-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.pd-method {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 4px 14px;
+    border-radius: 2px;
+    border: 1px solid;
+    text-align: center;
+    transition: box-shadow 0.2s;
+
+    &--get {
+        color: $green;
+        border-color: rgba($green, 0.4);
+        background: rgba($green, 0.07);
+        &:hover {
+            box-shadow: 0 0 10px rgba($green, 0.45);
+        }
+    }
+    &--post {
+        color: $yellow;
+        border-color: rgba($yellow, 0.4);
+        background: rgba($yellow, 0.07);
+        &:hover {
+            box-shadow: 0 0 10px rgba($yellow, 0.45);
+        }
+    }
+    &--put {
+        color: $purple;
+        border-color: rgba($purple, 0.4);
+        background: rgba($purple, 0.07);
+        &:hover {
+            box-shadow: 0 0 10px rgba($purple, 0.45);
+        }
+    }
+    &--delete {
+        color: $pink;
+        border-color: rgba($pink, 0.4);
+        background: rgba($pink, 0.07);
+        &:hover {
+            box-shadow: 0 0 10px rgba($pink, 0.45);
+        }
+    }
+    &--patch {
+        color: $cyan;
+        border-color: rgba($cyan, 0.4);
+        background: rgba($cyan, 0.07);
+        &:hover {
+            box-shadow: 0 0 10px rgba($cyan, 0.45);
+        }
+    }
+}
+
+// ── Divider ───────────────────────────────────────────────────
+.pd-divider {
+    border: none;
+    border-top: 1px solid rgba($cyan, 0.08);
+    margin: 0;
+}
+
+// ── Tech row ──────────────────────────────────────────────────
+.pd-tech {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 0.5rem;
+    font-size: 0.72rem;
+    color: $text-sub;
+    letter-spacing: 0.04em;
+    padding: 0.65rem 2rem;
+    background: $bg-surface;
+    border: 1px solid rgba($cyan, 0.08);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    margin-bottom: 1.75rem;
+}
+
+.pd-tech__sep {
+    color: $text-muted;
+    user-select: none;
+}
+
+// ── Content grid ──────────────────────────────────────────────
+.pd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba($cyan, 0.07);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.pd-cell {
+    background: $bg-surface;
+    padding: 2rem;
+    transition: background 0.2s;
+
+    &:hover {
+        background: #101022;
+    }
+
+    &--full {
+        grid-column: 1 / -1;
+        border-bottom: 2px solid rgba($cyan, 0.07);
+    }
+}
+
+// ── Section label ─────────────────────────────────────────────
+.pd-label {
+    font-size: 0.65rem;
+    color: $cyan;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    opacity: 0.6;
+}
+
+// ── Description ───────────────────────────────────────────────
+.pd-desc {
+    font-size: 0.95rem;
+    color: $text-sub;
+    line-height: 1.85;
+    font-family: $sans;
+}
+
+// ── Link buttons ──────────────────────────────────────────────
+.pd-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.pd-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border: 1px solid rgba($cyan, 0.3);
+    border-radius: 3px;
+    background: transparent;
+    color: $cyan;
+    font-family: $mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
+
+    svg {
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+
+    &:hover {
+        border-color: $cyan;
+        box-shadow: 0 0 14px rgba($cyan, 0.35);
+        transform: translateY(-1px);
+        svg {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.pd-no-links {
+    font-size: 0.72rem;
+    color: $text-muted;
+    font-style: italic;
+}
+
+// ── Info table ────────────────────────────────────────────────
+.pd-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.pd-info__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba($cyan, 0.06);
+    font-size: 0.78rem;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.pd-info__key {
+    color: $text-muted;
+    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+
+    &::before {
+        content: "$ ";
+        color: rgba($cyan, 0.35);
+    }
+}
+
+.pd-info__val {
+    color: $text;
+
+    &--muted {
+        color: $text-muted;
+    }
+}
+
+// ── Mobile ────────────────────────────────────────────────────
+@media (max-width: 600px) {
+    .pd-hero {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .pd-methods {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .pd-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pd-cell--full {
+        grid-column: 1;
+    }
+}
