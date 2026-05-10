@@ -1,10 +1,14 @@
 .home-page {
     section {
+        max-width: 1454px;
+        margin: 0 auto;
+        padding: 10px 22px;
+
         .section-header {
             align-items: center;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 58px;
+            margin-bottom: 22px;
 
             h1 {
                 color: #fff;

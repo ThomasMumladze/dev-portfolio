@@ -16,6 +16,11 @@ const ProjectDetail = () => {
     return (
         <div className="pd-page">
             <div className="pd-wrap">
+                <Link to="/" className="pd-back">
+                    <span className="pd-back__arrow">›</span>
+                    back to home
+                </Link>
+
                 <Link to="/project" className="pd-back">
                     <span className="pd-back__arrow">›</span>
                     back to projects

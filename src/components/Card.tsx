@@ -50,15 +50,14 @@ const Card = (props: Props) => {
                                 {_ < data.technologies.length - 1 && <span className="tech-separator"> · </span>}
                             </span>
                         ))}
-                        <Link className="view-project--details" to={"/project-details"} state={{ data }}>
-                            view details
-                        </Link>
                     </p>
                 </div>
 
                 <blockquote>
-                    <div className="bottom-brand">{data.applicationName} </div>
-                    <div className="bottom-tagline">{data.description}</div>
+                    <div className="bottom-brand">{data.applicationName}</div>
+                    <Link className="view-project--details" to={"/project-details"} state={{ data }}>
+                        view details
+                    </Link>
                     <div className="btn-row">
                         {(data.urls.live?.length ?? 0) > 1 ? (
                             <Link to={data.urls.live ?? ""} className="btn" target="_blank">

@@ -120,6 +120,10 @@ $sans: "Segoe UI", system-ui, sans-serif;
             transform: translateX(-4px);
         }
     }
+
+    &:first-child {
+        margin-right: 22px;
+    }
 }
 
 .pd-back__arrow {
