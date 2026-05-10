@@ -243,21 +243,18 @@ $sans: "Segoe UI", system-ui, sans-serif;
 }
 
 .pd-meta__type {
-    color: $pink;
+    color: #c778dd;
 }
 
 .pd-meta__status {
     &--in-development {
-        color: $green;
+        color: $yellow;
     }
     &--stopped {
         color: $pink;
     }
     &--completed {
-        color: $cyan;
-    }
-    &--on-hold {
-        color: $yellow;
+        color: $green;
     }
 }
 
