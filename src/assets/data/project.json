@@ -34,7 +34,7 @@
         "applicationName": "VaultKey",
         "type": "front-end",
         "language": "React.js",
-        "technologies": ["react", "typescript", "scss"],
+        "technologies": ["react", "typescript", "scss", "react-router", "axios", "React-icon"],
         "methods": [],
         "status": "in development",
         "description": "",
