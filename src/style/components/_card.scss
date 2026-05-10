@@ -162,24 +162,13 @@ $transition-btn: all 0.18s ease;
             color: $color-gray-200;
         }
 
-        .view-project--details {
-            color: #abb2bf;
-            display: block;
-            margin-bottom: 28px;
-            margin-top: 2px;
-            text-decoration: underline;
-
-            &:hover {
-                color: #fff;
-            }
-        }
-
         // ===== BOTTOM BRAND =====
         .bottom {
             &-brand {
                 font-size: 28px;
                 color: #fff;
                 letter-spacing: 0.7px;
+                margin-bottom: 18px;
             }
 
             &-tagline {

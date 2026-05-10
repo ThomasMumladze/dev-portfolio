@@ -1,10 +1,6 @@
 // ==========  react router ========== //
 import { Link } from "react-router";
 
-//==========  react icon ========== //
-import { FaGithub } from "react-icons/fa";
-import { VscAzure } from "react-icons/vsc";
-
 // ==========  project interface ========== //
 import type { ProjectType } from "../types/projectType";
 
@@ -55,33 +51,11 @@ const Card = (props: Props) => {
 
                 <blockquote>
                     <div className="bottom-brand">{data.applicationName}</div>
-                    <Link className="view-project--details" to={"/project-details"} state={{ data }}>
-                        view details
-                    </Link>
                     <div className="btn-row">
-                        {(data.urls.live?.length ?? 0) > 1 ? (
-                            <Link to={data.urls.live ?? ""} className="btn" target="_blank">
-                                <span>Live</span>
-                                <span className="btn-icon">⟺</span>
-                            </Link>
-                        ) : null}
-
-                        {(data.urls.gitHub?.length ?? 0) > 1 ? (
-                            <Link to={data.urls.gitHub ?? ""} className="btn" target="_blank">
-                                <span>GitHub</span>
-                                <span className="btn-icon">
-                                    <FaGithub />
-                                </span>
-                            </Link>
-                        ) : null}
-                        {(data.urls.azure?.length ?? 0) > 1 ? (
-                            <Link to={data.urls.gitHub ?? ""} className="btn" target="_blank">
-                                <span>Azure</span>
-                                <span className="btn-icon">
-                                    <VscAzure />
-                                </span>
-                            </Link>
-                        ) : null}
+                        <Link to={"/project-details"} state={{ data }} className="btn">
+                            <span>view details</span>
+                            <span className="btn-icon">⟺</span>
+                        </Link>
                     </div>
                 </blockquote>
             </div>
