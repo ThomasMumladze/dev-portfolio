@@ -15,8 +15,6 @@ interface Props {
 const Card = (props: Props) => {
     const { data } = props;
 
-    console.log(data.status);
-
     return (
         <div className="card-wrapper">
             <div className="top-card">
@@ -46,19 +44,21 @@ const Card = (props: Props) => {
             <div className="bottom-card">
                 <div className="tech-stack">
                     <p>
-                        {data.technologies.map((tech, _) => (
+                        {data.technologies.slice(0, 2).map((tech, _) => (
                             <span key={_} className="tech-tag">
                                 {tech}
                                 {_ < data.technologies.length - 1 && <span className="tech-separator"> · </span>}
                             </span>
                         ))}
+                        <Link className="view-project--details" to={"/project-details"} state={{ data }}>
+                            view details
+                        </Link>
                     </p>
                 </div>
 
                 <blockquote>
                     <div className="bottom-brand">{data.applicationName} </div>
                     <div className="bottom-tagline">{data.description}</div>
-
                     <div className="btn-row">
                         {(data.urls.live?.length ?? 0) > 1 ? (
                             <Link to={data.urls.live ?? ""} className="btn" target="_blank">

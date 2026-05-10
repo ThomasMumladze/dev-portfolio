@@ -134,6 +134,7 @@ $transition-btn: all 0.18s ease;
         gap: 12px;
         margin-bottom: 10px;
         padding: 9px 12px;
+        width: 100%;
 
         p {
             color: $color-gray-400;
@@ -142,6 +143,18 @@ $transition-btn: all 0.18s ease;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            width: 100%;
+        }
+
+        a {
+            display: block;
+            float: right;
+            color: #abb2bf;
+            text-decoration: underline;
+
+            &:hover {
+                color: #fff;
+            }
         }
 
         .tech-tag {
@@ -154,7 +167,6 @@ $transition-btn: all 0.18s ease;
 
     blockquote {
         padding: 9px 12px;
-        margin-bottom: 10px;
 
         .tech-separator {
             margin-left: 12px;
