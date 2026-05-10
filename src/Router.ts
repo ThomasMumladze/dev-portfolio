@@ -26,7 +26,7 @@ const route = createBrowserRouter([
                 Component: about,
             },
             {
-                path: "*",
+                path: "/*",
                 Component: notFound,
             },
         ],
