@@ -20,7 +20,7 @@
         "language": "javascript",
         "technologies": ["react", "typescript", "scss", "React-router"],
         "methods": [""],
-        "description": "Built with React, typescript. Modern gaming marketplace UI focused on smooth navigation, clean design and fast user experience",
+        "description": "A modern e-commerce gaming platform crafted with React, SCSS, and React Router. Designed for seamless navigation, dynamic user experience, and a clean interface focused on digital products like game keys, accounts, and gift cards.",
         "urls": {
             "gitHub": "https://github.com/ThomasMumladze/game-forge_front",
             "azure": "",
