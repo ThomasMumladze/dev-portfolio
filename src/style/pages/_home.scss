@@ -1,4 +1,14 @@
+$cyan: #00fff5;
+$bg: #0a0a0f;
+
 .home-page {
+    background: $bg;
+    background-image:
+        linear-gradient(rgba($cyan, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($cyan, 0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+    padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+    min-height: 100vh;
     section {
         max-width: 1454px;
         margin: 0 auto;
