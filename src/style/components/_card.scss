@@ -81,6 +81,10 @@ $transition-btn: all 0.18s ease;
                 color: #e8522a;
             }
             .active {
+                color: yellow;
+            }
+
+            .finished {
                 color: lawngreen;
             }
         }

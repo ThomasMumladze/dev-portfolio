@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
-const status = ["all status", "stopped", "in development"];
+const status = ["all status", "stopped", "in development", "completed"];
 
 const Project = () => {
     const projectData = _project as unknown as ProjectType[];
@@ -27,8 +27,6 @@ const Project = () => {
 
         return matchType && matchTech && matchSearch && matchStatus;
     });
-
-    console.log(selectedStatus);
 
     return (
         <article className="project-page">

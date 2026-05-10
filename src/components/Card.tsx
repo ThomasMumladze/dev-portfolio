@@ -26,7 +26,11 @@ const Card = (props: Props) => {
 
                 <div className="card-tagline">
                     <span>#{data.type}</span>
-                    <span className={`${data.status == "stopped" ? "inactive" : "active"}`}>#{data.status}</span>
+                    <span
+                        className={`${data.status == "stopped" ? "inactive" : data.status === "in development" ? "active" : "finished"}`}
+                    >
+                        #{data.status}
+                    </span>
                 </div>
 
                 <div className="features">
