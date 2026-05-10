@@ -71,7 +71,7 @@ const CELLS = [
     { char: "u" },
 ];
 
-const NotFoundPage = () => {
+const PageNotFound = () => {
     const containerRef = useRef<HTMLUListElement>(null);
     const [selected, setSelected] = useState<string[]>([]);
 
@@ -132,4 +132,4 @@ const NotFoundPage = () => {
     );
 };
 
-export default NotFoundPage;
+export default PageNotFound;
