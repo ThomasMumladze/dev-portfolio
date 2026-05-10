@@ -1,218 +1,297 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;900&display=swap");
+// ── Tokens ────────────────────────────────────────────────────
+$bg-card: #0f0f1e;
+$bg-surface: #0d0d18;
 
-// ===== VARIABLES =====
-$font-primary: "Outfit", sans-serif;
-$font-mono: "JetBrains Mono", monospace;
+$cyan: #00fff5;
+$pink: #ff2d78;
+$green: #39ff85;
+$yellow: #ffe600;
+$purple: #bf5fff;
+$orange: #ff6b1a;
 
-$color-accent: #e8522a;
-$color-white: #ffffff;
-$color-dark-900: #111827;
-$color-dark-800: #1f2937;
-$color-gray-500: #6b7280;
-$color-gray-400: #abb2bf;
-$color-gray-200: #e5e7eb;
-$color-gray-100: #d1d5db;
-$color-bg-light: #f8f7f4;
+$text: #e8e8f0;
+$text-sub: #7070a0;
+$text-muted: #3a3a5a;
 
-$radius-card: 16px;
-$radius-pill: 8px;
-$radius-badge: 4px;
+$mono: "Courier New", Courier, monospace;
+$sans: "Segoe UI", system-ui, sans-serif;
 
-$transition-base: all 0.2s ease;
-$transition-btn: all 0.18s ease;
+@keyframes card-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 0px rgba($cyan, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba($cyan, 0.18);
+    }
+}
 
-// ===== CARD WRAPPER =====
+// ── Wrapper ───────────────────────────────────────────────────
 .card-wrapper {
-    flex: 1 1 25%;
-    border: 1px solid #abb2bf;
-    font-family: $font-primary;
-    max-width: 340px;
-}
-
-// ===== TOP DARK CARD =====
-.top-card {
-    background: linear-gradient(145deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-    padding: 42px 24px;
-    position: relative;
+    border: 1px solid rgba($cyan, 0.15);
+    border-radius: 6px;
     overflow: hidden;
-    border: 1px solid rgba($color-white, 0.06);
-    border-bottom: none;
+    background: $bg-card;
+    display: flex;
+    flex-direction: column;
+    transition:
+        border-color 0.25s,
+        transform 0.2s;
+    position: relative;
 
-    // ===== BRAND =====
-    .card {
-        &-label {
-            display: inline-block;
-            background: $color-accent;
-            color: $color-white;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            padding: 3px 9px;
-            border-radius: $radius-badge;
-            margin-bottom: 10px;
-            font-family: $font-mono;
-        }
-
-        &-name {
-            font-size: 36px;
-            font-weight: 900;
-            color: $color-white;
-            line-height: 1;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-
-            span {
-                color: $color-accent;
-            }
-        }
-
-        &-tagline {
-            color: #c778dd;
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            span {
-                &:last-child {
-                    margin-left: 15px;
-                }
-            }
-
-            .inactive {
-                color: #e8522a;
-            }
-            .active {
-                color: yellow;
-            }
-
-            .finished {
-                color: lawngreen;
-            }
-        }
+    &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 18px;
+        height: 18px;
+        border-top: 2px solid $cyan;
+        border-left: 2px solid $cyan;
+        border-radius: 6px 0 0 0;
+        opacity: 0;
+        transition: opacity 0.2s;
+        z-index: 1;
     }
 
-    // ===== FEATURE PILLS =====
-    .features {
+    &::after {
+        content: "";
         position: absolute;
-        top: 18px;
-        right: 14px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        bottom: -1px;
+        right: -1px;
+        width: 18px;
+        height: 18px;
+        border-bottom: 2px solid $pink;
+        border-right: 2px solid $pink;
+        border-radius: 0 0 6px 0;
+        opacity: 0;
+        transition: opacity 0.2s;
+        z-index: 1;
+    }
 
-        .feature-pill {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba($color-white, 0.05);
-            border: 1px solid rgba($color-white, 0.08);
-            border-radius: $radius-pill;
-            padding: 5px 12px 5px 8px;
-            color: rgba($color-white, 0.75);
-            font-size: 12px;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-            transition: $transition-base;
-            text-transform: uppercase;
-            cursor: default;
+    &:hover {
+        border-color: rgba($cyan, 0.4);
+        transform: translateY(-3px);
+        animation: card-glow 3s ease-in-out infinite;
 
-            &:hover {
-                background: rgba($color-accent, 0.12);
-                border-color: rgba($color-accent, 0.3);
-                color: $color-white;
-            }
+        &::before,
+        &::after {
+            opacity: 1;
+        }
+
+        .card-name {
+            color: $cyan;
         }
     }
 }
 
-// ===== BOTTOM LIGHT  =====
+// ── Top card ──────────────────────────────────────────────────
+.top-card {
+    background: linear-gradient(160deg, #1a2248 0%, #1e2060 60%, #1a1a35 100%);
+    padding: 1.1rem 1.1rem 1rem;
+    position: relative;
+    min-height: 120px;
+}
+
+.card-label {
+    display: inline-block;
+    background: $orange;
+    color: #000;
+    font-family: $mono;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    box-shadow: 0 0 10px rgba($orange, 0.5);
+}
+
+.card-name {
+    font-family: $sans;
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: $text;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+    padding-right: 4rem;
+}
+
+.card-tagline {
+    display: flex;
+    gap: 0.6rem;
+    font-family: $mono;
+    font-size: 0.72rem;
+
+    span:first-child {
+        color: $pink;
+    }
+
+    .inactive {
+        color: $pink;
+    }
+    .active {
+        color: $green;
+    }
+    .finished {
+        color: $cyan;
+    }
+}
+
+// ── Method pills ──────────────────────────────────────────────
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+}
+
+.feature-pill {
+    span {
+        display: block;
+        font-family: $mono;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        padding: 3px 10px;
+        border-radius: 2px;
+        border: 1px solid rgba($text-muted, 0.4);
+        color: $text-sub;
+        background: rgba(255, 255, 255, 0.04);
+        text-align: center;
+    }
+
+    &:nth-child(1) span {
+        color: $green;
+        border-color: rgba($green, 0.4);
+        background: rgba($green, 0.07);
+    }
+    &:nth-child(2) span {
+        color: $yellow;
+        border-color: rgba($yellow, 0.4);
+        background: rgba($yellow, 0.07);
+    }
+    &:nth-child(3) span {
+        color: $purple;
+        border-color: rgba($purple, 0.4);
+        background: rgba($purple, 0.07);
+    }
+    &:nth-child(4) span {
+        color: $pink;
+        border-color: rgba($pink, 0.4);
+        background: rgba($pink, 0.07);
+    }
+    &:nth-child(5) span {
+        color: $cyan;
+        border-color: rgba($cyan, 0.4);
+        background: rgba($cyan, 0.07);
+    }
+}
+
+// ── Bottom card ───────────────────────────────────────────────
 .bottom-card {
-    // ===== TECH STACK =====
-    .tech-stack {
-        border-top: solid 1px #abb2bf;
-        border-bottom: solid 1px #abb2bf;
-        display: flex;
-        gap: 12px;
-        margin-bottom: 10px;
-        padding: 9px 12px;
-        width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 
-        p {
-            color: $color-gray-400;
-            margin: 0px !important;
-            -webkit-line-clamp: 1;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            width: 100%;
+// ── Tech stack ────────────────────────────────────────────────
+.tech-stack {
+    padding: 0.55rem 1.1rem;
+    background: $bg-surface;
+    border-top: 1px solid rgba($cyan, 0.08);
+    border-bottom: 1px solid rgba($cyan, 0.08);
+
+    p {
+        margin: 0;
+        font-family: $mono;
+        font-size: 0.7rem;
+        color: $text-sub;
+        letter-spacing: 0.03em;
+
+        &::before {
+            content: none !important;
         }
+    }
+}
 
-        .tech-tag {
-            font-family: $font-mono;
-            font-size: 14px;
-            font-weight: 400;
-            letter-spacing: 0.02em;
+.tech-tag {
+    color: $text-sub;
+}
+.tech-separator {
+    color: $text-muted;
+}
+
+// ── Blockquote ────────────────────────────────────────────────
+blockquote {
+    padding: 1rem 1.1rem;
+    margin: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+}
+
+.bottom-brand {
+    font-family: $sans;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $text;
+    letter-spacing: -0.01em;
+}
+
+// ── Buttons ───────────────────────────────────────────────────
+.btn-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border: 1px solid rgba($text, 0.2);
+    border-radius: 3px;
+    background: transparent;
+    color: $text;
+    font-family: $mono;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition:
+        border-color 0.2s,
+        color 0.2s,
+        box-shadow 0.2s,
+        transform 0.15s;
+
+    .btn-icon {
+        opacity: 0.6;
+        transition:
+            opacity 0.2s,
+            transform 0.2s;
+    }
+
+    &:hover {
+        border-color: $cyan;
+        color: $cyan;
+        box-shadow: 0 0 12px rgba($cyan, 0.3);
+        transform: translateY(-1px);
+
+        .btn-icon {
+            opacity: 1;
+            transform: translateX(2px);
         }
     }
 
-    blockquote {
-        padding: 9px 12px;
-
-        .tech-separator {
-            margin-left: 12px;
-            color: $color-gray-200;
-        }
-
-        // ===== BOTTOM BRAND =====
-        .bottom {
-            &-brand {
-                font-size: 28px;
-                color: #fff;
-                letter-spacing: 0.7px;
-                margin-bottom: 18px;
-            }
-
-            &-tagline {
-                font-size: 16px;
-                color: #abb2bf;
-                font-weight: 200;
-                margin-bottom: 20px;
-                letter-spacing: 0.01em;
-
-                // === line-clamp CSS property limits multi-line === //
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 10;
-                overflow: hidden;
-            }
-        }
-
-        // ===== BUTTONS =====
-        .btn-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-
-            .btn {
-                display: flex;
-                align-items: center;
-                color: #fff;
-                gap: 6px;
-                padding: 8px 16px;
-                font-size: 16px;
-                cursor: pointer;
-                background-color: transparent;
-                border: solid 1px #abb2bf;
-                letter-spacing: 0.01em;
-
-                &-icon {
-                    font-size: 14px;
-                    letter-spacing: -1px;
-                }
-
-                &:hover {
-                    background-color: #484c53;
-                }
-            }
-        }
+    &:active {
+        transform: translateY(0);
     }
 }

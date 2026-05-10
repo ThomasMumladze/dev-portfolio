@@ -1,104 +1,194 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;900&display=swap");
-$font-mono: "JetBrains Mono", monospace;
+// ── Tokens ────────────────────────────────────────────────────
+$bg: #0a0a0f;
+$bg-surface: #0d0d18;
+$bg-card: #0f0f1e;
 
+$cyan: #00fff5;
+$pink: #ff2d78;
+$green: #39ff85;
+$yellow: #ffe600;
+$purple: #bf5fff;
+$orange: #ff6b1a;
+
+$text: #e8e8f0;
+$text-sub: #7070a0;
+$text-muted: #3a3a5a;
+
+$mono: "Courier New", Courier, monospace;
+$sans: "Segoe UI", system-ui, sans-serif;
+
+@keyframes glow-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 8px rgba($cyan, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba($cyan, 0.5);
+    }
+}
+
+// ── Page ──────────────────────────────────────────────────────
 .project-page {
-    max-width: 1454px;
+    min-height: 100vh;
+    background: $bg;
+    background-image:
+        linear-gradient(rgba($cyan, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($cyan, 0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+    padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+    font-family: $mono;
+    color: $text;
     margin: 0 auto;
+}
 
-    .page__filter {
-        width: 100%;
+// ── Filter block ──────────────────────────────────────────────
+.page__filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba($cyan, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    animation: glow-pulse 5s ease-in-out infinite;
+}
 
-        &--search {
-            align-items: center;
-            border: solid 1px #ccc;
-            border-radius: 10px;
-            display: flex;
-            gap: 6px;
-            margin-bottom: 22px;
-            padding: 7px 12px;
+// ── Search row ────────────────────────────────────────────────
+.page__filter--search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-surface;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba($cyan, 0.08);
 
-            svg {
-                font-size: 1.27rem;
-                color: #fff;
-            }
+    svg {
+        color: $text-muted;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
 
-            input {
-                border: none;
-                background-color: transparent;
-                color: #fff;
-                font-size: 16px;
-                font-family: $font-mono;
-                letter-spacing: 0.65px;
-                outline: none;
-                padding: 4px 12px;
-                width: 100%;
-            }
+    input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: $mono;
+        font-size: 0.8rem;
+        color: $text;
+        letter-spacing: 0.04em;
 
-            select {
-                color: #fff;
-                background-color: transparent;
-                border: none;
-                border-bottom: solid 1px #e8522a;
-                height: 100%;
-                outline: none;
-                padding: 4px 0px;
-
-                option {
-                    background-color: #282c33;
-                    color: #fff;
-                    height: 100%;
-                }
-            }
-        }
-
-        &--type,
-        &--tech {
-            align-items: center;
-            display: flex;
-            color: #e8522a;
-            gap: 16px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
-
-            span {
-                border-radius: 20px;
-                background-color: rgba(0, 0, 0, 0.2);
-                color: #fff;
-                cursor: pointer;
-                padding: 6px 18px;
-                text-transform: lowercase;
-                transition: 0.17s ease-in-out;
-
-                &:hover {
-                    background-color: #1e917d;
-                    color: #fff;
-                }
-            }
-
-            .active-filter {
-                background-color: #1e917d;
-                color: #fff;
-            }
+        &::placeholder {
+            color: $text-muted;
         }
     }
 
-    p {
-        color: #c778dd;
-        margin-bottom: 52px;
+    select {
+        background: $bg-card;
+        border: 1px solid rgba($cyan, 0.2);
+        border-radius: 3px;
+        color: $text-sub;
+        font-family: $mono;
+        font-size: 0.72rem;
+        padding: 4px 10px;
+        outline: none;
+        cursor: pointer;
+        letter-spacing: 0.04em;
+        transition: border-color 0.2s;
+
+        &:hover {
+            border-color: rgba($cyan, 0.45);
+        }
+
+        option {
+            background: $bg-card;
+            color: $text;
+        }
+    }
+}
+
+// ── Type / Tech rows ──────────────────────────────────────────
+.page__filter--type,
+.page__filter--tech {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: $bg-surface;
+    border-bottom: 1px solid rgba($cyan, 0.08);
+
+    &:last-child {
+        border-bottom: none;
     }
 
-    .product__list {
-        align-items: start;
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        // display: grid;
-        // grid-template-columns: repeat(4, 1fr);
-        // grid-column-gap: 16px;
-        // grid-row-gap: 16px;
+    h4 {
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: $orange;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
 
-        > div {
-            width: 100%;
+    span {
+        font-size: 0.72rem;
+        letter-spacing: 0.05em;
+        padding: 4px 14px;
+        border-radius: 99px;
+        border: 1px solid rgba($text-muted, 0.3);
+        color: $text-sub;
+        cursor: pointer;
+        transition:
+            color 0.2s,
+            border-color 0.2s,
+            box-shadow 0.2s;
+        user-select: none;
+
+        &:hover {
+            color: $cyan;
+            border-color: rgba($cyan, 0.4);
+        }
+
+        &.active-filter {
+            color: #000;
+            background: $cyan;
+            border-color: $cyan;
+            box-shadow: 0 0 12px rgba($cyan, 0.5);
+        }
+    }
+}
+
+// ── Count ─────────────────────────────────────────────────────
+p {
+    font-size: 0.78rem;
+    color: $pink;
+    letter-spacing: 0.06em;
+    margin-bottom: 1.5rem;
+
+    &::before {
+        content: "> ";
+        color: rgba($cyan, 0.4);
+    }
+}
+
+// ── Cards grid ────────────────────────────────────────────────
+.product__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+
+    h1 {
+        grid-column: 1 / -1;
+        font-size: 1rem;
+        color: $text-muted;
+        font-family: $mono;
+        letter-spacing: 0.06em;
+
+        &::before {
+            content: "// ";
+            color: rgba($cyan, 0.3);
         }
     }
 }
