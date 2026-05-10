@@ -118,7 +118,7 @@ const NotFoundPage = () => {
                         <Link to="/project" className="navigation">
                             Project
                         </Link>
-                        <Link to="/about" className="navigation">
+                        <Link to="/about-me" className="navigation">
                             About-Me
                         </Link>
 
