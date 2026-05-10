@@ -14,13 +14,17 @@ const Project = () => {
 
     const [selectedType, setSelectedType] = useState("all");
     const [selectedTech, setSelectedTech] = useState("all");
+    const [searchedProject, setSearchedProject] = useState("");
 
     const filteredProject = projectData.filter((project) => {
         const matchType = selectedType === "all" || project.type === selectedType;
 
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
 
-        return matchType && matchTech;
+        const matchSearch =
+            searchedProject === "" || project.applicationName.toLowerCase().includes(searchedProject.toLocaleLowerCase());
+
+        return matchType && matchTech && matchSearch;
     });
 
     return (
@@ -28,7 +32,11 @@ const Project = () => {
             <div className="page__filter">
                 <div className="page__filter--search">
                     <IoSearchOutline />
-                    <input type="text" placeholder="Search projects..." />
+                    <input
+                        type="text"
+                        placeholder="Search projects..."
+                        onChange={(e) => setSearchedProject(e.target.value)}
+                    />
                 </div>
                 <div className="page__filter--type">
                     <h4>type</h4>
