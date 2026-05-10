@@ -127,14 +127,14 @@ $sans: "Segoe UI", system-ui, sans-serif;
     font-size: 0.72rem;
 
     span:first-child {
-        color: $pink;
+        color: #c778dd;
     }
 
     .inactive {
         color: $pink;
     }
     .active {
-        color: $green;
+        color: $yellow;
     }
     .finished {
         color: $cyan;
