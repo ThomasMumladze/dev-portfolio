@@ -14,6 +14,8 @@ interface Props {
 
 const Card = (props: Props) => {
     const { data } = props;
+    console.log(data.methods.length);
+
     return (
         <div className="card-wrapper">
             <div className="top-card">
