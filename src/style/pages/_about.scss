@@ -1,8 +1,12 @@
 .about-page {
     section {
+        max-width: 1454px;
+        margin: 0 auto;
+        padding: 10px 22px;
+
         .skill-section {
             &--header {
-                margin-bottom: 28px;
+                margin-bottom: 22px;
 
                 h1 {
                     color: #fff;
