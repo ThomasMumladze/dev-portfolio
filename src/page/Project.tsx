@@ -4,12 +4,25 @@ import _project from "../assets/data/project.json";
 import type { ProjectType } from "../types/projectType";
 
 import Card from "../components/Card";
+import { useState } from "react";
 
-const type = ["back-end", "front-end", "full-stack", "console app", "game"];
-const tech = ["java", "MsSql", "css", "scss", "React.js", "javascript", "TypeScript", ".Net Core", "C#", "Unity"];
+const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
+const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 
 const Project = () => {
     const projectData = _project as unknown as ProjectType[];
+
+    const [selectedType, setSelectedType] = useState("all");
+    const [selectedTech, setSelectedTech] = useState("all");
+
+    const filteredType = projectData.filter((project) => {
+        const matchType = selectedType === "all" || project.type === selectedType;
+
+        const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
+
+        return matchType && matchTech;
+    });
+
     return (
         <article className="project-page">
             <div className="page__filter">
@@ -19,18 +32,37 @@ const Project = () => {
                 </div>
                 <div className="page__filter--type">
                     <h4>type</h4>
-                    {type && type.map((item, _) => <span key={_}>{item}</span>)}
+                    {type &&
+                        type.map((item, _) => (
+                            <span
+                                className={`${selectedType == item ? "active-filter" : ""}`}
+                                onClick={() => setSelectedType(item)}
+                                key={_}
+                            >
+                                {item}
+                            </span>
+                        ))}
                 </div>
                 <div className="page__filter--tech">
                     <h4>tech</h4>
-                    {tech && tech.map((item, _) => <span key={_}>{item}</span>)}
+                    {tech &&
+                        tech.map((item, _) => (
+                            <span
+                                className={`${selectedTech == item ? "active-filter" : ""}`}
+                                onClick={() => setSelectedTech(item)}
+                                key={_}
+                            >
+                                {item}
+                            </span>
+                        ))}
                 </div>
             </div>
-            <p>{_project.length} project founded</p>
+            <p>{filteredType.length} project founded</p>
             <div className="product__list">
-                {projectData.map((item: ProjectType) => (
+                {filteredType.map((item: ProjectType) => (
                     <Card key={item.id} data={item} />
-                ))}{" "}
+                ))}
+                {filteredType.length < 1 ? <h1>project not found</h1> : ""}
             </div>
         </article>
     );

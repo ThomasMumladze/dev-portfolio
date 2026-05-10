@@ -59,6 +59,11 @@ $font-mono: "JetBrains Mono", monospace;
                     color: #fff;
                 }
             }
+
+            .active-filter {
+                background-color: #1e917d;
+                color: #fff;
+            }
         }
     }
 
@@ -69,10 +74,14 @@ $font-mono: "JetBrains Mono", monospace;
     }
 
     .product__list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-column-gap: 16px;
-        grid-row-gap: 16px;
+        align-items: start;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        // display: grid;
+        // grid-template-columns: repeat(4, 1fr);
+        // grid-column-gap: 16px;
+        // grid-row-gap: 16px;
 
         > div {
             width: 100%;
