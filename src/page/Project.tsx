@@ -15,7 +15,7 @@ const Project = () => {
     const [selectedType, setSelectedType] = useState("all");
     const [selectedTech, setSelectedTech] = useState("all");
 
-    const filteredType = projectData.filter((project) => {
+    const filteredProject = projectData.filter((project) => {
         const matchType = selectedType === "all" || project.type === selectedType;
 
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
@@ -57,12 +57,12 @@ const Project = () => {
                         ))}
                 </div>
             </div>
-            <p>{filteredType.length} project founded</p>
+            <p>{filteredProject.length} project founded</p>
             <div className="product__list">
-                {filteredType.map((item: ProjectType) => (
+                {filteredProject.map((item: ProjectType) => (
                     <Card key={item.id} data={item} />
                 ))}
-                {filteredType.length < 1 ? <h1>project not found</h1> : ""}
+                {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
             </div>
         </article>
     );
