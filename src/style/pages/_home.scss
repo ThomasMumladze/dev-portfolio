@@ -40,6 +40,9 @@
             // grid-template-columns: repeat(4, 1fr);
             // grid-column-gap: 16px;
             // grid-row-gap: 16px;
+            > div {
+                flex: 1 1 25%;
+            }
         }
     }
 }
