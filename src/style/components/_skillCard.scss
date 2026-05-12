@@ -1,23 +1,62 @@
 .skill-card {
-    border: solid 1px #ccc;
+    border-radius: 12px;
+    border: solid 1px #202534;
+    display: flex;
+    flex: 1 1 25%;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
 
     &--title {
-        h3 {
-            border-bottom: solid 1px #ccc;
-            color: #fff;
-            font-weight: normal;
-            font-size: 17px;
-            padding: 6px 10px;
-        }
+        color: #64ffda;
+        font-size: 12.5px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
     }
-    &--content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        padding: 6px 10px;
 
-        p {
-            color: #abb2bf;
+    .skill-card--content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+
+        .skill-item {
+            align-items: center;
+            border-radius: 8px;
+            border: solid 1px #202534;
+            background-color: #80808014;
+            cursor: default;
+            display: flex;
+            gap: 10px;
+            padding: 10px 12px;
+            width: 100%;
+
+            &--icon {
+                svg {
+                    color: rgb(0, 195, 255);
+                }
+            }
+
+            &--description {
+                p {
+                    color: #fff;
+                    font-size: 13px;
+                    text-wrap: nowrap;
+                }
+
+                span {
+                    color: #7c8799;
+                    font-size: 12px;
+                }
+            }
+
+            &:hover {
+                border-color: #64ffda;
+                box-shadow: 0 0 14px #64ffdb8f;
+            }
+        }
+
+        .skill-item:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
         }
     }
 }

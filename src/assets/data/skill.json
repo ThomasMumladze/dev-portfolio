@@ -1,26 +1,102 @@
 [
     {
-        "title": "language",
-        "content": ["javascript", "java", "typescript", ".Net Core"]
+        "title": "front-end",
+        "content": [
+            {
+                "name": "javascript",
+                "icon": "IoLogoJavascript",
+                "experience": "2 year"
+            },
+            {
+                "name": "typescript",
+                "icon": "SiTypescript",
+                "experience": "1.5 year"
+            },
+            {
+                "name": "React.js",
+                "icon": "FaReact",
+                "experience": " 1.5 year"
+            },
+            {
+                "name": "scss",
+                "icon": "BsFiletypeScss",
+                "experience": " 1 year"
+            },
+            {
+                "name": "sass",
+                "icon": "FaSass",
+                "experience": "1 year"
+            },
+            {
+                "name": "styled-component",
+                "icon": "SiStyledcomponents",
+                "experience": "1 year"
+            },
+            {
+                "name": "tailwindCSS",
+                "icon": "RiTailwindCssFill",
+                "experience": "4 month"
+            },
+            {
+                "name": "react-router",
+                "icon": "SiReactrouter",
+                "experience": "1 year"
+            },
+            {
+                "name": "axios",
+                "icon": "SiAxios",
+                "experience": "1 year"
+            },
+            {
+                "name": "react-icon",
+                "icon": "SiCreatereactapp",
+                "experience": "1 year"
+            },
+            {
+                "name": "react-bootstrap",
+                "icon": "SiReactbootstrap",
+                "experience": "3 month"
+            }
+        ]
     },
     {
-        "title": "database",
-        "content": ["MsSql", "Sql"]
-    },
-    {
-        "title": "framework",
-        "content": ["React.js", "EntityFramework", "Spring Boot"]
-    },
-    {
-        "title": "Frontend Tools",
-        "content": ["HTML5", "CSS", "SCSS", "SASS", "tailwindCSS", "styled-component"]
-    },
-    {
-        "title": "tools",
-        "content": ["react-router", "react-icon", "axios"]
+        "title": "back-end",
+        "content": [
+            {
+                "name": "c sharp",
+                "icon": "PiFileCSharp",
+                "experience": "8 month"
+            },
+            {
+                "name": "java",
+                "icon": "FaJava",
+                "experience": "3 month"
+            },
+            {
+                "name": "java spring",
+                "icon": "CiCoffeeBean",
+                "experience": "3 month"
+            },
+            {
+                "name": "API",
+                "icon": "TbApi",
+                "experience": "8 month"
+            },
+            {
+                "name": "MsSql",
+                "icon": "PiFileSqlLight",
+                "experience": "3 month"
+            }
+        ]
     },
     {
         "title": "other",
-        "content": ["Figma", "photoShop", "gitHub", "Git", "CMD", "powerShell"]
+        "content": [
+            {
+                "name": "c sharp",
+                "icon": "PiFileCSharp",
+                "experience": "8 month"
+            }
+        ]
     }
 ]

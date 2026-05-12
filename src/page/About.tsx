@@ -1,19 +1,20 @@
 import SkilLCard from "../components/SkilLCard";
 
-import _skillData from "../assets/data/skill.json";
 import type { SkillType } from "../types/skillType";
 
+import _skillData from "../assets/data/skill.json";
+
 const About = () => {
-    const skillData = _skillData as unknown as SkillType[];
+    const skillData = _skillData as SkillType[];
+
+    console.log(skillData.map);
 
     return (
         <article className="about-page">
             <section id="skills">
                 <div className="skill-section">
                     <div className="skill-section--header">
-                        <h1>
-                            <span>#</span>Skill
-                        </h1>
+                        <h1> technical skill</h1>
                     </div>
 
                     <div className="skill-section--content">

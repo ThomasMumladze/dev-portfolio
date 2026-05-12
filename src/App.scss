@@ -1,13 +1,9 @@
 @use "./style/layouts/header";
 
 // ========== Pages ========== //
-@use "./style/pages/home";
-@use "./style/pages/notfoundPage";
-@use "./style/pages/project";
 @use "./style/pages/about";
 
 // ========== Component ========== //
 @use "./style/components/navigation";
 @use "./style/components/card";
 @use "./style/components/skillCard";
-@use "./style/pages/projectDetail";
