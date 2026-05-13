@@ -1,3 +1,4 @@
+// ========== skills ========== //
 .skill-card {
     border-radius: 12px;
     border: solid 1px #202534;
@@ -6,13 +7,6 @@
     flex-direction: column;
     gap: 14px;
     padding: 24px;
-
-    &--title {
-        color: #64ffda;
-        font-size: 12.5px;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-    }
 
     .skill-card--content {
         display: grid;
@@ -39,13 +33,13 @@
             &--description {
                 p {
                     color: #fff;
-                    font-size: 13px;
+                    font-size: 12.5px;
                     text-wrap: nowrap;
                 }
 
                 span {
                     color: #7c8799;
-                    font-size: 12px;
+                    font-size: 11px;
                 }
             }
 

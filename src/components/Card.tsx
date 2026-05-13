@@ -4,6 +4,7 @@ import { Link } from "react-router";
 // ==========  project interface ========== //
 import type { ProjectType } from "../types/projectType";
 
+// ========== props interface ========== //
 interface Props {
     data: ProjectType;
 }

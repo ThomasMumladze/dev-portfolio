@@ -1,0 +1,18 @@
+// ========== primary btn for multiple usage ========== //
+.btn-primary {
+    background: none;
+    border: none;
+    border: solid 1px #202534;
+    background-color: rgba(128, 128, 128, 0.0784313725);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    padding: 0.6rem 1rem;
+    text-transform: capitalize;
+    width: 10rem;
+
+    &:hover {
+        border-color: #64ffda;
+        box-shadow: 0 0 14px #64ffdb8f;
+    }
+}

@@ -1,7 +1,13 @@
+// ========== skill interface ========== //
 import type { SkillType } from "../types/skillType";
 
+// ========== skill icon svg ========== //
 import { front_end_icon, back_end_icon, tool_icon } from "../assets/icon";
 
+// ========== component import ========== //
+import H3 from "./H3";
+
+// ========== props interface ========== //
 interface Props {
     data: SkillType;
 }
@@ -18,10 +24,11 @@ const SkilLCard = (props: Props) => {
     return (
         <div className="skill-card">
             <div className="skill-card--title">
-                <h3>{data.title}</h3>
+                <H3 title={data.title} />
             </div>
             <div className="skill-card--content">
                 {data.content.map((item, index) => {
+                    // ========== selects icons form icon.ts and compare it to item.cion ========== //
                     const Icon = icons[item.icon as keyof typeof icons];
 
                     return (

@@ -1,0 +1,29 @@
+// ========== custom input ========== //
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+
+    > div {
+        color: #64ffda;
+        font-size: 11px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+    }
+
+    input {
+        border: solid 1px #202534;
+        background-color: rgba(128, 128, 128, 0.0784313725);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.876rem;
+        outline: none;
+        padding: 10px 12px;
+        width: 100%;
+
+        &::placeholder {
+            text-transform: capitalize;
+        }
+    }
+}

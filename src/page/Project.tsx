@@ -1,11 +1,19 @@
+// ========== react icon ========== ..
 import { IoSearchOutline } from "react-icons/io5";
 
+// ========== project data json ========== //
 import _project from "../assets/data/project.json";
+
+// ========== project interface ==========//
 import type { ProjectType } from "../types/projectType";
 
+// ========== component ========== //
 import Card from "../components/Card";
+
+// ========== react ========== //
 import { useState } from "react";
 
+// ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
@@ -18,6 +26,7 @@ const Project = () => {
     const [selectedStatus, setSelectedStatus] = useState("all status");
     const [searchedProject, setSearchedProject] = useState("");
 
+    // ========== filter projects ========== //
     const filteredProject = projectData.filter((project) => {
         const matchType = selectedType === "all" || project.type === selectedType;
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);

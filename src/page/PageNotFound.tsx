@@ -4,6 +4,7 @@ import { Link } from "react-router";
 // ==========  react  ========== //
 import { useEffect, useRef, useState } from "react";
 
+// ========== cell for 404 not found  ========== //
 const CELLS = [
     { char: "k" },
     { char: "v" },

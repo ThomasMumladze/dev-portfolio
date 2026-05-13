@@ -1,4 +1,6 @@
+// ========== react router ========== //
 import { Link, useLocation } from "react-router";
+
 const Navigation = () => {
     const location = useLocation().pathname;
 
