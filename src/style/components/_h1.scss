@@ -19,4 +19,8 @@
         margin: 8px auto 0;
         display: block;
     }
+
+    @media screen and (max-width: 445px) {
+        font-size: 2rem;
+    }
 }
