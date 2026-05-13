@@ -3,6 +3,10 @@
     margin: 0 auto;
     padding: 20px;
 
+    @media screen and (max-width: 800px) {
+        padding: 0px;
+    }
+
     section {
         padding: 20px;
 
