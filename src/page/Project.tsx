@@ -1,6 +1,3 @@
-// ========== react icon ========== ..
-import { IoSearchOutline } from "react-icons/io5";
-
 // ========== project data json ========== //
 import _project from "../assets/data/project.json";
 
@@ -12,6 +9,8 @@ import Card from "../components/Card";
 
 // ========== react ========== //
 import { useState } from "react";
+import Input from "../components/Input";
+import H3 from "../components/H3";
 
 // ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
@@ -39,52 +38,51 @@ const Project = () => {
 
     return (
         <article className="project-page">
-            <div className="page__filter">
-                <div className="page__filter--search">
-                    <IoSearchOutline />
-                    <input
-                        type="text"
-                        placeholder="Search projects..."
-                        onChange={(e) => setSearchedProject(e.target.value)}
-                    />
-                    <select onChange={(e) => setSelectedStatus(e.target.value)}>
-                        {status && status.map((item, _) => <option key={_}>{item}</option>)}
-                    </select>
+            <section>
+                <div className="page__filter">
+                    <div className="page__filter--search">
+                        <Input label="" placeholder="search project" type="text" />
+                        <select onChange={(e) => setSelectedStatus(e.target.value)}>
+                            {status && status.map((item, _) => <option key={_}>{item}</option>)}
+                        </select>
+                    </div>
+                    <div className="page__filter--type">
+                        <H3 title="type" />
+                        {type &&
+                            type.map((item, _) => (
+                                <span
+                                    className={`${selectedType == item ? "active-filter" : ""}`}
+                                    onClick={() => setSelectedType(item)}
+                                    key={_}
+                                >
+                                    {item}
+                                </span>
+                            ))}
+                    </div>
+                    <div className="page__filter--tech">
+                        <H3 title="tech" />
+                        {tech &&
+                            tech.map((item, _) => (
+                                <span
+                                    className={`${selectedTech == item ? "active-filter" : ""}`}
+                                    onClick={() => setSelectedTech(item)}
+                                    key={_}
+                                >
+                                    {item}
+                                </span>
+                            ))}
+                    </div>
                 </div>
-                <div className="page__filter--type">
-                    <h4>type</h4>
-                    {type &&
-                        type.map((item, _) => (
-                            <span
-                                className={`${selectedType == item ? "active-filter" : ""}`}
-                                onClick={() => setSelectedType(item)}
-                                key={_}
-                            >
-                                {item}
-                            </span>
-                        ))}
+            </section>
+            <section>
+                <p>{filteredProject.length} project founded</p>
+                <div className="product__list">
+                    {filteredProject.map((item: ProjectType) => (
+                        <Card key={item.id} data={item} />
+                    ))}
+                    {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
                 </div>
-                <div className="page__filter--tech">
-                    <h4>tech</h4>
-                    {tech &&
-                        tech.map((item, _) => (
-                            <span
-                                className={`${selectedTech == item ? "active-filter" : ""}`}
-                                onClick={() => setSelectedTech(item)}
-                                key={_}
-                            >
-                                {item}
-                            </span>
-                        ))}
-                </div>
-            </div>
-            <p>{filteredProject.length} project founded</p>
-            <div className="product__list">
-                {filteredProject.map((item: ProjectType) => (
-                    <Card key={item.id} data={item} />
-                ))}
-                {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
-            </div>
+            </section>
         </article>
     );
 };

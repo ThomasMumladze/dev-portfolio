@@ -1,306 +1,122 @@
-// ── Tokens ────────────────────────────────────────────────────
-$bg-card: #0f0f1e;
-$bg-surface: #0d0d18;
-
-$cyan: #00fff5;
-$pink: #ff2d78;
-$green: #39ff85;
-$yellow: #ffe600;
-$purple: #bf5fff;
-$orange: #ff6b1a;
-
-$text: #e8e8f0;
-$text-sub: #7070a0;
-$text-muted: #3a3a5a;
-
-$mono: "Courier New", Courier, monospace;
-$sans: "Segoe UI", system-ui, sans-serif;
-
-@keyframes card-glow {
-    0%,
-    100% {
-        box-shadow: 0 0 0px rgba($cyan, 0);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba($cyan, 0.18);
-    }
-}
-
-// ── Wrapper ───────────────────────────────────────────────────
 .card-wrapper {
-    border: 1px solid rgba($cyan, 0.15);
-    border-radius: 6px;
-    overflow: hidden;
-    background: $bg-card;
-    display: flex;
-    flex-direction: column;
-    transition:
-        border-color 0.25s,
-        transform 0.2s;
-    position: relative;
+    padding: 24px;
+    border: solid 1px #202534;
+    border-radius: 12px;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        width: 18px;
-        height: 18px;
-        border-top: 2px solid $cyan;
-        border-left: 2px solid $cyan;
-        border-radius: 6px 0 0 0;
-        opacity: 0;
-        transition: opacity 0.2s;
-        z-index: 1;
-    }
+    &--header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
 
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: -1px;
-        right: -1px;
-        width: 18px;
-        height: 18px;
-        border-bottom: 2px solid $pink;
-        border-right: 2px solid $pink;
-        border-radius: 0 0 6px 0;
-        opacity: 0;
-        transition: opacity 0.2s;
-        z-index: 1;
-    }
-
-    &:hover {
-        border-color: rgba($cyan, 0.4);
-        transform: translateY(-3px);
-        animation: card-glow 3s ease-in-out infinite;
-
-        &::before,
-        &::after {
-            opacity: 1;
+        p {
+            padding: 0px !important;
         }
 
-        .card-name {
-            color: $cyan;
+        .stopped {
+            color: #d22;
+        }
+
+        .completed {
+            color: lawngreen;
+        }
+
+        .development {
+            color: yellowgreen;
         }
     }
-}
-
-// ── Top card ──────────────────────────────────────────────────
-.top-card {
-    background: linear-gradient(160deg, #1a2248 0%, #1e2060 60%, #1a1a35 100%);
-    padding: 1.1rem 1.1rem 1rem;
-    position: relative;
-    min-height: 120px;
-}
-
-.card-label {
-    display: inline-block;
-    background: $orange;
-    color: #000;
-    font-family: $mono;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 2px 9px;
-    border-radius: 2px;
-    margin-bottom: 0.6rem;
-    box-shadow: 0 0 10px rgba($orange, 0.5);
-}
-
-.card-name {
-    font-family: $sans;
-    font-size: 1.75rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    color: $text;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s;
-    padding-right: 4rem;
-}
-
-.card-tagline {
-    display: flex;
-    gap: 0.6rem;
-    font-family: $mono;
-    font-size: 0.72rem;
-
-    span {
-        font-size: 14px;
-    }
-
-    span:first-child {
-        color: #c778dd;
-    }
-
-    .inactive {
-        color: $pink;
-    }
-    .active {
-        color: $yellow;
-    }
-    .finished {
-        color: $cyan;
-    }
-}
-
-// ── Method pills ──────────────────────────────────────────────
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    top: 1.1rem;
-    right: 1.1rem;
-}
-
-.feature-pill {
-    span {
-        display: block;
-        font-family: $mono;
-        font-size: 0.58rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        padding: 3px 10px;
-        border-radius: 2px;
-        border: 1px solid rgba($text-muted, 0.4);
-        color: $text-sub;
-        background: rgba(255, 255, 255, 0.04);
-        text-align: center;
-    }
-
-    &:nth-child(1) span {
-        color: $green;
-        border-color: rgba($green, 0.4);
-        background: rgba($green, 0.07);
-    }
-    &:nth-child(2) span {
-        color: $yellow;
-        border-color: rgba($yellow, 0.4);
-        background: rgba($yellow, 0.07);
-    }
-    &:nth-child(3) span {
-        color: $purple;
-        border-color: rgba($purple, 0.4);
-        background: rgba($purple, 0.07);
-    }
-    &:nth-child(4) span {
-        color: $pink;
-        border-color: rgba($pink, 0.4);
-        background: rgba($pink, 0.07);
-    }
-    &:nth-child(5) span {
-        color: $cyan;
-        border-color: rgba($cyan, 0.4);
-        background: rgba($cyan, 0.07);
-    }
-}
-
-// ── Bottom card ───────────────────────────────────────────────
-.bottom-card {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-// ── Tech stack ────────────────────────────────────────────────
-.tech-stack {
-    padding: 0.55rem 1.1rem;
-    background: $bg-surface;
-    border-top: 1px solid rgba($cyan, 0.08);
-    border-bottom: 1px solid rgba($cyan, 0.08);
 
     p {
-        margin: 0;
-        font-family: $mono;
-        font-size: 0.7rem;
-        color: $text-sub;
-        letter-spacing: 0.03em;
+        color: #fff;
+        font-size: 12px;
+        padding: 2px 12px;
+        border-radius: 8px;
+        text-transform: capitalize;
 
-        &::before {
-            content: none !important;
-        }
-    }
-}
-
-.tech-tag {
-    color: $text-sub;
-    font-size: 16px;
-}
-.tech-separator {
-    color: $text-muted;
-}
-
-// ── Blockquote ────────────────────────────────────────────────
-blockquote {
-    padding: 1rem 1.1rem;
-    margin: 0;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    flex: 1;
-}
-
-.bottom-description {
-    font-family: $sans;
-    font-size: 1rem;
-    color: $text;
-    letter-spacing: -0.01em;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-}
-
-// ── Buttons ───────────────────────────────────────────────────
-.btn-row {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: auto;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 7px 16px;
-    border: 1px solid rgba($text, 0.2);
-    border-radius: 3px;
-    background: transparent;
-    color: $text;
-    font-family: $mono;
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition:
-        border-color 0.2s,
-        color 0.2s,
-        box-shadow 0.2s,
-        transform 0.15s;
-
-    .btn-icon {
-        opacity: 0.6;
-        transition:
-            opacity 0.2s,
-            transform 0.2s;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
     }
 
-    &:hover {
-        border-color: $cyan;
-        color: $cyan;
-        box-shadow: 0 0 12px rgba($cyan, 0.3);
-        transform: translateY(-1px);
+    .project-type {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
 
-        .btn-icon {
-            opacity: 1;
-            transform: translateX(2px);
+        p {
+            background-color: #e64e2d;
         }
     }
 
-    &:active {
-        transform: translateY(0);
+    .methods {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        margin-top: 12px;
+
+        p {
+            background-color: #64ffda;
+            text-transform: uppercase;
+        }
+
+        .get {
+            background: #d1fae5;
+            color: #047857;
+        }
+        .post {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+        .put {
+            background: #fef9c3;
+            color: #a16207;
+        }
+        .delete {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+    }
+
+    .technologies {
+        align-items: center;
+        display: flex;
+        margin-top: 12px;
+        color: #fff;
+        gap: 12px;
+        width: 100%;
+
+        p {
+            padding: 0px;
+            -webkit-line-clamp: 1;
+        }
+    }
+
+    .description {
+        border-top: solid 1px #64ffda;
+        border-bottom: solid 1px #64ffda;
+        margin-top: 12px;
+        padding: 10px 0px;
+
+        p {
+            padding: 0px;
+            -webkit-line-clamp: 4;
+        }
+    }
+
+    .url {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 12px;
+        height: max-content;
+
+        a {
+            display: block;
+            width: 100%;
+        }
+
+        .url-item:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
     }
 }

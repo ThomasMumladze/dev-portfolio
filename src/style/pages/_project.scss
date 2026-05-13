@@ -1,0 +1,82 @@
+.project-page {
+    max-width: 1245px;
+    margin: 0 auto;
+    padding: 20px;
+
+    section {
+        padding: 20px;
+
+        .product__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 16px;
+            grid-row-gap: 16px;
+        }
+
+        > p {
+            margin-bottom: 16px;
+            color: #fff;
+        }
+    }
+
+    .page__filter {
+        &--search {
+            align-items: center;
+            display: flex;
+            margin-bottom: 12px;
+
+            .input {
+                gap: 0px;
+                margin: 0px;
+                margin-right: 22px;
+                width: 100%;
+            }
+
+            select {
+                // border: solid 1px #202534;
+                border: 1px solid rgba(#00fff5, 0.1);
+                background-color: rgba(128, 128, 128, 0.0784313725);
+                border-radius: 8px;
+                color: #64ffda;
+                outline: none;
+                padding: 10px 12px;
+                text-transform: capitalize;
+
+                option {
+                    border: 1px solid rgba(#00fff5, 0.1);
+                    background-color: #0a101d;
+                }
+            }
+        }
+
+        &--type,
+        &--tech {
+            align-items: center;
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+
+            span {
+                background-color: rgba(10, 16, 29, 0.8);
+                border: solid 1px #202534;
+                border-radius: 6px;
+                color: #fff;
+                font-size: 0.785rem;
+                padding: 3px 18px;
+                text-transform: capitalize;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #80808014;
+                    border-color: #64ffda;
+                }
+            }
+
+            .active-filter {
+                border-color: #64ffda;
+                background-color: #80808014;
+                box-shadow: 0 0 8px #64ffdb8f;
+            }
+        }
+    }
+}
