@@ -46,8 +46,8 @@ server: {
 src/
 └── assets/
 └── data/
-├── project.json ← project list
-└── skill.json ← skill list
+├── project.json
+└── skill.json
 
 # Customizing Content
 
