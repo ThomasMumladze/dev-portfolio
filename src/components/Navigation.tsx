@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router";
 
 // ========== react icon ========== //
 import { CiMenuBurger } from "react-icons/ci";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navigation = () => {
     const location = useLocation().pathname;
@@ -13,6 +13,10 @@ const Navigation = () => {
     const handleActiveNavigation = () => {
         setActiveNavigation(!activeNavigation);
     };
+
+    useEffect(() => {
+        setActiveNavigation(false);
+    }, [location]);
 
     return (
         <nav>
