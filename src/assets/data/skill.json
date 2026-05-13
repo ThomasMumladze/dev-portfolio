@@ -90,12 +90,37 @@
         ]
     },
     {
-        "title": "other",
+        "title": "tools",
         "content": [
             {
-                "name": "c sharp",
-                "icon": "PiFileCSharp",
-                "experience": "8 month"
+                "name": "gitHub",
+                "icon": "FaGithub",
+                "experience": "1.5 year"
+            },
+            {
+                "name": "azure",
+                "icon": "VscAzure",
+                "experience": "1 year"
+            },
+            {
+                "name": "CMD",
+                "icon": "VscTerminalCmd",
+                "experience": "2 year"
+            },
+            {
+                "name": "powershell",
+                "icon": "TbBrandPowershell",
+                "experience": "2 year"
+            },
+            {
+                "name": "figma",
+                "icon": "FaFigma",
+                "experience": "7 month"
+            },
+            {
+                "name": "photoshop",
+                "icon": "TbBrandAdobePhotoshop",
+                "experience": "1 year"
             }
         ]
     }

@@ -39,3 +39,20 @@ export const back_end_icon = {
     CiCoffeeBean,
     PiFileSqlLight,
 };
+
+// ============ tools icon ============ //
+import { FaGithub } from "react-icons/fa6";
+import { VscAzure } from "react-icons/vsc";
+import { VscTerminalCmd } from "react-icons/vsc";
+import { TbBrandPowershell } from "react-icons/tb";
+import { FaFigma } from "react-icons/fa";
+import { TbBrandAdobePhotoshop } from "react-icons/tb";
+
+export const tool_icon = {
+    FaGithub,
+    VscAzure,
+    VscTerminalCmd,
+    TbBrandPowershell,
+    FaFigma,
+    TbBrandAdobePhotoshop,
+};

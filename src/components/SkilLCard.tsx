@@ -1,6 +1,6 @@
 import type { SkillType } from "../types/skillType";
 
-import { front_end_icon, back_end_icon } from "../assets/icon";
+import { front_end_icon, back_end_icon, tool_icon } from "../assets/icon";
 
 interface Props {
     data: SkillType;
@@ -9,6 +9,7 @@ interface Props {
 const icons = {
     ...front_end_icon,
     ...back_end_icon,
+    ...tool_icon,
 };
 
 const SkilLCard = (props: Props) => {
