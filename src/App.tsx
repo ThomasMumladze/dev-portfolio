@@ -6,6 +6,7 @@ import { Outlet, useLocation } from "react-router";
 // ========== component ========== //
 import Header from "./layout/Header";
 import { useEffect } from "react";
+import Footer from "./layout/Footer";
 
 function App() {
     const location = useLocation();
@@ -20,6 +21,8 @@ function App() {
             <main>
                 <Outlet />
             </main>
+
+            <Footer />
         </>
     );
 }

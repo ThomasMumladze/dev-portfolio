@@ -1,0 +1,45 @@
+footer {
+    background-color: #0a101d;
+    border-top: solid 1px #202534;
+
+    .footer-body {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+        max-width: 1245px;
+        margin: 0 auto;
+        padding: 20px;
+
+        h3 {
+            margin-bottom: 6px;
+        }
+
+        p {
+            color: #fff;
+            font-size: 12px;
+        }
+
+        a {
+            &:not(:last-child) {
+                margin-right: 8px;
+            }
+
+            svg {
+                color: rgb(0, 195, 255);
+                font-size: 20px;
+            }
+        }
+    }
+
+    .developer {
+        padding: 12px;
+        text-align: center;
+
+        p {
+            color: #fff;
+        }
+        a {
+            color: dodgerblue;
+        }
+    }
+}
