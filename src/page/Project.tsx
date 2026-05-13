@@ -6,11 +6,11 @@ import type { ProjectType } from "../types/projectType";
 
 // ========== component ========== //
 import Card from "../components/Card";
+import Input from "../components/Input";
+import H3 from "../components/H3";
 
 // ========== react ========== //
 import { useState } from "react";
-import Input from "../components/Input";
-import H3 from "../components/H3";
 
 // ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];

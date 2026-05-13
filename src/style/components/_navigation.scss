@@ -5,13 +5,51 @@ $text-muted: #3a3a5a;
 
 // ========== react router navigation ========== //
 nav {
+    position: relative;
+
+    svg {
+        color: #fff;
+        cursor: pointer;
+        font-size: 23px;
+
+        @media screen and (min-width: 800px) {
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+
     ul {
+        align-items: center;
+        display: flex;
         list-style: none;
+        gap: 1.75rem;
         margin: 0;
         padding: 0;
-        display: flex;
-        align-items: center;
-        gap: 1.75rem;
+        user-select: none;
+
+        @media screen and (max-width: 800px) {
+            border: solid 1px #202534;
+            background-color: rgba(10, 16, 29, 1);
+            flex-direction: column;
+            filter: blur(5px);
+            opacity: 0;
+            position: absolute;
+            padding: 6px 32px;
+            pointer-events: none;
+            right: 0px;
+            visibility: hidden;
+            transform: translateX(-54px) scale(0.5);
+            transition: 0.27s ease-in-out;
+            width: max-content;
+        }
+    }
+
+    .nav-active {
+        filter: blur(0px);
+        opacity: 1;
+        pointer-events: all;
+        visibility: visible;
+        transform: translateX(0px);
     }
 
     li a {

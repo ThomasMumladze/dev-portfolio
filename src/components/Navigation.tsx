@@ -1,12 +1,24 @@
 // ========== react router ========== //
 import { Link, useLocation } from "react-router";
 
+// ========== react icon ========== //
+import { CiMenuBurger } from "react-icons/ci";
+import { useState } from "react";
+
 const Navigation = () => {
     const location = useLocation().pathname;
 
+    const [activeNavigation, setActiveNavigation] = useState<boolean>(false);
+
+    const handleActiveNavigation = () => {
+        setActiveNavigation(!activeNavigation);
+    };
+
     return (
         <nav>
-            <ul>
+            <CiMenuBurger onClick={handleActiveNavigation} />
+
+            <ul className={`${activeNavigation ? "nav-active" : ""}`}>
                 <li className={`${location == "/" ? "active" : ""}`}>
                     <Link to={"/"}>home</Link>
                 </li>
