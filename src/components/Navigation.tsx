@@ -8,24 +8,16 @@ const Navigation = () => {
         <nav>
             <ul>
                 <li className={`${location == "/" ? "active" : ""}`}>
-                    <Link to={"/"}>
-                        <span>#</span>home
-                    </Link>
+                    <Link to={"/"}>home</Link>
                 </li>
                 <li className={`${location == "/project" ? "active" : ""}`}>
-                    <Link to={"/project"}>
-                        <span>#</span>project
-                    </Link>
+                    <Link to={"/project"}>project</Link>
                 </li>
                 <li className={`${location == "/about-me" ? "active" : ""}`}>
-                    <Link to={"/about-me"}>
-                        <span>#</span>about-me
-                    </Link>
+                    <Link to={"/about-me"}>about-me</Link>
                 </li>
                 <li className={`${location == "/" ? "contact" : ""}`}>
-                    <Link to={"/"}>
-                        <span>#</span>contact
-                    </Link>
+                    <Link to={"/"}>contact</Link>
                 </li>
             </ul>
         </nav>

@@ -1,14 +1,7 @@
 // ── Tokens ────────────────────────────────────────────────────
-$bg: #0a0a0f;
-$bg-surface: #0d0d18;
-
-$cyan: #00fff5;
-$pink: #ff2d78;
-
-$text: #e8e8f0;
+$text: #64ffda;
 $text-sub: #7070a0;
 $text-muted: #3a3a5a;
-$mono: "Courier New", Courier, monospace;
 
 // ========== react router navigation ========== //
 nav {
@@ -22,33 +15,28 @@ nav {
     }
 
     li a {
-        font-family: $mono;
-        font-size: 1.1rem;
+        font-size: 14px;
         font-weight: normal;
         letter-spacing: 0.06em;
         color: $text-sub;
         text-decoration: none;
-        transition: color 0.2s;
-
-        span {
-            color: $text-muted;
-            transition: color 0.2s;
-        }
+        text-transform: capitalize;
 
         &:hover {
             color: $text;
-            span {
-                color: $pink;
-            }
         }
     }
 
     li.active a {
         color: $text;
-        font-weight: 700;
 
-        span {
-            color: $pink;
+        &::after {
+            content: "";
+            background: #64ffda;
+            border-radius: 2px;
+            width: 100%;
+            height: 1px;
+            display: block;
         }
     }
 
