@@ -42,10 +42,10 @@ const Footer = () => {
                 </div>
                 <div>
                     <H3 title="Social" />
-                    <Link to={"/"}>
+                    <Link to={"https://www.linkedin.com/in/thomasmumladze/"} target="_blank">
                         <FaGithub />
                     </Link>
-                    <Link to={"/"}>
+                    <Link to={"https://github.com/ThomasMumladze?tab=repositories"} target="_blank">
                         <FaLinkedin />
                     </Link>
                 </div>
