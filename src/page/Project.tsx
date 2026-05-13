@@ -42,7 +42,7 @@ const Project = () => {
                 <div className="page__filter">
                     <div className="page__filter--search">
                         <Input label="" placeholder="search project" type="text" onChange={setSearchedProject} />
-                        <select onChange={(e) => setSelectedStatus(e.target.value)}>
+                        <select name="status-options" onChange={(e) => setSelectedStatus(e.target.value)}>
                             {status && status.map((item, _) => <option key={_}>{item}</option>)}
                         </select>
                     </div>
