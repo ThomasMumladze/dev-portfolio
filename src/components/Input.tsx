@@ -6,16 +6,17 @@ interface Props {
     type: string;
     placeholder: string;
     label: string;
+    onChange: (e: any) => void;
 }
 
 const Input = (props: Props) => {
-    const { label, placeholder, type } = props;
+    const { label, placeholder, type, onChange } = props;
     return (
         <div className="input">
             <div>
                 <H3 title={label} />
             </div>
-            <input type={type} placeholder={placeholder} />
+            <input onChange={(e: any) => onChange(e.target.value)} type={type} placeholder={placeholder} />
         </div>
     );
 };
