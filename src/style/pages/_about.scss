@@ -5,7 +5,56 @@
         padding: 20px;
 
         // ========== section body ========== //
-        .skill-section {
+        .about-section {
+            &--content {
+                align-items: center !important;
+                gap: 56px !important;
+
+                .profile-details {
+                    .profile-picture {
+                        height: 186px;
+                        border-radius: 50%;
+                        margin-bottom: 16px;
+
+                        overflow: hidden;
+                        width: 186px;
+
+                        img {
+                            height: 100%;
+                            object-fit: cover;
+                            width: 100%;
+                        }
+                    }
+
+                    h3 {
+                        text-align: center;
+                    }
+
+                    a {
+                        display: block;
+                        font-size: 13px;
+                        text-align: center;
+                        width: 100%;
+                    }
+                }
+
+                h3 {
+                    margin-bottom: 14px;
+                }
+
+                p {
+                    color: #fff;
+
+                    span {
+                        color: #64ffda;
+                    }
+                }
+            }
+        }
+
+        // ========== section body ========== //
+        .skill-section,
+        .about-section {
             &--header {
                 display: flex;
                 align-items: center;
@@ -16,21 +65,6 @@
                 align-items: stretch;
                 display: flex;
                 gap: 16px;
-            }
-        }
-
-        // ========== section body ========== //
-        .contact-section {
-            &--header {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            &--content {
-                display: flex;
-                justify-content: space-between;
-                gap: 32px;
             }
         }
     }
