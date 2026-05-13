@@ -4,6 +4,7 @@
         margin: 0 auto;
         padding: 20px;
 
+        // ========== section body ========== //
         .skill-section {
             &--header {
                 display: flex;
@@ -17,19 +18,20 @@
                 gap: 16px;
             }
         }
-    }
 
-    .contact-section {
-        &--header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        // ========== section body ========== //
+        .contact-section {
+            &--header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        &--content {
-            display: flex;
-            justify-content: space-between;
-            gap: 32px;
+            &--content {
+                display: flex;
+                justify-content: space-between;
+                gap: 32px;
+            }
         }
     }
 }
