@@ -3,13 +3,13 @@ import { Link } from "react-router";
 
 // ==========  component ========== //
 import Card from "../components/Card";
+import H1 from "../components/H1";
 
 // ==========  project data json ========== //
 import _projectData from "../assets/data/project.json";
 
 // ==========  type for project data ==========  //
 import type { ProjectType } from "../types/projectType";
-import H1 from "../components/H1";
 
 const Home = () => {
     const projectData = _projectData as unknown as ProjectType[];
