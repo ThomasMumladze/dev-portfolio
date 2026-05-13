@@ -45,10 +45,10 @@ server: {
 
 ```data json
 src/
-└── assets/
-└── data/
-├── project.json
-└── skill.json
+   └── assets/
+             └── data/
+                     ├── project.json
+                     └── skill.json
 ```
 
 # Customizing Content
