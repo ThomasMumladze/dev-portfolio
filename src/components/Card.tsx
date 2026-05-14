@@ -34,7 +34,6 @@ const Card = (props: Props) => {
             to: data.urls.live,
         },
     ].filter(Boolean);
-    console.log(data.methods);
 
     return (
         <div className="card-wrapper">
