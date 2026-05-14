@@ -66,8 +66,8 @@
         "description": "A C# implementation of the classic Flappy Bird game using Windows Forms, featuring simple controls, engaging gameplay, and a nostalgic design.",
         "urls": {
             "gitHub": "https://github.com/ThomasMumladze/Flappy-Bird",
-            "azure": " ",
-            "live": " "
+            "azure": "",
+            "live": ""
         }
     }
 ]
