@@ -34,7 +34,7 @@ const Card = (props: Props) => {
             to: data.urls.live,
         },
     ].filter(Boolean);
-
+    console.log(data);
     return (
         <div className="card-wrapper">
             <div className="card-wrapper--header">
@@ -56,7 +56,7 @@ const Card = (props: Props) => {
                 </div>
             ) : null}
 
-            {data.technologies.length > 1 ? (
+            {data.technologies.length >= 1 ? (
                 <div className="technologies">
                     <p>{data.technologies.join(", ")}</p>
                 </div>

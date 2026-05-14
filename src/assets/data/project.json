@@ -60,7 +60,7 @@
         "applicationName": "flappy bird",
         "type": "game",
         "language": "C#",
-        "technologies": ["Windows Forms"],
+        "technologies": ["Windows-Forms"],
         "methods": [],
         "status": "completed",
         "description": "A C# implementation of the classic Flappy Bird game using Windows Forms, featuring simple controls, engaging gameplay, and a nostalgic design.",
