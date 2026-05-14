@@ -13,7 +13,6 @@ import type { ProjectType } from "../types/projectType";
 
 const Home = () => {
     const projectData = _projectData as unknown as ProjectType[];
-    console.log(projectData.find((x) => x.type == "front-end"));
 
     return (
         <article className="home-page">
@@ -44,6 +43,23 @@ const Home = () => {
                 <div className="project-list">
                     {projectData
                         .filter((x: ProjectType) => x.type === "back-end")
+                        .slice(0, 4)
+                        .map((item: ProjectType) => (
+                            <Card key={item.id} data={item} />
+                        ))}
+                </div>
+            </section>
+
+            <section id="games">
+                <div className="section-header">
+                    <H1 title="games" />
+                    <Link to="/project">view all</Link>
+                </div>
+
+                {/* ========== mapping list of project ==========  // */}
+                <div className="project-list">
+                    {projectData
+                        .filter((x: ProjectType) => x.type === "game")
                         .slice(0, 4)
                         .map((item: ProjectType) => (
                             <Card key={item.id} data={item} />
