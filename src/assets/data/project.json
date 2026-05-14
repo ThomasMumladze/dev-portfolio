@@ -54,5 +54,20 @@
             "azure": "https://dev.azure.com/ThomasMumladze/cleanCompany-project/_git/cleanCompany_front",
             "live": ""
         }
+    },
+    {
+        "id": 5,
+        "applicationName": "flappy bird",
+        "type": "game",
+        "language": "C#",
+        "technologies": ["Windows Forms"],
+        "methods": [],
+        "status": "completed",
+        "description": "A C# implementation of the classic Flappy Bird game using Windows Forms, featuring simple controls, engaging gameplay, and a nostalgic design.",
+        "urls": {
+            "gitHub": "https://github.com/ThomasMumladze/Flappy-Bird",
+            "azure": " ",
+            "live": " "
+        }
     }
 ]
