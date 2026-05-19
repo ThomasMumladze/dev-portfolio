@@ -37,7 +37,7 @@ const Home = () => {
 
     return (
         <article className="home-page">
-            <section>
+            <section id="skill-slider">
                 <div className="icon-slider-wrapper">
                     <div className="icon-slider" style={{ transform: `translateX(-${nextSlide * 100}%)` }}>
                         {Array.from({ length: totalPages }).map((_, pageIndex) => (
