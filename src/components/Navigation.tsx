@@ -32,7 +32,7 @@ const Navigation = () => {
                 <li className={`${location == "/about-me" ? "active" : ""}`}>
                     <Link to={"/about-me"}>about-me</Link>
                 </li>
-                <li className={`${location == "/" ? "contact" : ""}`}>
+                <li className={`${location == "/contact" ? "active" : ""}`}>
                     <Link to={"/contact"}>contact</Link>
                 </li>
             </ul>
