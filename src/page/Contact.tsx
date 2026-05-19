@@ -1,4 +1,6 @@
+import Button from "../components/Button";
 import H3 from "../components/H3";
+import Input from "../components/Input";
 
 const Contact = () => {
     return (
@@ -19,6 +21,20 @@ const Contact = () => {
                         <a href="https://www.maps.ie/create-google-map/">Embed Google Streetview</a>
                     </iframe>
                 </div>
+            </section>
+
+            <section id="Email">
+                <form>
+                    <Input type="text" placeholder="Your Name" label="Name" onChange={() => {}} />
+                    <Input type="email" placeholder="Your Email" label="Email" onChange={() => {}} />
+
+                    <div className="form-group">
+                        <H3 title="Message" />
+                        <textarea id="message" name="message" rows={10} required></textarea>
+                    </div>
+
+                    <Button title="send message" onCLick={() => {}} />
+                </form>
             </section>
         </article>
     );
