@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
+
 // ==========  react router ========== //
 import { Link } from "react-router";
 
 // ==========  component ========== //
 import Card from "../components/Card";
-import H1 from "../components/H1";
+import H3 from "../components/H3";
 
 // ==========  project data json ========== //
 import _projectData from "../assets/data/project.json";
@@ -11,14 +13,50 @@ import _projectData from "../assets/data/project.json";
 // ==========  type for project data ==========  //
 import type { ProjectType } from "../types/projectType";
 
+// ==========  icons ========== //
+import { front_end_icon, back_end_icon, tool_icon } from "../assets/icon";
+const icons = { ...front_end_icon, ...back_end_icon, ...tool_icon };
+
+// ==========  helper ========== //
+import { randomColor } from "../helper/randomColor";
+
 const Home = () => {
     const projectData = _projectData as unknown as ProjectType[];
+    const [nextSlide, setNextSlide] = useState(0);
+    const ITEMS_PER_PAGE = 11;
+    const totalPages = Math.ceil(Object.keys(icons).length / ITEMS_PER_PAGE);
+
+    const handleNextSlide = () => {
+        setNextSlide((prev) => (prev + 1) % totalPages);
+    };
+
+    useEffect(() => {
+        const interval = setInterval(handleNextSlide, 3000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <article className="home-page">
+            <section>
+                <div className="icon-slider-wrapper">
+                    <div className="icon-slider" style={{ transform: `translateX(-${nextSlide * 100}%)` }}>
+                        {Array.from({ length: totalPages }).map((_, pageIndex) => (
+                            <div key={pageIndex} className="icon-page">
+                                {Object.entries(icons)
+                                    .slice(pageIndex * ITEMS_PER_PAGE, (pageIndex + 1) * ITEMS_PER_PAGE)
+                                    .map(([_, Icon], index) => (
+                                        <div key={index}>
+                                            <Icon style={{ color: randomColor() }} />
+                                        </div>
+                                    ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
             <section id="front-end">
                 <div className="section-header">
-                    <H1 title="front-end" />
+                    <H3 title="front-end" />
                     <Link to="/project">view all</Link>
                 </div>
 
@@ -35,7 +73,7 @@ const Home = () => {
 
             <section id="back-end">
                 <div className="section-header">
-                    <H1 title="back-end" />
+                    <H3 title="back-end" />
                     <Link to="/project">view all</Link>
                 </div>
 
@@ -52,7 +90,7 @@ const Home = () => {
 
             <section id="games">
                 <div className="section-header">
-                    <H1 title="games" />
+                    <H3 title="back-end" />
                     <Link to="/project">view all</Link>
                 </div>
 

@@ -5,14 +5,84 @@
         padding: 20px;
 
         .section-header {
-            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 22px;
 
             a {
                 color: #fff;
                 display: block;
                 font-size: 13px;
-                padding-bottom: 16px;
-                text-align: right;
+            }
+        }
+
+        .icon-slider-wrapper {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+
+            .icon-slider {
+                display: flex;
+                transition: transform 0.5s ease;
+
+                .icon-page {
+                    min-width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 14px;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    > div {
+                        border: solid 1px #1a1f2e;
+                        background-color: rgba(15, 18, 30, 0.55);
+                        border-radius: 10px;
+                        margin: 5px 8px 15px;
+                        min-width: 80px;
+                        overflow: hidden;
+                        padding: 15px 25px;
+                        position: relative;
+
+                        svg {
+                            height: 100%;
+                            color: #a0aec0;
+                            width: 100%;
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+
+                            background: linear-gradient(
+                                108deg,
+                                transparent 40%,
+                                rgba(160, 174, 192, 0.04) 46%,
+                                rgba(160, 174, 192, 0.1) 50%,
+                                rgba(203, 213, 225, 0.18) 50%,
+                                rgba(160, 174, 192, 0.1) 54%,
+                                rgba(160, 174, 192, 0.04) 58%,
+                                transparent 64%
+                            );
+
+                            background-size: 300% 300%;
+                            animation: sheen 5s ease-in-out infinite;
+                        }
+
+                        @keyframes sheen {
+                            0% {
+                                background-position: 200% 200%;
+                            }
+                            50% {
+                                background-position: 50% 50%;
+                            }
+                            100% {
+                                background-position: 200% 200%;
+                            }
+                        }
+                    }
+                }
             }
         }
 
