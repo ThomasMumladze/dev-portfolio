@@ -21,6 +21,9 @@ const About = () => {
     return (
         <article className="about-page">
             <section id="about-me">
+                <div className="route-pathname">
+                    home {">"} <H3 title={location.pathname} />
+                </div>
                 <div className="about-section">
                     <div className="about-section--content">
                         <div>

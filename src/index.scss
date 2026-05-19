@@ -13,6 +13,15 @@ body {
 
 main {
     margin: 0 auto;
+
+    .route-pathname {
+        align-items: center;
+        display: flex;
+        margin-bottom: 16px;
+        gap: 6px;
+        color: #4a5264;
+        text-transform: lowercase;
+    }
 }
 
 li {
