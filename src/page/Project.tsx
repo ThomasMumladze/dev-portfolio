@@ -38,10 +38,12 @@ const Project = () => {
 
     return (
         <article className="project-page">
-            <section>
+            <section id="route-pathname">
                 <div className="route-pathname">
                     home {">"} <H3 title={location.pathname} />
                 </div>
+            </section>
+            <section>
                 <div className="page__filter">
                     <div className="page__filter--search">
                         <Input label="" placeholder="search project" type="text" onChange={setSearchedProject} />

@@ -3,11 +3,13 @@ import H3 from "../components/H3";
 const Contact = () => {
     return (
         <article className="contact-page">
-            <section id="contact--map">
+            <section id="route-pathname">
                 <div className="route-pathname">
                     home {">"} <H3 title={location.pathname} />
                 </div>
+            </section>
 
+            <section id="contact--map">
                 <div className="map-iframe">
                     <iframe
                         width="100%"
