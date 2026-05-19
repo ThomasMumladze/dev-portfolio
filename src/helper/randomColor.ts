@@ -1,28 +1,18 @@
 // ==========  helper function to generate random color ==========  //
 export const randomColor = () => {
     const colors = [
-        "#FF5733",
-        "#33FF57",
-        "#3357FF",
-        "#F333FF",
-        "#33FFF5",
-        "#FF33A8",
-        "#A833FF",
-        "#33FF8A",
-        "#FF8A33",
-        "#8AFF33",
-        "#FF6B6B",
-        "#4ECDC4",
-        "#45B7D1",
-        "#96CEB4",
-        "#FFEAA7",
-        "#DDA0DD",
-        "#98D8C8",
-        "#F7DC6F",
-        "#BB8FCE",
-        "#85C1E9",
-        "#F0B27A",
-        "#82E0AA",
+        "#60A5FA", // blue
+        "#34D399", // emerald
+        "#F472B6", // pink
+        "#A78BFA", // violet
+        "#FBBF24", // amber
+        "#38BDF8", // sky
+        "#4ADE80", // green
+        "#FB7185", // rose
+        "#E879F9", // fuchsia
+        "#2DD4BF", // teal
+        "#F97316", // orange
+        "#818CF8", // indigo
     ];
 
     return colors[Math.floor(Math.random() * colors.length)];
