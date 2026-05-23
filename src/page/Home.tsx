@@ -90,7 +90,7 @@ const Home = () => {
 
             <section id="games">
                 <div className="section-header">
-                    <H3 title="back-end" />
+                    <H3 title="games" />
                     <Link to="/project">view all</Link>
                 </div>
 
