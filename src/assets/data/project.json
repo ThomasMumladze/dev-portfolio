@@ -69,5 +69,20 @@
             "azure": "",
             "live": ""
         }
+    },
+    {
+        "id": 6,
+        "applicationName": "user Management System",
+        "type": "back-end",
+        "language": "C sharp",
+        "technologies": ["C#", "MsSql", "Entity Framework"],
+        "methods": ["GET"],
+        "status": "in development",
+        "description": "A user management system built with C# and Entity Framework, providing features for user registration, authentication, and profile management.",
+        "urls": {
+            "gitHub": "https://github.com/ThomasMumladze/userManagementSystem",
+            "azure": "",
+            "live": ""
+        }
     }
 ]
