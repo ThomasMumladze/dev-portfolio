@@ -41,21 +41,6 @@
         "urls": { "gitHub": "https://github.com/ThomasMumladze/Vaultkey", "azure": "", "live": "" }
     },
     {
-        "id": 4,
-        "applicationName": "clean company",
-        "type": "front-end",
-        "language": "React.js",
-        "technologies": ["react", "typescript", "scss", "react-router"],
-        "methods": [],
-        "status": "completed",
-        "description": "Built a fully responsive React-based corporate website with modern UI design, animated sections, reusable architecture, and optimized performance for a seamless user experience.",
-        "urls": {
-            "gitHub": "",
-            "azure": "https://dev.azure.com/ThomasMumladze/cleanCompany-project/_git/cleanCompany_front",
-            "live": ""
-        }
-    },
-    {
         "id": 5,
         "applicationName": "flappy bird",
         "type": "game",
