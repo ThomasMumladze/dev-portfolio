@@ -7,6 +7,9 @@
 @use "./style/pages/home";
 @use "./style/pages/contact";
 
+// ========== Admin Pages ========== //
+@use "./style//pages/admin/adminProjects";
+
 // ========== Component ========== //
 @use "./style/components/navigation";
 @use "./style/components/card";

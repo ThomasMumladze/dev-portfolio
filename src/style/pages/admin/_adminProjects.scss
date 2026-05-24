@@ -1,0 +1,176 @@
+.admin-projects {
+    max-width: 1245px;
+    margin: 0 auto;
+
+    .project-list {
+        &--filter {
+            h3 {
+                font-size: 1.105rem;
+            }
+
+            .filter-options {
+                align-items: center;
+                border-bottom: 1px solid #00fff51a;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                padding: 24px 0px;
+
+                select {
+                    color: #64ffda;
+                    text-transform: capitalize;
+                    background-color: #80808014;
+                    border: 1px solid #00fff51a;
+                    border-radius: 8px;
+                    outline: none;
+                    padding: 10px 12px;
+                    user-select: none;
+                    width: 100%;
+
+                    option {
+                        background-color: #0a101d;
+                        border: 1px solid #00fff51a;
+                    }
+                }
+            }
+
+            .filter-search {
+                align-items: center;
+                border-bottom: 1px solid #00fff51a;
+                display: flex;
+                justify-content: space-between;
+                padding: 24px 0px;
+
+                .input {
+                    margin: 0px;
+                    width: 50%;
+                }
+            }
+        }
+
+        &--content {
+            .project-table {
+                overflow-y: hidden;
+                padding: 20px 0px;
+
+                &::-webkit-scrollbar-track {
+                    background: #00fff51a;
+                    border-radius: 10px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #00fff51a;
+                    border-radius: 10px;
+                    border: 1px solid #64ffda;
+                }
+
+                &::-webkit-scrollbar-thumb:hover {
+                    background: #64ffda;
+                }
+
+                &::-webkit-scrollbar {
+                    height: 6px;
+                }
+
+                table {
+                    border-collapse: collapse;
+                    border-spacing: 0;
+
+                    input {
+                        accent-color: #64ffda;
+                        cursor: pointer;
+                        height: 1.2em;
+                        width: 1.2em;
+
+                        &:not(:checked) {
+                            appearance: none;
+                            background-color: #00fff51a;
+                            border: 1px solid #64ffda;
+                            border-radius: 2px;
+                        }
+                    }
+
+                    thead {
+                        tr {
+                            th {
+                                border-bottom: 1px solid #00fff51a;
+                                padding: 16px 20px;
+                                text-align: left;
+                                text-wrap: nowrap;
+
+                                h3 {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                border-bottom: 1px solid #00fff51a;
+                                color: #fff;
+                                font-size: 14px;
+                                padding: 16px 20px;
+                                text-align: left;
+                                text-wrap: nowrap;
+
+                                > div {
+                                    align-items: center;
+                                    display: flex;
+                                    gap: 8px;
+
+                                    span {
+                                        border-radius: 8px;
+                                        font-size: 13.5px;
+                                        padding: 2px 12px;
+                                    }
+
+                                    .get,
+                                    .active {
+                                        background: #d1fae5;
+                                        color: #047857;
+                                    }
+
+                                    .post {
+                                        background: #dbeafe;
+                                        color: #1d4ed8;
+                                    }
+
+                                    .put,
+                                    .in-active {
+                                        background: #fef9c3;
+                                        color: #a16207;
+                                    }
+
+                                    .delete,
+                                    .deleted {
+                                        background: #fee2e2;
+                                        color: #b91c1c;
+                                    }
+                                }
+                            }
+                        }
+
+                        .selected-project {
+                            background-color: #80808014;
+                        }
+                    }
+                }
+            }
+
+            .project-pagination {
+                display: flex;
+                justify-content: flex-end;
+                gap: 12px;
+                margin-top: 24px;
+                width: 100%;
+
+                button {
+                    padding: 0.4rem 0.8rem;
+                    width: max-content;
+                }
+            }
+        }
+    }
+}
