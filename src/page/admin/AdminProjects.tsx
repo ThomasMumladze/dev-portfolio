@@ -125,9 +125,9 @@ const AdminProjects = () => {
                         </table>
                     </div>
                     <div className="project-pagination">
-                        <Button title="1" onCLick={() => {}} />
-                        <Button title="2" onCLick={() => {}} />
-                        <Button title="3" onCLick={() => {}} />
+                        {/* <Button title="1" onCLick={{}} /> */}
+                        {/* <Button title="2" onCLick={{}} /> */}
+                        {/* <Button title="3" onCLick={{}} /> */}
                     </div>
                 </div>
             </div>
