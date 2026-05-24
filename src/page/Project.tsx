@@ -17,6 +17,9 @@ const type = ["all", "back-end", "front-end", "full-stack", "console app", "game
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
+import { TestApi } from "../assets/api/test/TestApi";
+import { GetProjects } from "../assets/api/live/LiveApi";
+
 const Project = () => {
     const projectData = _project as unknown as ProjectType[];
 
@@ -27,7 +30,7 @@ const Project = () => {
 
     // ========== filter projects ========== //
     const filteredProject = projectData.filter((project) => {
-        const matchType = selectedType === "all" || project.type === selectedType;
+        const matchType = selectedType === "all" || project.applicationType === selectedType;
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
         const matchStatus = selectedStatus === "all status" || project.status.includes(selectedStatus);
         const matchSearch =
@@ -35,6 +38,8 @@ const Project = () => {
 
         return matchType && matchTech && matchSearch && matchStatus;
     });
+
+    GetProjects().then((res) => console.log(res));
 
     return (
         <article className="project-page">
@@ -83,7 +88,7 @@ const Project = () => {
                 <p>{filteredProject.length} project founded</p>
                 <div className="product__list">
                     {filteredProject.map((item: ProjectType) => (
-                        <Card key={item.id} data={item} />
+                        <Card key={item.projectId} data={item} />
                     ))}
                     {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
                 </div>
