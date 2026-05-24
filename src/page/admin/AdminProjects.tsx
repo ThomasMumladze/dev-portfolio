@@ -7,12 +7,6 @@ import Input from "../../components/Input";
 
 const AdminProjects = () => {
     const [selectedProject, setSelectedProject] = useState(false);
-    const [selectedAllProject, setSelectedAllProject] = useState(false);
-
-    const selectAllProject = () => {
-        setSelectedProject(!selectedProject);
-        setSelectedAllProject(!selectedAllProject);
-    };
 
     return (
         <article className="admin-projects">
@@ -99,7 +93,7 @@ const AdminProjects = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className={`${selectedProject || selectedAllProject ? "selected-project" : ""}`}>
+                                <tr className={`${selectedProject ? "selected-project" : ""}`}>
                                     <td>
                                         <input
                                             type="checkbox"

@@ -7,7 +7,6 @@ import { Outlet, useLocation } from "react-router";
 import Header from "./layout/Header";
 import { useEffect } from "react";
 import Footer from "./layout/Footer";
-import AdminProjects from "./page/admin/AdminProjects";
 
 function App() {
     const location = useLocation();
