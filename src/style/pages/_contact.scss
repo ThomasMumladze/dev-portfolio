@@ -45,9 +45,16 @@
                 }
             }
 
-            button {
-                align-self: flex-end;
-                margin-top: 16px;
+            .form-send-btn {
+                align-items: center;
+                display: flex;
+                justify-content: flex-end;
+                gap: 22px;
+                margin-top: 22px;
+
+                p {
+                    color: #d22;
+                }
             }
         }
     }

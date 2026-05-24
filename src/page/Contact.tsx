@@ -19,6 +19,8 @@ const Contact = () => {
         messageError: "",
     });
 
+    const [success, setSuccess] = useState(false);
+
     const handleSendMessage = async () => {
         const errors = {
             nameError: !name.trim() ? "Name is required." : "",
@@ -27,10 +29,21 @@ const Contact = () => {
         };
 
         setErrorMessage(errors);
-
         if (errors.nameError || errors.emailError || errors.messageError) return;
 
-        await SendEmail(name, email, message);
+        try {
+            await SendEmail(name, email, message);
+            setName("");
+            setEmail("");
+            setMessage("");
+            setSuccess(true);
+
+            setTimeout(() => {
+                setSuccess(false);
+            }, 1500);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
@@ -89,8 +102,10 @@ const Contact = () => {
                             required
                         ></textarea>
                     </div>
-
-                    <Button title="send message" clickFunction={handleSendMessage} />
+                    <div className="form-send-btn">
+                        <p>{success ? "Email Sent SuccessFully" : ""}</p>
+                        <Button title="send message" clickFunction={handleSendMessage} />
+                    </div>
                 </div>
             </section>
         </article>
