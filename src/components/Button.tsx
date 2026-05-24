@@ -1,13 +1,13 @@
 // ========== props interface ========== //
 interface Props {
     title: string;
-    onCLick?: () => void;
+    clickFunction?: () => void;
 }
 
 const Button = (props: Props) => {
-    const { onCLick, title } = props;
+    const { clickFunction, title } = props;
     return (
-        <button onClick={() => onCLick} className="btn-primary">
+        <button onClick={clickFunction} className="btn-primary">
             {title}
         </button>
     );

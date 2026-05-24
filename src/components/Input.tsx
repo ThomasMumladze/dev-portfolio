@@ -7,16 +7,26 @@ interface Props {
     placeholder: string;
     label: string;
     onChange: (e: any) => void;
+    value?: string;
+    isRequired?: boolean;
+    ErrorMessage?: string;
 }
 
 const Input = (props: Props) => {
-    const { label, placeholder, type, onChange } = props;
+    const { label, placeholder, type, onChange, value, isRequired, ErrorMessage } = props;
     return (
         <div className="input">
             <div>
                 <H3 title={label} />
+                <p className="error-message">{ErrorMessage}</p>
             </div>
-            <input onChange={(e: any) => onChange(e.target.value)} type={type} placeholder={placeholder} />
+            <input
+                required={isRequired}
+                value={value}
+                onChange={(e: any) => onChange(e)}
+                type={type}
+                placeholder={placeholder}
+            />
         </div>
     );
 };

@@ -1,8 +1,38 @@
+// ========== React Hook ========== //
+import { useState } from "react";
+
+// ========== Component ========== //
 import Button from "../components/Button";
 import H3 from "../components/H3";
 import Input from "../components/Input";
 
+// ========== Api ========== //
+import { SendEmail } from "../assets/api/live/LiveApi";
+
 const Contact = () => {
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState({
+        nameError: "",
+        emailError: "",
+        messageError: "",
+    });
+
+    const handleSendMessage = async () => {
+        const errors = {
+            nameError: !name.trim() ? "Name is required." : "",
+            emailError: !email.trim() ? "Email is required." : "",
+            messageError: !message.trim() ? "Message is required." : "",
+        };
+
+        setErrorMessage(errors);
+
+        if (errors.nameError || errors.emailError || errors.messageError) return;
+
+        await SendEmail(name, email, message);
+    };
+
     return (
         <article className="contact-page">
             <section id="route-pathname">
@@ -24,17 +54,44 @@ const Contact = () => {
             </section>
 
             <section id="Email">
-                <form>
-                    <Input type="text" placeholder="Your Name" label="Name" onChange={() => {}} />
-                    <Input type="email" placeholder="Your Email" label="Email" onChange={() => {}} />
+                <div className="form">
+                    <Input
+                        ErrorMessage={errorMessage.nameError}
+                        isRequired={true}
+                        type="text"
+                        placeholder="Your Name"
+                        label="Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+
+                    <Input
+                        ErrorMessage={errorMessage.emailError}
+                        isRequired={true}
+                        type="email"
+                        placeholder="Your Email"
+                        label="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
                     <div className="form-group">
-                        <H3 title="Message" />
-                        <textarea id="message" name="message" rows={10} required></textarea>
+                        <div>
+                            <H3 title="Message" />
+                            <p className="error-message">{errorMessage.messageError}</p>
+                        </div>
+                        <textarea
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            id="message"
+                            name="message"
+                            rows={10}
+                            required
+                        ></textarea>
                     </div>
 
-                    <Button title="send message" onCLick={() => {}} />
-                </form>
+                    <Button title="send message" clickFunction={handleSendMessage} />
+                </div>
             </section>
         </article>
     );

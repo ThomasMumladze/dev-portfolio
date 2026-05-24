@@ -6,10 +6,15 @@
     margin-bottom: 1.5rem;
 
     > div {
-        color: #64ffda;
+        align-content: start;
+        display: flex;
         font-size: 11px;
+        justify-content: space-between;
         letter-spacing: 0.8px;
         text-transform: uppercase;
+        .error-message {
+            color: #d22;
+        }
     }
 
     input {
