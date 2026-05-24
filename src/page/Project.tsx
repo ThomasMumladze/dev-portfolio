@@ -10,18 +10,17 @@ import Input from "../components/Input";
 import H3 from "../components/H3";
 
 // ========== react ========== //
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
-import { TestApi } from "../assets/api/test/TestApi";
 import { GetProjects } from "../assets/api/live/LiveApi";
 
 const Project = () => {
-    const projectData = _project as unknown as ProjectType[];
+    const [projectData, setProjectData] = useState<ProjectType[]>([]);
 
     const [selectedType, setSelectedType] = useState("all");
     const [selectedTech, setSelectedTech] = useState("all");
@@ -39,7 +38,9 @@ const Project = () => {
         return matchType && matchTech && matchSearch && matchStatus;
     });
 
-    GetProjects().then((res) => console.log(res));
+    useEffect(() => {
+        GetProjects().then((res) => setProjectData(res));
+    }, []);
 
     return (
         <article className="project-page">

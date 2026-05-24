@@ -24,7 +24,6 @@ import { randomColor } from "../helper/randomColor";
 import { GetProjects } from "../assets/api/live/LiveApi";
 
 const Home = () => {
-    // const projectData = TestApi().then((res) => res) as unknown as ProjectType[];
     const [projectData, setProjectData] = useState<ProjectType[]>([]);
 
     const [nextSlide, setNextSlide] = useState(0);
