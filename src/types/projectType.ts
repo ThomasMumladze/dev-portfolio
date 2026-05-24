@@ -1,10 +1,10 @@
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
 export interface ProjectType {
-    id: number;
+    projectId: number;
     applicationName: string;
-    type: string;
-    language: string;
+    applicationType: string;
+    programmingLanguage: string;
     technologies: string[];
     methods: HttpMethod[];
     status: string;
@@ -14,4 +14,6 @@ export interface ProjectType {
         azure?: string;
         live?: string;
     };
+    isPublic: boolean;
+    isActive: boolean;
 }

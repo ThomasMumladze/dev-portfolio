@@ -20,8 +20,13 @@ const icons = { ...front_end_icon, ...back_end_icon, ...tool_icon };
 // ==========  helper ========== //
 import { randomColor } from "../helper/randomColor";
 
+// ==========  Api ========== //
+import { GetProjects } from "../assets/api/live/LiveApi";
+
 const Home = () => {
-    const projectData = _projectData as unknown as ProjectType[];
+    // const projectData = TestApi().then((res) => res) as unknown as ProjectType[];
+    const [projectData, setProjectData] = useState<ProjectType[]>([]);
+
     const [nextSlide, setNextSlide] = useState(0);
     const ITEMS_PER_PAGE = 11;
     const totalPages = Math.ceil(Object.keys(icons).length / ITEMS_PER_PAGE);
@@ -31,6 +36,10 @@ const Home = () => {
     };
 
     useEffect(() => {
+        GetProjects().then((res) => {
+            setProjectData(res);
+        });
+
         const interval = setInterval(handleNextSlide, 3000);
         return () => clearInterval(interval);
     }, []);
@@ -63,10 +72,10 @@ const Home = () => {
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
                     {projectData
-                        .filter((x: ProjectType) => x.type === "front-end")
+                        .filter((x: ProjectType) => x.applicationType === "front-end")
                         .slice(0, 4)
                         .map((item: ProjectType) => (
-                            <Card key={item.id} data={item} />
+                            <Card key={item.projectId} data={item} />
                         ))}
                 </div>
             </section>
@@ -80,10 +89,10 @@ const Home = () => {
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
                     {projectData
-                        .filter((x: ProjectType) => x.type === "back-end")
+                        .filter((x: ProjectType) => x.applicationType === "back-end")
                         .slice(0, 4)
                         .map((item: ProjectType) => (
-                            <Card key={item.id} data={item} />
+                            <Card key={item.projectId} data={item} />
                         ))}
                 </div>
             </section>
@@ -97,10 +106,10 @@ const Home = () => {
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
                     {projectData
-                        .filter((x: ProjectType) => x.type === "game")
+                        .filter((x: ProjectType) => x.applicationType === "game")
                         .slice(0, 4)
                         .map((item: ProjectType) => (
-                            <Card key={item.id} data={item} />
+                            <Card key={item.projectId} data={item} />
                         ))}
                 </div>
             </section>

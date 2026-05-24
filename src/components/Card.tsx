@@ -42,8 +42,8 @@ const Card = (props: Props) => {
                 <p className={`${data.status}`}>{data.status}</p>
             </div>
             <div className="project-type">
-                <p>{data.type}</p>
-                <p>{data.language}</p>
+                <p>{data.applicationName}</p>
+                <p>{data.programmingLanguage}</p>
             </div>
 
             {data.methods.length > 1 ? (
