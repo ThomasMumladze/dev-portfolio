@@ -71,7 +71,11 @@ const Home = () => {
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
                     {projectData
-                        .filter((x: ProjectType) => x.applicationType === "front-end")
+                        .filter(
+                            (x: ProjectType) =>
+                                x.applicationType === "front-end" &&
+                                (x.status === "in development" || x.status === "completed"),
+                        )
                         .slice(0, 4)
                         .map((item: ProjectType) => (
                             <Card key={item.projectId} data={item} />
@@ -88,7 +92,11 @@ const Home = () => {
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
                     {projectData
-                        .filter((x: ProjectType) => x.applicationType === "back-end")
+                        .filter(
+                            (x: ProjectType) =>
+                                x.applicationType === "back-end" &&
+                                (x.status === "in development" || x.status === "completed"),
+                        )
                         .slice(0, 4)
                         .map((item: ProjectType) => (
                             <Card key={item.projectId} data={item} />
