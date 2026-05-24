@@ -1,6 +1,9 @@
 footer {
-    background-color: #0a101d;
     border-top: solid 1px #202534;
+    bottom: 0px;
+    background-color: #0a101d;
+    position: fixed;
+    width: 100%;
 
     .footer-body {
         align-items: center;
