@@ -34,6 +34,7 @@ const Card = (props: Props) => {
             to: data.urls.live,
         },
     ].filter(Boolean);
+    console.log(data);
 
     return (
         <div className="card-wrapper">
@@ -46,7 +47,7 @@ const Card = (props: Props) => {
                 <p>{data.programmingLanguage}</p>
             </div>
 
-            {data.methods.length > 1 ? (
+            {data.methods.length > 0 ? (
                 <div className="methods">
                     {data.methods.map((item, _) => (
                         <p className={`${item.toLocaleLowerCase()}`} key={_}>
