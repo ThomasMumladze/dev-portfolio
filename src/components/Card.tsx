@@ -42,7 +42,7 @@ const Card = (props: Props) => {
                 <p className={`${data.status}`}>{data.status}</p>
             </div>
             <div className="project-type">
-                <p>{data.applicationName}</p>
+                <p>{data.applicationType}</p>
                 <p>{data.programmingLanguage}</p>
             </div>
 

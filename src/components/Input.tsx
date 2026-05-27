@@ -6,14 +6,14 @@ interface Props {
     type: string;
     placeholder: string;
     label: string;
-    onChange: (e: any) => void;
+    onChangeFunc: (e: any) => void;
     value?: string;
     isRequired?: boolean;
     ErrorMessage?: string;
 }
 
 const Input = (props: Props) => {
-    const { label, placeholder, type, onChange, value, isRequired, ErrorMessage } = props;
+    const { label, placeholder, type, onChangeFunc, value, isRequired, ErrorMessage } = props;
     return (
         <div className="input">
             <div>
@@ -23,7 +23,7 @@ const Input = (props: Props) => {
             <input
                 required={isRequired}
                 value={value}
-                onChange={(e: any) => onChange(e)}
+                onChange={(e: any) => onChangeFunc(e.target.value)}
                 type={type}
                 placeholder={placeholder}
             />

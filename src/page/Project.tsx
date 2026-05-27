@@ -32,8 +32,9 @@ const Project = () => {
         const matchType = selectedType === "all" || project.applicationType === selectedType;
         const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
         const matchStatus = selectedStatus === "all status" || project.status.includes(selectedStatus);
+
         const matchSearch =
-            searchedProject === "" || project.applicationName.toLowerCase().includes(searchedProject.toLocaleLowerCase());
+            searchedProject === "" || project.applicationName.toLowerCase().includes(searchedProject?.toLocaleLowerCase());
 
         return matchType && matchTech && matchSearch && matchStatus;
     });
@@ -52,7 +53,13 @@ const Project = () => {
             <section>
                 <div className="page__filter">
                     <div className="page__filter--search">
-                        <Input label="" placeholder="search project" type="text" onChange={setSearchedProject} />
+                        <Input
+                            label=""
+                            placeholder="search project"
+                            type="text"
+                            // value={searchedProject}
+                            onChangeFunc={setSearchedProject}
+                        />
                         <select name="status-options" onChange={(e) => setSelectedStatus(e.target.value)}>
                             {status && status.map((item, _) => <option key={_}>{item}</option>)}
                         </select>
