@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ==========  react router ========== //
 import { Link } from "react-router";
@@ -21,33 +21,46 @@ const icons = { ...front_end_icon, ...back_end_icon, ...tool_icon };
 import { randomColor } from "../helper/randomColor";
 
 // ==========  Api ========== //
-import { GetProjects } from "../assets/api/live/LiveApi";
+import { GetProjects } from "../assets/api/LiveApi";
+import GitHubRepo from "../components/GitHubRepo";
 
 const Home = () => {
     const [projectData, setProjectData] = useState<ProjectType[]>([]);
 
-    const [nextSlide, setNextSlide] = useState(0);
+    const slideRef = useRef(0);
+    const sliderRef = useRef<HTMLDivElement | null>(null);
+
     const ITEMS_PER_PAGE = 11;
     const totalPages = Math.ceil(Object.keys(icons).length / ITEMS_PER_PAGE);
-
-    const handleNextSlide = () => {
-        setNextSlide((prev) => (prev + 1) % totalPages);
-    };
 
     useEffect(() => {
         GetProjects().then((res) => {
             setProjectData(res);
         });
 
-        const interval = setInterval(handleNextSlide, 3000);
+        const interval = setInterval(() => {
+            slideRef.current = (slideRef.current + 1) % totalPages;
+
+            if (sliderRef.current) {
+                sliderRef.current.style.transform = `translateX(-${slideRef.current * 100}%)`;
+            }
+        }, 3000);
+
         return () => clearInterval(interval);
-    }, []);
+    }, [slideRef.current, totalPages]);
 
     return (
         <article className="home-page">
+            <section>
+                <GitHubRepo />
+            </section>
             <section id="skill-slider">
                 <div className="icon-slider-wrapper">
-                    <div className="icon-slider" style={{ transform: `translateX(-${nextSlide * 100}%)` }}>
+                    <div
+                        className="icon-slider"
+                        ref={sliderRef}
+                        style={{ transform: `translateX(-${slideRef.current * 100}%)` }}
+                    >
                         {Array.from({ length: totalPages }).map((_, pageIndex) => (
                             <div key={pageIndex} className="icon-page">
                                 {Object.entries(icons)
