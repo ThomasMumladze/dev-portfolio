@@ -7,7 +7,7 @@ import H3 from "../components/H3";
 import Input from "../components/Input";
 
 // ========== Api ========== //
-import { SendEmail, GetContact } from "../assets/api/live/LiveApi";
+import { SendEmail, GetContact } from "../assets/api/LiveApi";
 
 // ========== React Router ========== //
 import { Link } from "react-router";
@@ -16,6 +16,8 @@ import { Link } from "react-router";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { SiMaildotru } from "react-icons/si";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 // ========== Interface ========== //
 import type { ContactInfo } from "../types/contactType";
@@ -72,9 +74,11 @@ const Contact = () => {
             <section id="contact--info">
                 <div className="contact--info--wrapper">
                     <div>
+                        <SiMaildotru />
                         <p>{contactData?.email}</p>
                     </div>
                     <div>
+                        <FaMapMarkerAlt />
                         <p>{contactData?.location}</p>
                     </div>
 
