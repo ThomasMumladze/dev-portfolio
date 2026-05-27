@@ -1,7 +1,7 @@
 import axios from "axios";
 
+//project api
 const defaultApiUrl = "https://portfolioback-production-ba2c.up.railway.app/api";
-
 export const GetProjects = async () => {
     try {
         const response = await axios.get(`${defaultApiUrl}/Project`);
@@ -12,8 +12,8 @@ export const GetProjects = async () => {
     }
 };
 
+//send email api
 const defaultEmailApiUrl = "https://portfolioback-production-ba2c.up.railway.app/api/Contact";
-
 export const SendEmail = async (name: string, email: string, message: string) => {
     try {
         const response = await axios.post(`${defaultEmailApiUrl}`, {
@@ -21,6 +21,17 @@ export const SendEmail = async (name: string, email: string, message: string) =>
             email: email,
             message: message,
         });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching projects:", error);
+        throw error;
+    }
+};
+
+// contact api
+export const GetContact = async () => {
+    try {
+        const response = await axios.get("https://portfolioback-production-ba2c.up.railway.app/api/Contact/1");
         return response.data;
     } catch (error) {
         console.error("Error fetching projects:", error);

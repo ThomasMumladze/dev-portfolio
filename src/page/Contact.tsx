@@ -1,5 +1,5 @@
 // ========== React Hook ========== //
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ========== Component ========== //
 import Button from "../components/Button";
@@ -7,9 +7,21 @@ import H3 from "../components/H3";
 import Input from "../components/Input";
 
 // ========== Api ========== //
-import { SendEmail } from "../assets/api/live/LiveApi";
+import { SendEmail, GetContact } from "../assets/api/live/LiveApi";
+
+// ========== React Router ========== //
+import { Link } from "react-router";
+
+// ========== React Icon ========== //
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
+// ========== Interface ========== //
+import type { ContactInfo } from "../types/contactType";
 
 const Contact = () => {
+    const [contactData, setContactData] = useState<ContactInfo>();
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
@@ -46,6 +58,9 @@ const Contact = () => {
         }
     };
 
+    useEffect(() => {
+        GetContact().then((res) => setContactData(res));
+    }, []);
     return (
         <article className="contact-page">
             <section id="route-pathname">
@@ -54,15 +69,31 @@ const Contact = () => {
                 </div>
             </section>
 
-            <section id="contact--map">
-                <div className="map-iframe">
-                    <iframe
-                        width="100%"
-                        height="600"
-                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=tbilisi&amp;maptype=roadmap&amp;zoom=14"
-                    >
-                        <a href="https://www.maps.ie/create-google-map/">Embed Google Streetview</a>
-                    </iframe>
+            <section id="contact--info">
+                <div className="contact--info--wrapper">
+                    <div>
+                        <p>{contactData?.email}</p>
+                    </div>
+                    <div>
+                        <p>{contactData?.location}</p>
+                    </div>
+
+                    {contactData?.socialUrl?.gitHub ? (
+                        <Link to={contactData.socialUrl.gitHub} target="_blank">
+                            <FaGithub /> github
+                        </Link>
+                    ) : null}
+
+                    {contactData?.socialUrl?.linkedIn ? (
+                        <Link to={contactData.socialUrl.linkedIn} target="_blank">
+                            <FaLinkedin /> LinkedIn
+                        </Link>
+                    ) : null}
+                    {contactData?.socialUrl?.instagram ? (
+                        <Link to={contactData.socialUrl.instagram} target="_blank">
+                            <FaInstagram /> Instagram
+                        </Link>
+                    ) : null}
                 </div>
             </section>
 
@@ -75,7 +106,7 @@ const Contact = () => {
                         placeholder="Your Name"
                         label="Name"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChangeFunc={setName}
                     />
 
                     <Input
@@ -85,7 +116,7 @@ const Contact = () => {
                         placeholder="Your Email"
                         label="Email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChangeFunc={setEmail}
                     />
 
                     <div className="form-group">
