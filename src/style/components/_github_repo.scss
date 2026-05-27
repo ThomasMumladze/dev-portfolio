@@ -1,0 +1,123 @@
+.github-repo {
+    &--header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        margin-bottom: 22px;
+
+        a {
+            color: #fff;
+        }
+    }
+    &--card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+
+        p {
+            font-size: 13px;
+            color: #ccc;
+            width: 180px;
+        }
+        hr {
+            margin: 1rem 0;
+            color: inherit;
+            border: 0;
+            border-top: 1px solid #85858a;
+            opacity: 0.25;
+            width: 100%;
+        }
+
+        .wrapper {
+            border: solid 1px #202534;
+            border-radius: 12px;
+            padding: 18px;
+            width: 100%;
+            height: max-content;
+
+            &-header {
+                align-items: flex-start;
+                gap: 16px;
+                display: flex;
+                margin-bottom: 16px;
+
+                .repo-icon {
+                    span {
+                        align-items: center;
+                        background-color: #202534;
+                        border-radius: 8px;
+                        display: flex;
+                        justify-content: center;
+                        padding: 10px;
+
+                        svg {
+                            color: rgb(0, 195, 255);
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+
+                blockquote {
+                    span {
+                        color: #979797;
+                        font-size: 11px;
+                    }
+                }
+            }
+
+            .language-usage {
+                > div {
+                    align-items: center;
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 6px;
+                    gap: 20px;
+
+                    .w-indicator {
+                        background-color: #202534;
+                        position: relative;
+                        width: 100%;
+
+                        > div {
+                            background-color: #64ffda;
+                            padding: 4px;
+                        }
+                    }
+                }
+            }
+
+            .default-branch {
+                align-items: center;
+                display: flex;
+                gap: 16px;
+                justify-content: space-between;
+                margin-bottom: 6px;
+
+                p {
+                    width: max-content;
+                }
+
+                span {
+                    align-items: center;
+                    display: flex;
+                    gap: 16px;
+                }
+            }
+
+            .urls {
+                align-items: center;
+                display: flex;
+                font-size: 14px;
+                justify-content: space-between;
+                gap: 16px;
+
+                a {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
