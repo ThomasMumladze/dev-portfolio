@@ -10,6 +10,20 @@
             color: #fff;
         }
     }
+
+    .error-message {
+        align-items: center;
+        display: flex;
+        color: #fff;
+        font-size: 19px;
+        text-transform: uppercase;
+        gap: 10px;
+
+        svg {
+            font-size: 1.7rem;
+        }
+    }
+
     &--card {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
