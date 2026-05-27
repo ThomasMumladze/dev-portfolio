@@ -17,7 +17,7 @@ const type = ["all", "back-end", "front-end", "full-stack", "console app", "game
 const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
-import { GetProjects } from "../assets/api/live/LiveApi";
+import { GetProjects } from "../assets/api/LiveApi";
 
 const Project = () => {
     const [projectData, setProjectData] = useState<ProjectType[]>([]);
