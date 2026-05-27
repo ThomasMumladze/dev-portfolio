@@ -48,7 +48,7 @@ const AdminProjects = () => {
                         </select>
                     </div>
                     <div className="filter-search">
-                        <Input label="" onChange={() => {}} placeholder="search project" type="text" />
+                        <Input label="" onChangeFunc={() => {}} placeholder="search project" type="text" />
                         <Button title="+ add project" />
                     </div>
                 </div>
