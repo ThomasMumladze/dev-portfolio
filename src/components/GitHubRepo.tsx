@@ -68,6 +68,15 @@ const GitHubRepo = () => {
 
     const sortedRepos = [...repos].sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
 
+    const handleCopy = async (text: string) => {
+        try {
+            await navigator.clipboard.writeText(text as string);
+            alert("clone Url Copied");
+        } catch (err) {
+            console.warn("Failed to copy text", err);
+        }
+    };
+
     return (
         <article className="github-repo">
             <div className="github-repo--header">
@@ -139,12 +148,13 @@ const GitHubRepo = () => {
                             </div>
 
                             <div className="urls">
-                                <Link to={repo.clone_url}>
+                                <a onClick={() => handleCopy(repo.clone_url)}>
                                     clone | <FaRegClone />
-                                </Link>
+                                </a>
 
                                 <Link to={repo.html_url} target="_blank">
-                                    Url |
+                                    Url
+                                    <span>|</span>
                                     <svg
                                         data-component="Octicon"
                                         aria-hidden="true"
