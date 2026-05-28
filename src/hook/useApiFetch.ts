@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import type { ProjectType } from "../types/projectType";
 
 export const useApiFetcher = (GetData: any) => {
-    const [loading, setLoading] = useState<boolean>(false);
-    const [loadingStart, setLoadingStart] = useState(0);
+    const [loading, setLoading] = useState<boolean | null>(null);
+    const [loadingStart, setLoadingStart] = useState<number | null>(null);
     const [projectData, setProjectData] = useState<ProjectType[]>([]);
 
     useEffect(() => {
@@ -27,6 +27,10 @@ export const useApiFetcher = (GetData: any) => {
         };
 
         fetchData();
+        return () => {
+            setLoading(null);
+            setLoading(null);
+        };
     }, []);
 
     return { loading, loadingStart, projectData };

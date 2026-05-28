@@ -1,5 +1,5 @@
 interface Props {
-    loadingStart: number;
+    loadingStart: number | null;
 }
 const Loading = (props: Props) => {
     const { loadingStart } = props;

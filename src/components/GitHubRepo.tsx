@@ -17,7 +17,7 @@ import { FaRegClone } from "react-icons/fa";
 import { TbFaceIdError } from "react-icons/tb";
 
 interface Props {
-    loadingStart: number;
+    loadingStart: number | null;
 }
 
 const GitHubRepo = (props: Props) => {

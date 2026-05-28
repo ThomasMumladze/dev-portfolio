@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 // ==========  react router ========== //
 import { Link } from "react-router";
@@ -6,6 +6,7 @@ import { Link } from "react-router";
 // ==========  component ========== //
 import Card from "../components/Card";
 import H3 from "../components/H3";
+import Loading from "../components/Loading";
 
 // ==========  project data json ========== //
 import _projectData from "../assets/data/project.json";
@@ -24,8 +25,11 @@ import { randomColor } from "../helper/randomColor";
 import { GetProjects } from "../assets/api/LiveApi";
 import GitHubRepo from "../components/GitHubRepo";
 
+// ==========  Custom Hooks ========== //
+import { useApiFetcher } from "../hook/useApiFetch";
+
 const Home = () => {
-    const [projectData, setProjectData] = useState<ProjectType[]>([]);
+    const { loading, loadingStart, projectData } = useApiFetcher(GetProjects);
 
     // avoid re-render to stop calling api
     const slideRef = useRef(0);
@@ -35,10 +39,6 @@ const Home = () => {
     const totalPages = Math.ceil(Object.keys(icons).length / ITEMS_PER_PAGE);
 
     useEffect(() => {
-        GetProjects().then((res) => {
-            setProjectData(res);
-        });
-
         const interval = setInterval(() => {
             slideRef.current = (slideRef.current + 1) % totalPages;
 
@@ -46,14 +46,13 @@ const Home = () => {
                 sliderRef.current.style.transform = `translateX(-${slideRef.current * 100}%)`;
             }
         }, 3000);
-
         return () => clearInterval(interval);
     }, [slideRef.current, totalPages]);
 
     return (
         <article className="home-page">
             <section>
-                <GitHubRepo />
+                <GitHubRepo loadingStart={loadingStart} />
             </section>
             <section id="skill-slider">
                 <div className="icon-slider-wrapper">
@@ -84,16 +83,22 @@ const Home = () => {
 
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
-                    {projectData
-                        .filter(
-                            (x: ProjectType) =>
-                                x.applicationType === "front-end" &&
-                                (x.status === "in development" || x.status === "completed"),
-                        )
-                        .slice(0, 4)
-                        .map((item: ProjectType) => (
-                            <Card key={item.projectId} data={item} />
-                        ))}
+                    {loading ? (
+                        <Loading loadingStart={loadingStart} />
+                    ) : (
+                        <>
+                            {projectData
+                                .filter(
+                                    (x: ProjectType) =>
+                                        x.applicationType === "front-end" &&
+                                        (x.status === "in development" || x.status === "completed"),
+                                )
+                                .slice(0, 4)
+                                .map((item: ProjectType) => (
+                                    <Card key={item.projectId} data={item} />
+                                ))}
+                        </>
+                    )}
                 </div>
             </section>
 
@@ -105,16 +110,22 @@ const Home = () => {
 
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
-                    {projectData
-                        .filter(
-                            (x: ProjectType) =>
-                                x.applicationType === "back-end" &&
-                                (x.status === "in development" || x.status === "completed"),
-                        )
-                        .slice(0, 4)
-                        .map((item: ProjectType) => (
-                            <Card key={item.projectId} data={item} />
-                        ))}
+                    {loading ? (
+                        <Loading loadingStart={loadingStart} />
+                    ) : (
+                        <>
+                            {projectData
+                                .filter(
+                                    (x: ProjectType) =>
+                                        x.applicationType === "back-end" &&
+                                        (x.status === "in development" || x.status === "completed"),
+                                )
+                                .slice(0, 4)
+                                .map((item: ProjectType) => (
+                                    <Card key={item.projectId} data={item} />
+                                ))}
+                        </>
+                    )}
                 </div>
             </section>
 
@@ -126,12 +137,18 @@ const Home = () => {
 
                 {/* ========== mapping list of project ==========  // */}
                 <div className="project-list">
-                    {projectData
-                        .filter((x: ProjectType) => x.applicationType === "game")
-                        .slice(0, 4)
-                        .map((item: ProjectType) => (
-                            <Card key={item.projectId} data={item} />
-                        ))}
+                    {loading ? (
+                        <Loading loadingStart={loadingStart} />
+                    ) : (
+                        <>
+                            {projectData
+                                .filter((x: ProjectType) => x.applicationType === "game")
+                                .slice(0, 4)
+                                .map((item: ProjectType) => (
+                                    <Card key={item.projectId} data={item} />
+                                ))}
+                        </>
+                    )}
                 </div>
             </section>
         </article>

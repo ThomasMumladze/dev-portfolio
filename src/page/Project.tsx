@@ -8,6 +8,7 @@ import type { ProjectType } from "../types/projectType";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import H3 from "../components/H3";
+import Loading from "../components/Loading";
 
 // ========== react ========== //
 import { useState } from "react";
@@ -18,7 +19,8 @@ const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
 import { GetProjects } from "../assets/api/LiveApi";
-import Loading from "../components/Loading";
+
+// ==========  Custom Hook ========== //
 import { useApiFetcher } from "../hook/useApiFetch";
 
 const Project = () => {
