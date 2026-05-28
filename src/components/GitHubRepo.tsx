@@ -14,14 +14,19 @@ import { FaLaptopCode } from "react-icons/fa";
 import { Link } from "react-router";
 import { FaRegClone } from "react-icons/fa";
 import { TbFaceIdError } from "react-icons/tb";
+import Loading from "./Loading";
 
 const GitHubRepo = () => {
     const [repos, setRepos] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<number | null>(null);
 
     useEffect(() => {
         let isMounted = true;
 
         const fetchData = async () => {
+            setLoading(true);
+
             try {
                 const repoRes: any = await gitHubRepository; // ან gitHubRepository()
 
@@ -46,8 +51,11 @@ const GitHubRepo = () => {
                 );
 
                 if (isMounted) setRepos(enrichedRepos);
-            } catch (err) {
+            } catch (err: any) {
+                if (isMounted) setError(err?.response?.status ?? 0);
                 console.error(err);
+            } finally {
+                if (isMounted) setLoading(false);
             }
         };
 
@@ -68,7 +76,15 @@ const GitHubRepo = () => {
                     view all
                 </Link>
             </div>
-            {repos.length < 1 ? (
+
+            {error === 401 || error === 403 ? (
+                <p className="error-message">
+                    <TbFaceIdError />
+                    unauthorized
+                </p>
+            ) : loading ? (
+                <Loading />
+            ) : repos.length < 1 ? (
                 <p className="error-message">
                     <TbFaceIdError />
                     something wrong
