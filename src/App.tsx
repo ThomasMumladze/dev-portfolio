@@ -27,7 +27,7 @@ function App() {
             <main>
                 <Outlet />
                 {/* <AdminProjects /> */}
-                <CustomConsole showConsole={showConsole} />
+                <CustomConsole showConsole={showConsole} setShowConsole={setShowConsole} />
             </main>
 
             <Footer />

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useConsole } from "../hook/useConsole";
 
 type LogLevel = "log" | "warn" | "error" | "info" | "debug";
 
@@ -8,53 +9,9 @@ interface LogEntry {
     data: any[];
 }
 
-const CustomConsole = ({ showConsole }: { showConsole: boolean }) => {
-    const [logs, setLogs] = useState<LogEntry[]>([]);
+const CustomConsole = ({ showConsole, setShowConsole }: { showConsole: boolean; setShowConsole: any }) => {
+    const { logs, clear, refresh } = useConsole();
     const consoleBodyRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const levels: LogLevel[] = ["log", "warn", "error", "info", "debug"];
-        if ((window.console as any).__hooked) return;
-        (window.console as any).__hooked = true;
-
-        const originalMethods = Object.fromEntries(
-            levels.map((level) => [level, window.console[level].bind(window.console)]),
-        );
-        levels.forEach((level) => {
-            window.console[level] = (...args: any[]) => {
-                originalMethods[level](...args);
-                setTimeout(() => {
-                    const cleanArgs = args
-                        // strip ANSI escape codes
-                        .map((arg) =>
-                            typeof arg === "string"
-                                ? arg
-                                      .replace(/(\x9B|\x1B\[|\u009b)[0-9;]*m/g, "")
-                                      .replace(/%s/g, "")
-                                      .trim()
-                                : arg,
-                        )
-                        // remove empty strings left after stripping
-                        .filter((arg) => {
-                            if (typeof arg === "string") return arg.length > 0;
-                            if (arg === undefined) return false; // drop undefined args
-                            return true;
-                        });
-
-                    if (cleanArgs.length === 0) return;
-
-                    setLogs((prev) => [...prev, { method: level, data: cleanArgs, id: `${Date.now()}-${Math.random()}` }]);
-                }, 0);
-            };
-        });
-
-        return () => {
-            levels.forEach((level) => {
-                window.console[level] = (originalMethods as any)[level];
-            });
-            delete (window.console as any).__hooked;
-        };
-    }, []);
 
     useEffect(() => {
         if (consoleBodyRef.current) {
@@ -68,19 +25,17 @@ const CustomConsole = ({ showConsole }: { showConsole: boolean }) => {
         <div className="custom-console">
             <div className="console-header">
                 <span>DevTools Console</span>
-                <button
-                    onClick={() => setLogs([])}
-                    style={{
-                        marginLeft: "auto",
-                        cursor: "pointer",
-                        background: "none",
-                        border: "none",
-                        color: "#888",
-                        fontSize: "11px",
-                    }}
-                >
-                    clear
-                </button>
+                <div className="btn">
+                    <button onClick={clear}>clear</button>
+
+                    <button
+                        onClick={() => {
+                            (setShowConsole(false), clear());
+                        }}
+                    >
+                        close
+                    </button>
+                </div>
             </div>
             <div ref={consoleBodyRef} style={{ overflowY: "auto", height: "100%", padding: "4px" }}>
                 {logs.map((log) => (
