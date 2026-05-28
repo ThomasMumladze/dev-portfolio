@@ -35,7 +35,6 @@ const Contact = () => {
     });
 
     const [success, setSuccess] = useState(false);
-    console.log(errorMessage);
 
     const handleSendMessage = async () => {
         const errors = {

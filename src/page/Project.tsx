@@ -10,7 +10,7 @@ import Input from "../components/Input";
 import H3 from "../components/H3";
 
 // ========== react ========== //
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
@@ -18,9 +18,11 @@ const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
 import { GetProjects } from "../assets/api/LiveApi";
+import Loading from "../components/Loading";
+import { useApiFetcher } from "../hook/useApiFetch";
 
 const Project = () => {
-    const [projectData, setProjectData] = useState<ProjectType[]>([]);
+    const { loading, loadingStart, projectData } = useApiFetcher(GetProjects);
 
     const [selectedType, setSelectedType] = useState("all");
     const [selectedTech, setSelectedTech] = useState("all");
@@ -38,10 +40,6 @@ const Project = () => {
 
         return matchType && matchTech && matchSearch && matchStatus;
     });
-
-    useEffect(() => {
-        GetProjects().then((res) => setProjectData(res));
-    }, []);
 
     return (
         <article className="project-page">
@@ -93,13 +91,19 @@ const Project = () => {
                 </div>
             </section>
             <section>
-                <p>{filteredProject.length} project founded</p>
-                <div className="product__list">
-                    {filteredProject.map((item: ProjectType) => (
-                        <Card key={item.projectId} data={item} />
-                    ))}
-                    {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
-                </div>
+                {loading ? (
+                    <Loading loadingStart={loadingStart} />
+                ) : (
+                    <>
+                        <p>{filteredProject.length} project founded</p>
+                        <div className="product__list">
+                            {filteredProject.map((item: ProjectType) => (
+                                <Card key={item.projectId} data={item} />
+                            ))}
+                            {filteredProject.length < 1 ? <h1>project not found</h1> : ""}
+                        </div>
+                    </>
+                )}
             </section>
         </article>
     );

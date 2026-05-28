@@ -16,7 +16,12 @@ import { Link } from "react-router";
 import { FaRegClone } from "react-icons/fa";
 import { TbFaceIdError } from "react-icons/tb";
 
-const GitHubRepo = () => {
+interface Props {
+    loadingStart: number;
+}
+
+const GitHubRepo = (props: Props) => {
+    const { loadingStart } = props;
     const [repos, setRepos] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<number | null>(null);
@@ -92,12 +97,7 @@ const GitHubRepo = () => {
                     unauthorized
                 </p>
             ) : loading ? (
-                <Loading />
-            ) : repos.length < 1 ? (
-                <p className="error-message">
-                    <TbFaceIdError />
-                    something wrong
-                </p>
+                <Loading loadingStart={loadingStart} />
             ) : (
                 <div className="github-repo--card">
                     {sortedRepos.slice(0, 4).map((repo) => (
