@@ -51,7 +51,6 @@ const About = () => {
                     </div>
                 </div>
             </section>
-
             <section id="skills">
                 <div className="skill-section">
                     <div className="skill-section--header">

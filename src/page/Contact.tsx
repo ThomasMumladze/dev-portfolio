@@ -141,7 +141,7 @@ const Contact = () => {
                     </div>
                     <div className="form-send-btn">
                         <p>{success ? "Email Sent SuccessFully" : ""}</p>
-                        <Button title="send message" clickFunction={handleSendMessage} />
+                        <Button children="" clickFunction={handleSendMessage} />
                     </div>
                 </div>
             </section>
