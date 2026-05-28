@@ -61,6 +61,7 @@ const ContextMenu = (props: Props) => {
             y: finalY,
         });
     };
+
     const handleRefreshPage = () => {
         window.location.reload();
     };
