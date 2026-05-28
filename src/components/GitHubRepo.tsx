@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 
 // ==========  Component ========== //
 import H3 from "./H3";
+import Loading from "./Loading";
 
 // ==========  React Icons ========== //
 import { FaLaptopCode } from "react-icons/fa";
 import { Link } from "react-router";
 import { FaRegClone } from "react-icons/fa";
 import { TbFaceIdError } from "react-icons/tb";
-import Loading from "./Loading";
 
 const GitHubRepo = () => {
     const [repos, setRepos] = useState<any[]>([]);
