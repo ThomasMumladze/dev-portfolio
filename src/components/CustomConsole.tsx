@@ -10,7 +10,7 @@ interface LogEntry {
 }
 
 const CustomConsole = ({ showConsole, setShowConsole }: { showConsole: boolean; setShowConsole: any }) => {
-    const { logs, clear, refresh } = useConsole();
+    const { logs, clear } = useConsole();
     const consoleBodyRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
