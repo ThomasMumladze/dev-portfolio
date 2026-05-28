@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import H3 from "../../components/H3";
 import Input from "../../components/Input";
 
+// admin
 const AdminProjects = () => {
     const [selectedProject, setSelectedProject] = useState(false);
 
