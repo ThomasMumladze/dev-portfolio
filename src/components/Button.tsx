@@ -8,7 +8,7 @@ const Button = (props: Props) => {
     const { clickFunction, children } = props;
     return (
         <button onClick={clickFunction} className="btn-primary">
-            {children}wadawd
+            {children}
         </button>
     );
 };
