@@ -51,7 +51,7 @@ const Home = () => {
 
     return (
         <article className="home-page">
-            <section>
+            <section className="github-repository">
                 <GitHubRepo loadingStart={loadingStart} />
             </section>
             <section id="skill-slider">
