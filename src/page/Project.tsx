@@ -15,7 +15,7 @@ import { useState } from "react";
 
 // ========== filter options ========== //
 const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
-const tech = ["all", "java", "react", "javascript", ".net core", "C#", "unity"];
+const tech = ["all", "java", "react", "javascript", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
 import { GetProjects } from "../assets/api/LiveApi";
@@ -34,7 +34,8 @@ const Project = () => {
     // ========== filter projects ========== //
     const filteredProject = projectData.filter((project) => {
         const matchType = selectedType === "all" || project.applicationType === selectedType;
-        const matchTech = selectedTech === "all" || project.technologies.includes(selectedTech);
+        const matchTech =
+            selectedTech === "all" || project.technologies.some((tech) => tech.toLowerCase() === selectedTech.toLowerCase());
         const matchStatus = selectedStatus === "all status" || project.status.includes(selectedStatus);
 
         const matchSearch =
