@@ -28,7 +28,7 @@ const GitHubRepo = () => {
             setLoading(true);
 
             try {
-                const repoRes: any = await gitHubRepository; // ან gitHubRepository()
+                const repoRes: any = await gitHubRepository;
 
                 const repoList = repoRes.data.slice(0, 4);
 
