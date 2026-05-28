@@ -27,6 +27,7 @@ import GitHubRepo from "../components/GitHubRepo";
 const Home = () => {
     const [projectData, setProjectData] = useState<ProjectType[]>([]);
 
+    // avoid re-render to stop calling api
     const slideRef = useRef(0);
     const sliderRef = useRef<HTMLDivElement | null>(null);
 

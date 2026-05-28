@@ -30,20 +30,23 @@ const Contact = () => {
     const [errorMessage, setErrorMessage] = useState({
         nameError: "",
         emailError: "",
+        incoRrectEmail: "",
         messageError: "",
     });
 
     const [success, setSuccess] = useState(false);
+    console.log(errorMessage);
 
     const handleSendMessage = async () => {
         const errors = {
             nameError: !name.trim() ? "Name is required." : "",
             emailError: !email.trim() ? "Email is required." : "",
+            incoRrectEmail: !/\S+@\S+\.\S+/.test(email) ? "invalid email" : "",
             messageError: !message.trim() ? "Message is required." : "",
         };
 
         setErrorMessage(errors);
-        if (errors.nameError || errors.emailError || errors.messageError) return;
+        if (errors.nameError || errors.emailError || errors.messageError || errors.incoRrectEmail) return;
 
         try {
             await SendEmail(name, email, message);
@@ -114,7 +117,7 @@ const Contact = () => {
                     />
 
                     <Input
-                        ErrorMessage={errorMessage.emailError}
+                        ErrorMessage={`${errorMessage.emailError || errorMessage.incoRrectEmail}`}
                         isRequired={true}
                         type="email"
                         placeholder="Your Email"
