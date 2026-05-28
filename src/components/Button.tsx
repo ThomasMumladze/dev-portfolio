@@ -9,7 +9,6 @@ const Button = (props: Props) => {
     return (
         <button onClick={clickFunction} className="btn-primary">
             {children}
-            <p>hello world</p>
         </button>
     );
 };
