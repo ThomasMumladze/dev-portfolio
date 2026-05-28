@@ -5,7 +5,6 @@ import Button from "../../components/Button";
 import H3 from "../../components/H3";
 import Input from "../../components/Input";
 
-// admin
 const AdminProjects = () => {
     const [selectedProject, setSelectedProject] = useState(false);
 
@@ -50,7 +49,7 @@ const AdminProjects = () => {
                     </div>
                     <div className="filter-search">
                         <Input label="" onChangeFunc={() => {}} placeholder="search project" type="text" />
-                        <Button title="+ add project" />
+                        <Button children="+ add project" />
                     </div>
                 </div>
                 <div className="project-list--content">
