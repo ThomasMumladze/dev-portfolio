@@ -1,67 +1,58 @@
-import { useEffect, useState, useRef } from "react";
-import { Hook, Console, Unhook } from "console-feed";
+import { useEffect, useRef, useState } from "react";
 
-interface Props {
-    showConsole: boolean;
+type LogLevel = "log" | "warn" | "error" | "info" | "debug";
+
+interface LogEntry {
+    id: string;
+    method: LogLevel;
+    data: any[];
 }
 
-const CustomConsole = (props: Props) => {
-    const { showConsole } = props;
-    const [logs, setLogs] = useState<any[]>([]);
+const CustomConsole = ({ showConsole }: { showConsole: boolean }) => {
+    const [logs, setLogs] = useState<LogEntry[]>([]);
     const consoleBodyRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        Hook(
-            window.console,
-            (log) => {
-                if (!log) return "nothing to log";
+        const levels: LogLevel[] = ["log", "warn", "error", "info", "debug"];
+        if ((window.console as any).__hooked) return;
+        (window.console as any).__hooked = true;
 
-                let rawData = log.data || [{}];
-
-                const sanitizedData = rawData
-                    .map((item: any) => {
-                        if (typeof item === "string") {
-                            let cleaned = item.replace(/[\u001b\x1b\?]?\[[0-9;]*m/g, "").trim();
-
-                            if (!cleaned || cleaned === "?" || cleaned === "?[0m") {
-                                return null;
-                            }
-
-                            if (cleaned.startsWith("[") || cleaned.startsWith("{")) {
-                                try {
-                                    return JSON.parse(cleaned);
-                                } catch (e) {
-                                    return cleaned;
-                                }
-                            }
-                            return cleaned;
-                        }
-
-                        if (typeof item === "object" && item !== null) {
-                            try {
-                                return JSON.parse(JSON.stringify(item));
-                            } catch (e) {
-                                return item;
-                            }
-                        }
-                        return item;
-                    })
-                    .filter((item: any) => item !== null);
-
-                if (sanitizedData.length === 0) return;
-
-                const finalLog = {
-                    ...log,
-                    data: sanitizedData,
-                };
-
-                setLogs((currLogs: any) => [...currLogs, finalLog]);
-            },
-            false,
+        const originalMethods = Object.fromEntries(
+            levels.map((level) => [level, window.console[level].bind(window.console)]),
         );
+        levels.forEach((level) => {
+            window.console[level] = (...args: any[]) => {
+                originalMethods[level](...args);
+                setTimeout(() => {
+                    const cleanArgs = args
+                        // strip ANSI escape codes
+                        .map((arg) =>
+                            typeof arg === "string"
+                                ? arg
+                                      .replace(/(\x9B|\x1B\[|\u009b)[0-9;]*m/g, "")
+                                      .replace(/%s/g, "")
+                                      .trim()
+                                : arg,
+                        )
+                        // remove empty strings left after stripping
+                        .filter((arg) => {
+                            if (typeof arg === "string") return arg.length > 0;
+                            if (arg === undefined) return false; // drop undefined args
+                            return true;
+                        });
+
+                    if (cleanArgs.length === 0) return;
+
+                    setLogs((prev) => [...prev, { method: level, data: cleanArgs, id: `${Date.now()}-${Math.random()}` }]);
+                }, 0);
+            };
+        });
 
         return () => {
-            Unhook(window.console as any);
+            levels.forEach((level) => {
+                window.console[level] = (originalMethods as any)[level];
+            });
+            delete (window.console as any).__hooked;
         };
     }, []);
 
@@ -71,30 +62,119 @@ const CustomConsole = (props: Props) => {
         }
     }, [logs, showConsole]);
 
-    return (
-        <>
-            {showConsole && (
-                <div className="custom-console">
-                    <div className="console-header">
-                        <span>DevTools Console</span>
-                    </div>
+    if (!showConsole) return null;
 
-                    <div ref={consoleBodyRef} style={styles.consoleBody}>
-                        <Console logs={logs} variant="dark" />
-                    </div>
-                </div>
-            )}
-        </>
+    return (
+        <div className="custom-console">
+            <div className="console-header">
+                <span>DevTools Console</span>
+                <button
+                    onClick={() => setLogs([])}
+                    style={{
+                        marginLeft: "auto",
+                        cursor: "pointer",
+                        background: "none",
+                        border: "none",
+                        color: "#888",
+                        fontSize: "11px",
+                    }}
+                >
+                    clear
+                </button>
+            </div>
+            <div ref={consoleBodyRef} style={{ overflowY: "auto", height: "100%", padding: "4px" }}>
+                {logs.map((log) => (
+                    <LogRow key={log.id} log={log} />
+                ))}
+            </div>
+        </div>
     );
 };
 
-const styles = {
-    consoleBody: {
-        backgroundColor: "rgba(128, 128, 128, 0.0784313725)",
-        overflowY: "auto" as "auto",
-        padding: "4px",
-        height: "100%",
-    },
+const levelStyle: Record<LogLevel, { color: string; bg: string }> = {
+    log: { color: "#ccc", bg: "transparent" },
+    info: { color: "#5b9bd5", bg: "rgba(91,155,213,0.08)" },
+    warn: { color: "#f5a623", bg: "rgba(245,166,35,0.08)" },
+    error: { color: "#ff5f5f", bg: "rgba(255,95,95,0.08)" },
+    debug: { color: "#888", bg: "transparent" },
+};
+
+const LogRow = ({ log }: { log: LogEntry }) => {
+    const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+    const { color, bg } = levelStyle[log.method] ?? levelStyle.log;
+
+    const toggleExpand = (i: number) => setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
+
+    return (
+        <div
+            style={{
+                display: "flex",
+                gap: "6px",
+                padding: "3px 6px",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
+                backgroundColor: bg,
+                borderLeft: `3px solid ${color}`,
+                fontFamily: "monospace",
+                fontSize: "12px",
+                color,
+                alignItems: "flex-start",
+            }}
+        >
+            <span style={{ opacity: 0.5, minWidth: "36px", userSelect: "none" }}>{log.method}</span>
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "2px" }}>
+                {log.data.map((d, i) => (
+                    <DataValue key={i} value={d} expanded={!!expanded[i]} onToggle={() => toggleExpand(i)} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const DataValue = ({ value, depth = 0 }: any) => {
+    const [expanded, setExpanded] = useState(false);
+    const isObject = value !== null && typeof value === "object";
+    const isArray = Array.isArray(value);
+
+    if (!isObject) {
+        const color =
+            typeof value === "string"
+                ? "#ce9178"
+                : typeof value === "number"
+                  ? "#b5cea8"
+                  : typeof value === "boolean"
+                    ? "#569cd6"
+                    : value === null
+                      ? "#569cd6"
+                      : "#ccc";
+
+        return (
+            <span style={{ color }}>
+                {value === null ? "null" : typeof value === "string" ? `"${value}"` : String(value)}
+            </span>
+        );
+    }
+
+    const keys = Object.keys(value);
+    const preview = isArray ? `Array(${value.length})` : `{${keys.slice(0, 3).join(", ")}${keys.length > 3 ? ", …" : ""}}`;
+
+    return (
+        <div style={{ paddingLeft: depth > 0 ? "12px" : 0 }}>
+            <span onClick={() => setExpanded((v) => !v)} style={{ cursor: "pointer", userSelect: "none", color: "#569cd6" }}>
+                {expanded ? "▾" : "▸"} {preview}
+            </span>
+            {expanded && (
+                <div style={{ paddingLeft: "12px", borderLeft: "1px solid rgba(255,255,255,0.1)", marginTop: "2px" }}>
+                    {keys.map((k) => (
+                        <div key={k} style={{ display: "flex", gap: "4px", flexWrap: "wrap", alignItems: "flex-start" }}>
+                            <span style={{ color: "#9cdcfe" }}>{k}:</span>
+                            <DataValue value={value[k]} depth={depth + 1} />
+                        </div>
+                    ))}
+                    {isArray && <div style={{ color: "#888", fontSize: "11px" }}>length: {value.length}</div>}
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default CustomConsole;

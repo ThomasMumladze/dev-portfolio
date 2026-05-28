@@ -4,11 +4,11 @@ import { lazy } from "react";
 import App from "./App";
 import Home from "./page/Home";
 
-const project = lazy(() => import("./page/Project"));
-const about = lazy(() => import("./page/About"));
-const projectDetails = lazy(() => import("./page/ProjectDetail"));
-const contact = lazy(() => import("./page/Contact"));
-const pageNotFound = lazy(() => import("./page/PageNotFound"));
+const Project = lazy(() => import("./page/Project"));
+const About = lazy(() => import("./page/About"));
+const ProjectDetails = lazy(() => import("./page/ProjectDetail"));
+const Contact = lazy(() => import("./page/Contact"));
+const PageNotFound = lazy(() => import("./page/PageNotFound"));
 
 const route = createBrowserRouter([
     {
@@ -21,23 +21,23 @@ const route = createBrowserRouter([
             },
             {
                 path: "/contact",
-                Component: contact,
+                Component: Contact,
             },
             {
                 path: "/project",
-                Component: project,
+                Component: Project,
             },
             {
                 path: "/project-details",
-                Component: projectDetails,
+                Component: ProjectDetails,
             },
             {
                 path: "/about-me",
-                Component: about,
+                Component: About,
             },
             {
                 path: "/*",
-                Component: pageNotFound,
+                Component: PageNotFound,
             },
         ],
     },
