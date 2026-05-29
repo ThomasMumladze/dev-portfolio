@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
+// const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
 const AddProject = () => {
     const [projectUrls, setProjectUrls] = useState({
         urls: {
@@ -11,7 +10,7 @@ const AddProject = () => {
         },
     });
 
-    const [technologies, setTechnologies] = useState([]);
+    // const [technologies, setTechnologies] = useState([]);
 
     return (
         <div className="add-project--Project">

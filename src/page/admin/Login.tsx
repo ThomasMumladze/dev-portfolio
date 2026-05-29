@@ -1,11 +1,11 @@
 import useAuthorization from "../../hook/useAuthorization";
 
-interface Props {
-    useAuthorizationHook: () => void;
-}
+// interface Props {
+//     useAuthorizationHook: () => void;
+// }
 
-const Login = (props: Props) => {
-    const { useAuthorizationHook } = props;
+const Login = () => {
+    // const { useAuthorizationHook } = props;
     const {
         error,
         handleLogin,
