@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "https://portfolioback-production-ba2c.up.railway.app/api";
+const API = "https://portfolioback-production-ba2c.up.railway.app";
 
 axios.interceptors.response.use(
     (response) => response,
