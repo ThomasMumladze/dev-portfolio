@@ -30,4 +30,26 @@ header {
         color: $text;
         margin: 0;
     }
+
+    > div {
+        align-items: center;
+        display: flex;
+        gap: 18px;
+
+        .login-page-link {
+            align-items: center;
+            background-color: #0c101c;
+            border: solid 1px #202534 !important;
+            padding: 15px;
+            display: flex;
+            border: none;
+            color: #e8e8f0;
+            padding: 3px 18px;
+            width: max-content;
+
+            &:hover {
+                background-color: #202534;
+            }
+        }
+    }
 }
