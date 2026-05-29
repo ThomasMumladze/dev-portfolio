@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router";
 
 // ========== Test Api ========= //
-const API = "https://localhost:7196";
+const API = "https://portfolioback-production-ba2c.up.railway.app";
 
 // protectedRoute
 export const ProtectedRoute = () => {

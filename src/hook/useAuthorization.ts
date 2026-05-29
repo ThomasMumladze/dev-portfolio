@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import axios from "axios";
 
-const API = "https://localhost:7196";
+const API = "https://portfolioback-production-ba2c.up.railway.app";
 
 type Step = "login" | "otp";
 
