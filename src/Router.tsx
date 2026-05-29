@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 
-import React, { lazy } from "react";
+import { lazy } from "react";
 
 import App from "./App";
 import Home from "./page/Home";
@@ -13,11 +13,11 @@ const PageNotFound = lazy(() => import("./page/PageNotFound"));
 
 const LogInPage: any = lazy(() => import("./page/admin/Login"));
 
-const AdminPanel: any = lazy(() => import("./page/admin/AdminProjects"));
+const Admin: any = lazy(() => import("./page/admin/Admin"));
+const AdminProjects: any = lazy(() => import("./page/admin/AdminProjects"));
+const AddData: any = lazy(() => import("./page/admin/addData/AddData"));
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-    return <React.Fragment>{children}</React.Fragment>;
-};
+import { ProtectedRoute } from "./helper/protectedRoute";
 
 const route = createBrowserRouter([
     {
@@ -57,11 +57,22 @@ const route = createBrowserRouter([
 
     {
         path: "/admin-dashboard",
-        element: (
-            <ProtectedRoute>
-                <AdminPanel />
-            </ProtectedRoute>
-        ),
+        element: <ProtectedRoute />,
+        children: [
+            {
+                element: <Admin />,
+                children: [
+                    {
+                        index: true,
+                        Component: AdminProjects,
+                    },
+                    {
+                        path: "add-project",
+                        Component: AddData,
+                    },
+                ],
+            },
+        ],
     },
 ]);
 
