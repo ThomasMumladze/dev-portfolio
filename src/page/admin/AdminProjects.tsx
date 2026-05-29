@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ========== Component ========== //
 import Button from "../../components/Button";
 import H3 from "../../components/H3";
 import Input from "../../components/Input";
 
+import { GetProjects } from "../../assets/api/LiveApi";
+import { Link } from "react-router";
+
 const AdminProjects = () => {
-    const [selectedProject, setSelectedProject] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<number | boolean>(false);
+    const [projectData, setProjectData] = useState<any>([]);
+
+    useEffect(() => {
+        GetProjects().then((res) => setProjectData(res));
+    }, []);
 
     return (
         <article className="admin-projects">
@@ -49,7 +57,9 @@ const AdminProjects = () => {
                     </div>
                     <div className="filter-search">
                         <Input label="" onChangeFunc={() => {}} placeholder="search project" type="text" />
-                        <Button children="+ add project" />
+                        <Button>
+                            <Link to={"add-project"}>+ add project</Link>
+                        </Button>
                     </div>
                 </div>
                 <div className="project-list--content">
@@ -93,34 +103,54 @@ const AdminProjects = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className={`${selectedProject ? "selected-project" : ""}`}>
-                                    <td>
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedProject}
-                                            onChange={() => setSelectedProject(!selectedProject)}
-                                        />
-                                    </td>
-                                    <td>techstore</td>
-                                    <td>back-end</td>
-                                    <td>java.api</td>
-                                    <td>java , mssql , MsSql</td>
-                                    <td>
-                                        <div>
-                                            <span className="get">GET</span>
-                                            <span className="post">POST</span>
-                                            <span className="put">PUT</span>
-                                            <span className="delete">DELETE</span>
-                                        </div>
-                                    </td>
-                                    <td>in development</td>
-                                    <td>gitHub</td>
-                                    <td>
-                                        <span className="active">active</span>
-                                    </td>
-                                    <td>2025 / 01 /06</td>
-                                    <td>2025 / 03 /21</td>
-                                </tr>
+                                {projectData &&
+                                    projectData.map((item: any, index: number) => (
+                                        <tr
+                                            key={index}
+                                            className={`${selectedProject == item.projectId ? "selected-project" : ""}`}
+                                        >
+                                            <td>
+                                                <input
+                                                    type="checkbox"
+                                                    onChange={() =>
+                                                        setSelectedProject((prev) =>
+                                                            prev === item.projectId ? null : item.projectId,
+                                                        )
+                                                    }
+                                                    checked={selectedProject === item.projectId}
+                                                />
+                                            </td>
+                                            <td>{item.applicationName}</td>
+                                            <td>{item.applicationType}</td>
+                                            <td>{item.programmingLanguage}</td>
+                                            <td>
+                                                {item.technologies &&
+                                                    item.technologies
+                                                        .slice(0, 3)
+                                                        .map((t: any, _: number) => <span key={_}>{t}</span>)}
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    {/* <span className="get">GET</span>
+                                                    <span className="post">POST</span>
+                                                    <span className="put">PUT</span>
+                                                    <span className="delete">DELETE</span> */}
+
+                                                    {item.methods &&
+                                                        item.methods.slice(0, 3).map((t: any, _: number) => (
+                                                            <span className={t.toLowerCase()} key={_}>
+                                                                {t}
+                                                            </span>
+                                                        ))}
+                                                </div>
+                                            </td>
+                                            <td>{item.status}</td>
+                                            <td>gitHub</td>
+                                            <td>{item.isActive ? <span className="active">active</span> : null}</td>
+                                            <td> {new Date(item.createdAt).toLocaleDateString()} </td>
+                                            <td>{new Date(item.updatedAt).toLocaleDateString()}</td>
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>
