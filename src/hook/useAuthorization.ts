@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import axios from "axios";
 
-const API = "https://portfolioback-production-ba2c.up.railway.app";
+import { LIVE_API } from "../constants/ApiUrl";
 
 type Step = "login" | "otp";
 
@@ -21,7 +21,7 @@ const useAuthorization = () => {
         setError("");
         try {
             await axios.post(
-                `${API}/api/Auth/login`,
+                `${LIVE_API}/api/Auth/login`,
                 { email, password },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true },
             );
@@ -39,7 +39,7 @@ const useAuthorization = () => {
         setError("");
         try {
             const { data } = await axios.post(
-                `${API}/api/Auth/verify`,
+                `${LIVE_API}/api/Auth/verify`,
                 { code: otp },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true },
             );
@@ -54,7 +54,7 @@ const useAuthorization = () => {
 
     const refreshToken = async () => {
         try {
-            await axios.post(`${API}/api/Auth/refresh`, {}, { withCredentials: true });
+            await axios.post(`${LIVE_API}/api/Auth/refresh`, {}, { withCredentials: true });
         } catch {
             window.location.href = "/login";
         }

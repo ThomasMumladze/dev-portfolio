@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router";
 
 // ========== Test Api ========= //
-const API = "https://portfolioback-production-ba2c.up.railway.app";
+import { LIVE_API } from "../constants/ApiUrl";
 
 // protectedRoute
 export const ProtectedRoute = () => {
@@ -11,7 +11,7 @@ export const ProtectedRoute = () => {
 
     useEffect(() => {
         axios
-            .get(`${API}/api/Auth/check`, { withCredentials: true })
+            .get(`${LIVE_API}/api/Auth/check`, { withCredentials: true })
             .then(() => setIsAuth(true))
             .catch(() => setIsAuth(false));
     }, []);

@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "https://portfolioback-production-ba2c.up.railway.app";
+import { LIVE_API } from "../constants/ApiUrl";
 
 axios.interceptors.response.use(
     (response) => response,
@@ -21,7 +21,7 @@ axios.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                await axios.post(`${API}/api/Auth/refresh`, {}, { withCredentials: true });
+                await axios.post(`${LIVE_API}/api/Auth/refresh`, {}, { withCredentials: true });
 
                 return axios(originalRequest);
             } catch (err) {
@@ -38,7 +38,7 @@ const Header = () => {
 
     useEffect(() => {
         axios
-            .get(`${API}/api/Auth/check`, { withCredentials: true })
+            .get(`${LIVE_API}/api/Auth/check`, { withCredentials: true })
             .then(() => setIsAuth(true))
             .catch(() => setIsAuth(false));
     }, []);
