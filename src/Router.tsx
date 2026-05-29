@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
-import { lazy } from "react";
+
+import React, { lazy } from "react";
 
 import App from "./App";
 import Home from "./page/Home";
@@ -9,6 +10,14 @@ const About = lazy(() => import("./page/About"));
 const ProjectDetails = lazy(() => import("./page/ProjectDetail"));
 const Contact = lazy(() => import("./page/Contact"));
 const PageNotFound = lazy(() => import("./page/PageNotFound"));
+
+const LogInPage: any = lazy(() => import("./page/admin/Login"));
+
+const AdminPanel: any = lazy(() => import("./page/admin/AdminProjects"));
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+    return <React.Fragment>{children}</React.Fragment>;
+};
 
 const route = createBrowserRouter([
     {
@@ -40,6 +49,19 @@ const route = createBrowserRouter([
                 Component: PageNotFound,
             },
         ],
+    },
+    {
+        path: "/log-in",
+        Component: LogInPage,
+    },
+
+    {
+        path: "/admin-dashboard",
+        element: (
+            <ProtectedRoute>
+                <AdminPanel />
+            </ProtectedRoute>
+        ),
     },
 ]);
 
