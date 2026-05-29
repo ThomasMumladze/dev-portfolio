@@ -9,7 +9,9 @@
 @use "./style/pages/admin/login";
 
 // ========== Admin Pages ========== //
-@use "./style//pages/admin/adminProjects";
+@use "./style/pages/admin/adminProjects";
+@use "./style/pages/admin/add-project";
+@use "./style/pages/admin/add-data-page";
 
 // ========== Component ========== //
 @use "./style/components/navigation";
