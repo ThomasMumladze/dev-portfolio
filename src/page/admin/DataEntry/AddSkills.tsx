@@ -1,9 +1,11 @@
+// ========== React ========== //
 import { useState } from "react";
 
+// ========== Constants ========== //
 import H3 from "../../../components/H3";
-
 import Button from "../../../components/Button";
 
+// ========== Constants ========== //
 import { BACK_END_SKILLS, FRONT_END_SKILLS, TOOL_SKILLS } from "../../../constants/Skills";
 
 const AddSkills = () => {

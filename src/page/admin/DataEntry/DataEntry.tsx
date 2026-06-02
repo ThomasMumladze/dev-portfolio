@@ -1,4 +1,7 @@
+// ========== React ========== //
 import { Link } from "react-router";
+
+// ========== Admin Pages ========== //
 import AddContact from "./AddContact";
 import AddProject from "./AddProject";
 import AddSkills from "./AddSkills";
