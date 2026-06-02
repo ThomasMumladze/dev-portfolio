@@ -15,7 +15,7 @@ const LogInPage: any = lazy(() => import("./page/admin/Login"));
 
 const Admin: any = lazy(() => import("./page/admin/Admin"));
 const AdminProjects: any = lazy(() => import("./page/admin/AdminProjects"));
-const AddData: any = lazy(() => import("./page/admin/addData/AddData"));
+const DataEntry: any = lazy(() => import("./page/admin/DataEntry/DataEntry"));
 
 import { ProtectedRoute } from "./helper/protectedRoute";
 
@@ -68,7 +68,7 @@ const route = createBrowserRouter([
                     },
                     {
                         path: "add-project",
-                        Component: AddData,
+                        Component: DataEntry,
                     },
                 ],
             },

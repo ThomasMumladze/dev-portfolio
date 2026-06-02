@@ -3,7 +3,7 @@ import AddContact from "./AddContact";
 import AddProject from "./AddProject";
 import AddSkills from "./AddSkills";
 
-const AddData = () => {
+const DataEntry = () => {
     return (
         <article className="add-data-page">
             <div>
@@ -18,4 +18,4 @@ const AddData = () => {
     );
 };
 
-export default AddData;
+export default DataEntry;
