@@ -1,4 +1,5 @@
 import { useState } from "react";
+import H3 from "../../../components/H3";
 
 // const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
 const AddProject = () => {
@@ -14,11 +15,12 @@ const AddProject = () => {
 
     return (
         <div className="add-project--Project">
+            <H3 title="add project" />
+            <hr />
             <div className="add-project--field">
                 <label>Project Name</label>
                 <input type="text" placeholder="project nama" />
             </div>
-
             <div className="input-wrapper">
                 <div className="add-project--field">
                     <label>Project type</label>
@@ -29,12 +31,10 @@ const AddProject = () => {
                     <input type="text" placeholder="language" />
                 </div>
             </div>
-
             <div className="add-project--field">
                 <label>description</label>
                 <textarea rows={8} placeholder="description"></textarea>
             </div>
-
             <div className="input-wrapper">
                 <figcaption>
                     <div className="add-project--field">
