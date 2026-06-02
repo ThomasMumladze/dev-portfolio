@@ -9,12 +9,10 @@ const AddData = () => {
             <div>
                 <Link to={"/admin-dashboard"}> {"<- dashboard"}</Link>
             </div>
-            <div className="add-data-page-wrapper">
-                <AddProject />
-                <div>
-                    <AddSkills />
-                    <AddContact />
-                </div>
+            <AddProject />
+            <div className="add-data-page-skills-contact">
+                <AddSkills />
+                <AddContact />
             </div>
         </article>
     );
