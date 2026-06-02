@@ -2,8 +2,11 @@
     max-width: 1245px;
     margin: 20px auto;
     padding: 20px;
-
     transform: scale(1);
+
+    h3 {
+        font-size: 1rem;
+    }
 
     a {
         display: block;
@@ -18,10 +21,10 @@
         width: max-content;
     }
 
-    &-wrapper {
-        display: flex;
+    &-skills-contact {
         align-items: flex-start;
-
+        display: flex;
         gap: 26px;
+        margin-top: 26px;
     }
 }
