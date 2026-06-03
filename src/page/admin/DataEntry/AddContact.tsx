@@ -10,10 +10,10 @@ const AddContact = () => {
         facebook: string | null;
         instagram: string | null;
     }>({
-        linkedIn: null,
-        gitHub: null,
-        facebook: null,
-        instagram: null,
+        linkedIn: "",
+        gitHub: "",
+        facebook: "",
+        instagram: "",
     });
 
     return (

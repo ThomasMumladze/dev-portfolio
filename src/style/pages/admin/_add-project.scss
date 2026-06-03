@@ -13,7 +13,7 @@
         width: 100%;
 
         .input-wrapper {
-            align-items: center;
+            align-items: flex-start;
             display: flex;
             gap: 26px;
             width: 100%;
@@ -26,40 +26,77 @@
         .add-project--field {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 14px;
             margin-bottom: 26px;
             width: 100%;
 
             label {
-                font-size: 12.5px;
                 color: #afafaf;
+                display: block;
+                font-size: 12.5px;
                 letter-spacing: 0.1em;
                 text-transform: lowercase;
             }
 
-            input {
-                background: #080c14;
-                border: 1px solid #1e2a3a;
-                border-radius: 4px;
-                padding: 12px 14px;
-                font-size: 13px;
-                font-family: inherit;
-                color: #e0e6f0;
-                outline: none;
-                transition:
-                    border-color 0.2s ease,
-                    box-shadow 0.2s ease;
-                letter-spacing: 0.05em;
-                resize: vertical;
-                width: 100% !important;
+            .http-methods {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
 
-                &::placeholder {
-                    color: #2d3a4a;
-                }
+                label {
+                    flex: 1 1 5%;
 
-                &:focus {
-                    border-color: rgba(0, 229, 204, 0.4);
-                    box-shadow: 0 0 0 3px rgba(0, 229, 204, 0.06);
+                    .--skill {
+                        align-items: center;
+                        border: 1px solid #1e2a3a;
+                        background: #080c14;
+                        border-radius: 4px;
+                        color: #e0e6f0;
+                        cursor: pointer;
+                        display: flex;
+                        font-size: 12px;
+                        gap: 6px;
+                        padding: 8px 19px;
+                        text-wrap: nowrap;
+                        font-style: italic;
+
+                        &:has(input[type="checkbox"]:checked) {
+                            background: #0f2a1f;
+                            border-color: #64ffda;
+                            color: #64ffda;
+                        }
+
+                        input[type="checkbox"] {
+                            appearance: none;
+                            justify-content: center;
+                            width: 15px;
+                            height: 15px;
+                            border: 1px solid #1e2a3a;
+                            border-radius: 3px;
+                            background: #080c14;
+                            cursor: pointer;
+                            position: relative;
+                            transition: all 0.15s;
+
+                            &:checked {
+                                background: #64ffda;
+                                border-color: #64ffda;
+
+                                &::after {
+                                    content: "";
+                                    position: absolute;
+                                    left: 3px;
+                                    top: 0px;
+                                    width: 5px;
+                                    height: 8px;
+                                    border: 2px solid #080c14;
+                                    border-top: none;
+                                    border-left: none;
+                                    transform: rotate(45deg);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

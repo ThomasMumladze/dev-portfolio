@@ -6,7 +6,12 @@ import Input from "../../../components/Input";
 import TextArea from "../../../components/TextArea";
 
 // const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
+
+const HTTP_METHODS = ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"];
+
 const AddProject = () => {
+    const [selectedMethods, setSelectedMethods] = useState<string[]>([]);
+
     const [projectUrls, setProjectUrls] = useState({
         urls: {
             gitHub: "",
@@ -16,23 +21,20 @@ const AddProject = () => {
     });
 
     // const [technologies, setTechnologies] = useState([]);
-
+    console.log(selectedMethods);
     return (
         <div className="add-project--Project">
             <H3 title="add project" />
             <hr />
             <div className="add-project--field">
-                <label>Project Name</label>
-                <input type="text" placeholder="project nama" />
+                <Input label="project nama" value={""} onChangeFunc={() => {}} placeholder="project nama" type="text" />
             </div>
             <div className="input-wrapper">
                 <div className="add-project--field">
-                    <label>Project type</label>
-                    <input type="text" placeholder="project type" />
+                    <Input label="project type" value={""} onChangeFunc={() => {}} placeholder="project type" type="text" />
                 </div>
                 <div className="add-project--field">
-                    <label>language</label>
-                    <input type="text" placeholder="language" />
+                    <Input label="language" value={""} onChangeFunc={() => {}} placeholder="language" type="text" />
                 </div>
             </div>
 
@@ -49,6 +51,7 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="GitHub URL"
+                            value={""}
                             onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
@@ -65,6 +68,7 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="Azure URL"
+                            value={""}
                             onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
@@ -81,6 +85,7 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="live URL"
+                            value={""}
                             onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
@@ -98,11 +103,12 @@ const AddProject = () => {
 
                 <figcaption>
                     <div className="add-project--field">
-                        <Input label="add status" onChangeFunc={() => {}} placeholder="add status" type="text" />
+                        <Input value={""} label="add status" onChangeFunc={() => {}} placeholder="add status" type="text" />
                     </div>
                     <div className="add-project--field">
                         <Input
                             label="select technologies"
+                            value={""}
                             onChangeFunc={() => {}}
                             placeholder="select technologies"
                             type="text"
@@ -110,7 +116,30 @@ const AddProject = () => {
                     </div>
 
                     <div className="add-project--field">
-                        <Input label="select methods" onChangeFunc={() => {}} placeholder="select methods" type="text" />
+                        {/* <Input label="select methods" onChangeFunc={() => {}} placeholder="select methods" type="text" /> */}
+
+                        <label>select methods</label>
+                        <div className="http-methods">
+                            {HTTP_METHODS.map((skill) => (
+                                <label key={skill}>
+                                    <div className="--skill">
+                                        <input
+                                            type="checkbox"
+                                            value={skill}
+                                            checked={selectedMethods.includes(skill)}
+                                            onChange={(e) => {
+                                                if (e.target.checked) {
+                                                    setSelectedMethods([...selectedMethods, skill]);
+                                                } else {
+                                                    setSelectedMethods(selectedMethods.filter((s) => s !== skill));
+                                                }
+                                            }}
+                                        />
+                                        {skill}
+                                    </div>
+                                </label>
+                            ))}
+                        </div>
                     </div>
                 </figcaption>
             </div>
