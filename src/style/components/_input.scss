@@ -12,23 +12,43 @@
         justify-content: space-between;
         letter-spacing: 0.8px;
         text-transform: uppercase;
+
         .error-message {
             color: #d22;
         }
     }
 
+    label {
+        font-size: 12.5px;
+        color: #afafaf;
+        letter-spacing: 0.1em;
+        text-transform: lowercase;
+    }
+
     input {
-        border: solid 1px #202534;
-        background-color: rgba(128, 128, 128, 0.0784313725);
-        border-radius: 8px;
-        color: #fff;
-        font-size: 0.876rem;
+        background: #080c14;
+        border: 1px solid #1e2a3a;
+        border-radius: 4px;
+        padding: 12px 14px;
+        font-size: 13px;
+        font-family: inherit;
+        color: #e0e6f0;
         outline: none;
-        padding: 10px 12px;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+        letter-spacing: 0.05em;
+        resize: vertical;
+        text-align: left;
         width: 100%;
 
         &::placeholder {
-            text-transform: capitalize;
+            color: #2d3a4a;
+        }
+
+        &:focus {
+            border-color: rgba(0, 229, 204, 0.4);
+            box-shadow: 0 0 0 3px rgba(0, 229, 204, 0.06);
         }
     }
 }
