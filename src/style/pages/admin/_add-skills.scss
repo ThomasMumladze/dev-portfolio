@@ -14,6 +14,12 @@
         justify-content: space-between;
         gap: 8px;
         margin: 16px 0px;
+
+        .btn-active {
+            background: #0f2a1f;
+            border-color: #64ffda;
+            color: #64ffda;
+        }
     }
 
     &--skills-list {
@@ -83,9 +89,11 @@
     &--field {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        margin-bottom: 26px;
         width: 100%;
+
+        &:not(:last-child) {
+            margin-bottom: 26px;
+        }
 
         label {
             font-size: 12.5px;
@@ -93,29 +101,20 @@
             letter-spacing: 0.1em;
             text-transform: lowercase;
         }
-        input {
-            background: #080c14;
-            border: 1px solid #1e2a3a;
-            border-radius: 4px;
-            padding: 12px 14px;
-            font-size: 13px;
-            font-family: inherit;
-            color: #e0e6f0;
-            outline: none;
-            transition:
-                border-color 0.2s ease,
-                box-shadow 0.2s ease;
-            letter-spacing: 0.05em;
-            resize: vertical;
-            width: 100% !important;
 
-            &::placeholder {
-                color: #2d3a4a;
+        .selected-skills {
+            &:not(:last-child) {
+                margin-bottom: 26px;
             }
 
-            &:focus {
-                border-color: rgba(0, 229, 204, 0.4);
-                box-shadow: 0 0 0 3px rgba(0, 229, 204, 0.06);
+            > div {
+                background: #080c14;
+                border: 1px solid #1e2a3a;
+                border-radius: 4px;
+                color: #e0e6f0;
+                font-size: 13px;
+                margin-top: 6px;
+                padding: 12px 14px;
             }
         }
     }
