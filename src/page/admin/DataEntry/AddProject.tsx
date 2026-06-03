@@ -21,7 +21,7 @@ const AddProject = () => {
     });
 
     // const [technologies, setTechnologies] = useState([]);
-    console.log(selectedMethods);
+    console.log(projectUrls);
     return (
         <div className="add-project--Project">
             <H3 title="add project" />
@@ -41,7 +41,13 @@ const AddProject = () => {
             <hr />
 
             <div className="add-project--field">
-                <TextArea label="description" placeholder="description" textAreValue="" textAreaRow={8} />
+                <TextArea
+                    label="description"
+                    placeholder="description"
+                    textAreValue=""
+                    textAreaRow={8}
+                    textAreaOnChange={() => {}}
+                />
             </div>
 
             <hr />

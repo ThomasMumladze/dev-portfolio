@@ -19,7 +19,7 @@ const Input = (props: Props) => {
             </div>
             <input
                 required={isRequired}
-                value={value}
+                value={value ?? ""}
                 onChange={(e: any) => onChangeFunc(e.target.value)}
                 type={type}
                 placeholder={placeholder}

@@ -16,7 +16,7 @@ const TextArea = (props: TextAreaProps) => {
                 value={props.textAreValue}
                 placeholder={props.placeholder}
                 readOnly={props.readOnly}
-                onChange={props.textAreaOnChange}
+                onChange={props.textAreaOnChange ?? (() => {})}
                 rows={props.textAreaRow}
             />
         </figcaption>
