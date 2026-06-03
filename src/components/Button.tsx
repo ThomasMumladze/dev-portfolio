@@ -2,12 +2,13 @@
 interface Props {
     children: any;
     clickFunction?: () => void;
+    btnClassName?: string;
 }
 
 const Button = (props: Props) => {
-    const { clickFunction, children } = props;
+    const { clickFunction, children, btnClassName } = props;
     return (
-        <button onClick={clickFunction} className="btn-primary">
+        <button onClick={clickFunction} className={`btn-primary ${btnClassName || ""}`}>
             {children}
         </button>
     );
