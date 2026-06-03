@@ -7,20 +7,20 @@ import { LIVE_API } from "../constants/ApiUrl";
 
 // protectedRoute
 export const ProtectedRoute = () => {
-    // const [isAuth, setIsAuth] = useState<boolean | null>(null);
+    const [isAuth, setIsAuth] = useState<boolean | null>(null);
 
-    // useEffect(() => {
-    //     axios
-    //         .get(`${LIVE_API}/api/Auth/check`, { withCredentials: true })
-    //         .then(() => setIsAuth(true))
-    //         .catch(() => setIsAuth(false));
-    // }, []);
+    useEffect(() => {
+        axios
+            .get(`${LIVE_API}/api/Auth/check`, { withCredentials: true })
+            .then(() => setIsAuth(true))
+            .catch(() => setIsAuth(false));
+    }, []);
 
-    // if (isAuth === null) return null;
+    if (isAuth === null) return null;
 
-    // if (!isAuth) {
-    //     return <Navigate to="/" replace />;
-    // }
+    if (!isAuth) {
+        return <Navigate to="/" replace />;
+    }
 
     return <Outlet />;
 };

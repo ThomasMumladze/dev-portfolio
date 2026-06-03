@@ -3,7 +3,7 @@ import { useState } from "react";
 // ========== Constants ========== //
 import H3 from "../../../components/H3";
 import Input from "../../../components/Input";
-import TextArea from "../../../components/TextArea";
+import TextArea from "../../../components/Textarea";
 
 // const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
 
