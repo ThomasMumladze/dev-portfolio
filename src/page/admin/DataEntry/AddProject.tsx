@@ -20,8 +20,6 @@ const AddProject = () => {
         },
     });
 
-    // const [technologies, setTechnologies] = useState([]);
-    console.log(projectUrls);
     return (
         <div className="add-project--Project">
             <H3 title="add project" />
@@ -57,14 +55,11 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="GitHub URL"
-                            value={""}
-                            onChangeFunc={(e) =>
+                            value={projectUrls.urls.gitHub}
+                            onChangeFunc={(value) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
-                                    urls: {
-                                        ...prev.urls,
-                                        gitHub: e.target.value,
-                                    },
+                                    urls: { ...prev.urls, gitHub: value },
                                 }))
                             }
                             placeholder="GitHub Url"
@@ -74,14 +69,11 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="Azure URL"
-                            value={""}
-                            onChangeFunc={(e) =>
+                            value={projectUrls.urls.azure}
+                            onChangeFunc={(value) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
-                                    urls: {
-                                        ...prev.urls,
-                                        azure: e.target.value,
-                                    },
+                                    urls: { ...prev.urls, azure: value },
                                 }))
                             }
                             placeholder="azure Url"
@@ -91,14 +83,11 @@ const AddProject = () => {
                     <div className="add-project--field">
                         <Input
                             label="live URL"
-                            value={""}
-                            onChangeFunc={(e) =>
+                            value={projectUrls.urls.live}
+                            onChangeFunc={(value) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
-                                    urls: {
-                                        ...prev.urls,
-                                        live: e.target.value,
-                                    },
+                                    urls: { ...prev.urls, live: value },
                                 }))
                             }
                             placeholder="live Url"
