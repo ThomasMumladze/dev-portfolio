@@ -107,6 +107,9 @@ const AddSkills = () => {
             <div className="add-skills--field">
                 <Input label="experience" onChangeFunc={() => {}} placeholder="E.G 1.5 year" type="text" />
             </div>
+
+            <hr />
+
             <div className="add-skills--field">
                 <div className="selected-skills">
                     <label>front-end</label>

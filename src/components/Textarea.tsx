@@ -1,6 +1,7 @@
 interface TextAreaProps {
     textareaRef?: any;
     textAreValue: string;
+    textAreaRow: number;
     textAreaOnChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     readOnly?: boolean;
     placeholder: string;
@@ -16,6 +17,7 @@ const TextArea = (props: TextAreaProps) => {
                 placeholder={props.placeholder}
                 readOnly={props.readOnly}
                 onChange={props.textAreaOnChange}
+                rows={props.textAreaRow}
             />
         </figcaption>
     );

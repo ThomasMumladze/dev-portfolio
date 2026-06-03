@@ -4,7 +4,7 @@ interface Props {
     placeholder: string;
     label: string;
     onChangeFunc: (e: any) => void;
-    value?: string;
+    value?: string | any;
     isRequired?: boolean;
     ErrorMessage?: string;
 }

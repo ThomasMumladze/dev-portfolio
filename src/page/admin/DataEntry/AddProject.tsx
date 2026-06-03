@@ -2,6 +2,8 @@
 import { useState } from "react";
 // ========== Constants ========== //
 import H3 from "../../../components/H3";
+import Input from "../../../components/Input";
+import TextArea from "../../../components/TextArea";
 
 // const TECH_INPUT = ["GET", "POST", "PUT", "DELETE"];
 const AddProject = () => {
@@ -33,18 +35,21 @@ const AddProject = () => {
                     <input type="text" placeholder="language" />
                 </div>
             </div>
+
+            <hr />
+
             <div className="add-project--field">
-                <label>description</label>
-                <textarea rows={8} placeholder="description"></textarea>
+                <TextArea label="description" placeholder="description" textAreValue="" textAreaRow={8} />
             </div>
+
+            <hr />
+
             <div className="input-wrapper">
                 <figcaption>
                     <div className="add-project--field">
-                        <label>GitHub URL</label>
-                        <input
-                            placeholder="GitHub URL"
-                            value={projectUrls.urls.gitHub}
-                            onChange={(e) =>
+                        <Input
+                            label="GitHub URL"
+                            onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
                                     urls: {
@@ -53,14 +58,14 @@ const AddProject = () => {
                                     },
                                 }))
                             }
+                            placeholder="GitHub Url"
+                            type="text"
                         />
                     </div>
                     <div className="add-project--field">
-                        <label>Azure UR</label>
-                        <input
-                            placeholder="Azure URL"
-                            value={projectUrls.urls.azure}
-                            onChange={(e) =>
+                        <Input
+                            label="Azure URL"
+                            onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
                                     urls: {
@@ -69,14 +74,14 @@ const AddProject = () => {
                                     },
                                 }))
                             }
+                            placeholder="azure Url"
+                            type="text"
                         />
                     </div>
                     <div className="add-project--field">
-                        <label>Live URL</label>
-                        <input
-                            placeholder="Live URL"
-                            value={projectUrls.urls.live}
-                            onChange={(e) =>
+                        <Input
+                            label="live URL"
+                            onChangeFunc={(e) =>
                                 setProjectUrls((prev) => ({
                                     ...prev,
                                     urls: {
@@ -85,23 +90,27 @@ const AddProject = () => {
                                     },
                                 }))
                             }
+                            placeholder="live Url"
+                            type="text"
                         />
                     </div>
                 </figcaption>
 
                 <figcaption>
                     <div className="add-project--field">
-                        <label>add status</label>
-                        <input placeholder="completed / in development/ stopped" type="text" />
+                        <Input label="add status" onChangeFunc={() => {}} placeholder="add status" type="text" />
                     </div>
                     <div className="add-project--field">
-                        <label>select technologies</label>
-                        <input placeholder="react , c# , java ..." type="text" />
+                        <Input
+                            label="select technologies"
+                            onChangeFunc={() => {}}
+                            placeholder="select technologies"
+                            type="text"
+                        />
                     </div>
 
                     <div className="add-project--field">
-                        <label>select methods</label>
-                        <input placeholder="GET , POST , PUT ..." type="text" />
+                        <Input label="select methods" onChangeFunc={() => {}} placeholder="select methods" type="text" />
                     </div>
                 </figcaption>
             </div>
