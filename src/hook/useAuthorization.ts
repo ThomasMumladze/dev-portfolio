@@ -44,7 +44,7 @@ const useAuthorization = () => {
                 { headers: { "Content-Type": "application/json" }, withCredentials: true },
             );
             localStorage.setItem("accessToken", data.accessToken);
-            window.location.href = "/";
+            window.location.href = "/admin-dashboard";
         } catch {
             setError("არასწორი ან ვადაგასული კოდი");
         } finally {

@@ -1,6 +1,3 @@
-// ========== component import ========== //
-import H3 from "./H3";
-
 // ========== props interface ========== //
 interface Props {
     type: string;
@@ -17,7 +14,7 @@ const Input = (props: Props) => {
     return (
         <div className="input">
             <div>
-                <H3 title={label} />
+                <label>{label}</label>
                 <p className="error-message">{ErrorMessage}</p>
             </div>
             <input
