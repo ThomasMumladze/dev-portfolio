@@ -3,7 +3,7 @@ export const handleTextCopy = async (text: string) => {
 
     try {
         await navigator.clipboard.writeText(text as string);
-        alert("clone Url Copied");
+        alert("text copied");
     } catch (err) {
         console.warn("Failed to copy text", err);
     }

@@ -23,6 +23,9 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 // ========== Interface ========== //
 import type { ContactInfo } from "../types/contactType";
 
+// ========== Helper ========== //
+import { handleTextCopy } from "../helper/TextCopy";
+
 const Contact = () => {
     const [contactData, setContactData] = useState<ContactInfo>();
     const [name, setName] = useState<string>("");
@@ -78,7 +81,7 @@ const Contact = () => {
                 <div className="contact--info--wrapper">
                     <div>
                         <SiMaildotru />
-                        <p>{contactData?.email}</p>
+                        <p onClick={() => handleTextCopy(contactData?.email as string)}>{contactData?.email}</p>
                     </div>
                     <div>
                         <FaMapMarkerAlt />
