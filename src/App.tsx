@@ -19,8 +19,6 @@ function App() {
     const [showConsole, setShowConsole] = useState(false);
 
     useEffect(() => {
-        console.log("Hello From", location.pathname.slice(1, -1));
-
         window.scrollTo(0, 0);
     }, [location.pathname]);
 

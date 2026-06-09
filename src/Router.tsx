@@ -19,6 +19,7 @@ import { ProtectedRoute } from "./helper/protectedRoute";
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import App from "./App";
 
 const route = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ const route = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <Outlet />
+                <App />
                 <Footer />
             </>
         ),
