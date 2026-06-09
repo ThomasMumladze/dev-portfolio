@@ -7,7 +7,6 @@ import Home from "./page/Home";
 
 const Project = lazy(() => import("./page/Project"));
 const About = lazy(() => import("./page/About"));
-const ProjectDetails = lazy(() => import("./page/ProjectDetail"));
 const Contact = lazy(() => import("./page/Contact"));
 const PageNotFound = lazy(() => import("./page/PageNotFound"));
 
@@ -18,6 +17,7 @@ const AdminProjects: any = lazy(() => import("./page/admin/AdminProjects"));
 const DataEntry: any = lazy(() => import("./page/admin/DataEntry/DataEntry"));
 
 import { ProtectedRoute } from "./helper/protectedRoute";
+
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 
@@ -37,10 +37,6 @@ const route = createBrowserRouter([
             { path: "/project", Component: Project },
             { path: "/about-me", Component: About },
         ],
-    },
-    {
-        path: "/project-details",
-        Component: ProjectDetails,
     },
     {
         path: "/*",
