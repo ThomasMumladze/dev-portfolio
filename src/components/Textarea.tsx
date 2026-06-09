@@ -6,11 +6,16 @@ interface TextAreaProps {
     readOnly?: boolean;
     placeholder: string;
     label: string;
+    errorMessage?: any;
 }
 const TextArea = (props: TextAreaProps) => {
     return (
         <figcaption className="text-area">
-            <label>{props.label}</label>
+            <div>
+                <label>{props.label}</label>
+
+                {props.errorMessage ? <p>{props.errorMessage}</p> : null}
+            </div>
             <textarea
                 ref={props.textareaRef}
                 value={props.textAreValue}
