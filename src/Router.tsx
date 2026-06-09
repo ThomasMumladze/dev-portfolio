@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Outlet } from "react-router";
 
 import { lazy } from "react";
 
@@ -18,43 +18,38 @@ const AdminProjects: any = lazy(() => import("./page/admin/AdminProjects"));
 const DataEntry: any = lazy(() => import("./page/admin/DataEntry/DataEntry"));
 
 import { ProtectedRoute } from "./helper/protectedRoute";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
 
 const route = createBrowserRouter([
     {
         path: "/",
-        Component: App,
+        element: (
+            <>
+                <Header />
+                <Outlet />
+                <Footer />
+            </>
+        ),
         children: [
-            {
-                index: true,
-                Component: Home,
-            },
-            {
-                path: "/contact",
-                Component: Contact,
-            },
-            {
-                path: "/project",
-                Component: Project,
-            },
-            {
-                path: "/project-details",
-                Component: ProjectDetails,
-            },
-            {
-                path: "/about-me",
-                Component: About,
-            },
-            {
-                path: "/*",
-                Component: PageNotFound,
-            },
+            { index: true, Component: Home },
+            { path: "/contact", Component: Contact },
+            { path: "/project", Component: Project },
+            { path: "/about-me", Component: About },
         ],
+    },
+    {
+        path: "/project-details",
+        Component: ProjectDetails,
+    },
+    {
+        path: "/*",
+        Component: PageNotFound,
     },
     {
         path: "/log-in",
         Component: LogInPage,
     },
-
     {
         path: "/admin-dashboard",
         element: <ProtectedRoute />,
@@ -62,14 +57,8 @@ const route = createBrowserRouter([
             {
                 element: <Admin />,
                 children: [
-                    {
-                        index: true,
-                        Component: AdminProjects,
-                    },
-                    {
-                        path: "add-project",
-                        Component: DataEntry,
-                    },
+                    { index: true, Component: AdminProjects },
+                    { path: "add-project", Component: DataEntry },
                 ],
             },
         ],

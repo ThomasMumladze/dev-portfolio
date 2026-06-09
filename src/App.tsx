@@ -8,11 +8,6 @@ import { Outlet, useLocation } from "react-router";
 
 // ========== component ========== //
 import ContextMenu from "./components/ContextMenu";
-import CustomConsole from "./components/CustomConsole";
-
-// ========== Layouts ========== //
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
 
 // ========== Authorization ========== //
 import useAuthorization from "./hook/useAuthorization";
@@ -32,15 +27,9 @@ function App() {
     return (
         <>
             <ContextMenu showConsole={showConsole} setShowConsole={setShowConsole} />
-            {location.pathname === "/project-details" ? null : <Header />}
-
             <main>
                 <Outlet context={{ authorization }} />
-
-                <CustomConsole showConsole={showConsole} setShowConsole={setShowConsole} />
             </main>
-
-            <Footer />
         </>
     );
 }

@@ -14,6 +14,7 @@
 @use "./style/pages/admin/data-entry";
 @use "./style/pages/admin/add-skills";
 @use "./style/pages/admin/add-contact";
+@use "./style/pages/page-nout-found";
 
 // ========== Component ========== //
 @use "./style/components/navigation";
@@ -26,5 +27,4 @@
 @use "./style/components/github_repo";
 @use "./style/components/loading";
 @use "./style/components/context-menu";
-@use "./style/components/custom-console";
 @use "./style/components/text-area";
