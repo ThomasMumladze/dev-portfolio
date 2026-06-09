@@ -16,6 +16,9 @@ import { Link } from "react-router";
 import { FaRegClone } from "react-icons/fa";
 import { TbFaceIdError } from "react-icons/tb";
 
+// ==========  Helper ========== //
+import { handleTextCopy } from "../helper/TextCopy";
+
 interface Props {
     loadingStart: number | null;
 }
@@ -72,15 +75,6 @@ const GitHubRepo = (props: Props) => {
     }, []);
 
     const sortedRepos = [...repos].sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
-
-    const handleCopy = async (text: string) => {
-        try {
-            await navigator.clipboard.writeText(text as string);
-            alert("clone Url Copied");
-        } catch (err) {
-            console.warn("Failed to copy text", err);
-        }
-    };
 
     return (
         <article className="github-repo">
@@ -148,7 +142,7 @@ const GitHubRepo = (props: Props) => {
                             </div>
 
                             <div className="urls">
-                                <a onClick={() => handleCopy(repo.clone_url)}>
+                                <a onClick={() => handleTextCopy(repo.clone_url)}>
                                     clone | <FaRegClone />
                                 </a>
 
