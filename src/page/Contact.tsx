@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import H3 from "../components/H3";
 import Input from "../components/Input";
+import TextArea from "../components/Textarea";
 
 // ========== Api ========== //
 import { SendEmail, GetContact } from "../assets/api/LiveApi";
@@ -126,18 +127,14 @@ const Contact = () => {
                     />
 
                     <div className="form-group">
-                        <div>
-                            <H3 title="Message" />
-                            <p className="error-message">{errorMessage.messageError}</p>
-                        </div>
-                        <textarea
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            id="message"
-                            name="message"
-                            rows={10}
-                            required
-                        ></textarea>
+                        <TextArea
+                            errorMessage={errorMessage.messageError}
+                            label="message"
+                            placeholder="enter message"
+                            textAreValue={message}
+                            textAreaOnChange={(e) => setMessage(e.target.value)}
+                            textAreaRow={10}
+                        />
                     </div>
                     <div className="form-send-btn">
                         <p>{success ? "Email Sent SuccessFully" : ""}</p>
