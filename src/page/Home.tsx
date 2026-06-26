@@ -90,7 +90,7 @@ const Home = () => {
                             {projectData
                                 .filter(
                                     (x: ProjectType) =>
-                                        x.applicationType === "front-end" &&
+                                        (x.applicationType === "front-end" || x.applicationType === "full-stack") &&
                                         (x.status === "in development" || x.status === "completed"),
                                 )
                                 .slice(0, 4)
@@ -117,7 +117,7 @@ const Home = () => {
                             {projectData
                                 .filter(
                                     (x: ProjectType) =>
-                                        x.applicationType === "back-end" &&
+                                        (x.applicationType === "back-end" || x.applicationType === "full-stack") &&
                                         (x.status === "in development" || x.status === "completed"),
                                 )
                                 .slice(0, 4)

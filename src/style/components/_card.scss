@@ -95,11 +95,19 @@
         border-top: solid 1px #64ffda;
         border-bottom: solid 1px #64ffda;
         margin-top: 12px;
+        min-height: 86px;
         padding: 10px 0px;
+        transition: 0.15s ease-in-out;
 
         p {
-            padding: 0px;
+            transition: 0.15s ease-in-out;
             -webkit-line-clamp: 4;
+        }
+
+        &:hover {
+            p {
+                -webkit-line-clamp: 10;
+            }
         }
     }
 
