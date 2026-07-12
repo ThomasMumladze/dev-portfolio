@@ -54,6 +54,7 @@ const Home = () => {
             <section className="github-repository">
                 <GitHubRepo loadingStart={loadingStart} />
             </section>
+
             <section id="skill-slider">
                 <div className="icon-slider-wrapper">
                     <div
@@ -75,6 +76,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
             <section id="front-end">
                 <div className="section-header">
                     <H3 title="front-end" />
