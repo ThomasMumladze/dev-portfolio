@@ -5,16 +5,8 @@ import { useEffect, useState } from "react";
 import Button from "./Button";
 
 import { LuRefreshCcw } from "react-icons/lu";
-import { VscDebugConsole } from "react-icons/vsc";
-import { BiWindowClose } from "react-icons/bi";
 
-interface Props {
-    showConsole: boolean;
-    setShowConsole: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const ContextMenu = (props: Props) => {
-    const { setShowConsole, showConsole } = props;
-
+const ContextMenu = () => {
     const [menuData, setMenuData] = useState({
         show: false,
         x: 0,
@@ -96,10 +88,6 @@ const ContextMenu = (props: Props) => {
                     <div>
                         <Button clickFunction={handleRefreshPage}>
                             <LuRefreshCcw />
-                        </Button>
-
-                        <Button clickFunction={() => setShowConsole(!showConsole)}>
-                            {showConsole ? <BiWindowClose /> : <VscDebugConsole />}
                         </Button>
                     </div>
                 </>

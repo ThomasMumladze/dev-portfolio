@@ -1,7 +1,7 @@
 import "./App.scss";
 
 // ========== React Hook ========== //
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // ========== react-router ========== //
 import { Outlet, useLocation } from "react-router";
@@ -16,7 +16,6 @@ import type { Authorization } from "./types/authorization";
 function App() {
     const { ...authorization } = useAuthorization() as Authorization;
     const location = useLocation();
-    const [showConsole, setShowConsole] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -24,7 +23,7 @@ function App() {
 
     return (
         <>
-            <ContextMenu showConsole={showConsole} setShowConsole={setShowConsole} />
+            <ContextMenu />
             <main>
                 <Outlet context={{ authorization }} />
             </main>

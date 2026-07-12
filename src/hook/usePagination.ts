@@ -34,7 +34,7 @@ const usePagination = <T>(data: T[], defaultPerPage = 18) => {
         return pages;
     }, [currentPage, totalPages]);
 
-    // საზღვრების ვალიდაციით
+    // range validation
     const goToPage = useCallback(
         (page: number) => {
             if (page < 1 || page > totalPages) return;
