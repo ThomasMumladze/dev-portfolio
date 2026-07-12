@@ -23,7 +23,7 @@ function App() {
 
     return (
         <>
-            {/* <ContextMenu /> */}
+            <ContextMenu />
             <main>
                 <Outlet context={{ authorization }} />
             </main>
