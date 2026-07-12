@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // ==========  Api ========== //
-import { gitHubRepository } from "../assets/api/gitHubApi";
+import { getGitHubRepositories } from "../assets/api/gitHubApi";
 
 // ==========  React Hook ========== //
 import { useEffect, useState } from "react";
@@ -30,15 +30,17 @@ const GitHubRepo = (props: Props) => {
     const [error, setError] = useState<number | null>(null);
 
     useEffect(() => {
+        const abortController = new AbortController();
         let isMounted = true;
 
         const fetchData = async () => {
             setLoading(true);
 
             try {
-                const repoRes: any = await gitHubRepository;
-
-                const repoList = repoRes.data.slice(0, 4);
+                const repos: any = await getGitHubRepositories(abortController.signal).then(
+                    (response: any) => response?.data,
+                );
+                const repoList = repos.slice(0, 4);
 
                 const enrichedRepos = await Promise.all(
                     repoList.map(async (repo: any) => {
