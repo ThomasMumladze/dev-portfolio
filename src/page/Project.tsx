@@ -14,7 +14,7 @@ import Loading from "../components/Loading";
 import { useState } from "react";
 
 // ========== filter options ========== //
-const type = ["all", "back-end", "front-end", "full-stack", "console app", "game"];
+const type = ["all", "back-end", "front-end", "full-stack", "console", "game"];
 const tech = ["all", "java", "react", "javascript", "C#", "unity"];
 const status = ["all status", "stopped", "in development", "completed"];
 
@@ -33,7 +33,7 @@ const Project = () => {
 
     // ========== filter projects ========== //
     const filteredProject = projectData.filter((project) => {
-        const matchType = selectedType === "all" || project.applicationType === selectedType;
+        const matchType = selectedType === "all" || project.applicationType.toLowerCase() === selectedType;
         const matchTech =
             selectedTech === "all" || project.technologies.some((tech) => tech.toLowerCase() === selectedTech.toLowerCase());
         const matchStatus = selectedStatus === "all status" || project.status.includes(selectedStatus);
